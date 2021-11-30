@@ -1,18 +1,16 @@
 import React from 'react'
+import './style.css'
 
 interface Props {
-  placeholder: string
-  type: string
-  gutterBottom: string
+  buttontext: string
+  placement: string
 }
 
-const MovieButton: React.FC<Props> = ({ placeholder, type, gutterBottom }) => {
+const MovieButton: React.FC<Props> = ({ buttontext, placement }) => {
   return (
     <div>
-      <button
-        className={`button ${type} ${gutterBottom ? 'gutterBottom' : ''}`}
-      >
-        {placeholder}
+      <button className={`button ${placement} ${buttontext}`}>
+        {buttontext}
       </button>
     </div>
   )

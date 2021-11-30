@@ -1,17 +1,15 @@
 import React from 'react'
+import './style.css'
 
 interface Props {
   text: string
   type: string
-  gutterBottom: string
 }
 
-const Text: React.FC<Props> = ({ text, type, gutterBottom }) => {
+const Text: React.FC<Props> = ({ text, type }) => {
   return (
     <div>
-      <p className={`text ${type} ${gutterBottom ? 'gutterBottom' : ''}`}>
-        {text}
-      </p>
+      <p className={`text ${type}`}>{text}</p>
     </div>
   )
 }
