@@ -1,0 +1,53 @@
+.flex {
+  display: flex;
+}
+
+.border {
+    border: 1px solid black;
+}
+
+.movie-card {
+  /* border: 1px solid black; */
+  width: 20rem;
+  margin: auto;
+  padding-bottom: 0.8rem;
+  border-radius: 20px;
+  margin-top: 8rem;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.movie-card-image {
+  height: 11.25rem;
+  width: 20rem;
+}
+
+.movie-card-image img{
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.card-title-div {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movie-item-icons {
+    height: 1.25rem;
+    align-items: center;
+}
+
+.movie-item-icons img {
+    margin-right: 1.3rem;
+    margin-left: 0.3rem;
+}
+
+.movie-description {
+  padding: 0 1rem;
+}
+
+.buttons {
+  justify-content: space-around;
+  margin-top: 1rem;
+}
