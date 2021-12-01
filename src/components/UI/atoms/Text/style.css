@@ -1,3 +1,9 @@
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .flex {
   display: flex;
 }
@@ -7,7 +13,20 @@
   color: #00000066;
 }
 
+.text.logo {
+  color: #00000080;
+  font-size: 3.7rem;
+}
+
 .text.movietitle {
   font-size: 1.3rem;
   margin-left: 1rem;
+}
+
+.text.navlink {
+  font-size: 1.8rem;
+  margin-right: 0.75rem;
+  padding-right: 0.75rem;
+  border-right: 2px solid #00000080;;
+  color: #00000080;
 }
