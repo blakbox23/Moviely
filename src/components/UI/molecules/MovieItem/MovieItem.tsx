@@ -4,6 +4,8 @@ import Text from '../../atoms/Text/Text'
 import star from '../../../../assets/star.png'
 import comment from '../../../../assets/comment.png'
 import Button from '../../atoms/Button/Button'
+import { images } from '../../../../constants/missingimage'
+import { colors } from '../../../../constants/colors'
 
 interface MovieItemProps {
   image?: string
@@ -19,14 +21,7 @@ export const MovieItem: React.FC<MovieItemProps> = ({
   return (
     <div className="movie-card ">
       <div className="movie-card-image">
-        <img
-          src={
-            image
-              ? image
-              : 'https://uploads.codesandbox.io/uploads/user/7057e602-9a4b-48e2-a956-a6a83661dbe2/lUkO-download.png'
-          }
-          alt={image}
-        />
+        <img src={image ? image : images.missingimage} alt={image} />
       </div>
 
       <div className="card-title-div flex">
@@ -47,8 +42,16 @@ export const MovieItem: React.FC<MovieItemProps> = ({
       </div>
 
       <div className="buttons flex">
-        <Button buttontext="Edit" placement={'movie-card-button'} />
-        <Button buttontext="Delete" placement={'movie-card-button'} />
+        <Button
+          buttontext="Edit"
+          placement={'movie-card-button'}
+          color={colors.PRIMARYBTN}
+        />
+        <Button
+          buttontext="Delete"
+          placement={'movie-card-button'}
+          color={colors.SECONDARYBTN}
+        />
       </div>
     </div>
   )
