@@ -14,14 +14,21 @@ interface MovieItemProps {
 }
 
 export const MovieItem: React.FC<MovieItemProps> = ({
-  image,
+  image = images.missingimage,
   title,
   description,
 }) => {
   return (
     <div className="movie-card ">
-      <div className="movie-card-image">
-        <img src={image ? image : images.missingimage} alt={image} />
+      <div
+        className={'movie-card-image'}
+        style={{
+          background: `url(${image})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+        }}
+      >
+        <div className="grad"></div>
       </div>
 
       <div className="card-title-div flex">

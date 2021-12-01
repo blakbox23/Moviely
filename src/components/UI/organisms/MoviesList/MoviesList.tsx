@@ -7,14 +7,14 @@ export const MoviesList = () => {
     {
       id: 1,
       title: 'Braver',
-      image: 'https://source.unsplash.com/cFbNlpRZKi0',
+      image: 'https://source.unsplash.com/mou0S7ViElQ',
       description:
         'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id quidem accusantium facere natus molestiae aspernatur ullam dicta rem at consectetur?',
     },
     {
       id: 2,
       title: 'Brave',
-      image: 'https://source.unsplash.com/cFbNlpRZKi0',
+      image: 'https://source.unsplash.com/Xaanw0s0pMk',
       description:
         'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id quidem accusantium facere natus molestiae aspernatur ullam dicta rem at consectetur?',
     },
