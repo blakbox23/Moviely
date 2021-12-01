@@ -17,7 +17,7 @@ export const Input: React.FC<InputProps> = ({
   return (
     <div>
       <input
-        className={`input ${inputplacement} ${border ? 'border' : ''} `}
+        className={`input ${inputplacement} ${type} ${border ? 'border' : ''} `}
         type={type}
         placeholder={placeholder}
       />

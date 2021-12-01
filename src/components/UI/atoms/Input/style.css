@@ -8,10 +8,16 @@
     width: 18rem;
     font-size: 1.25rem;
     color: #00000087;
+    padding-left: 1rem;
 
 }
 
 .input.border {
     border: 1px solid #2596BE;
     border-radius: 20px;
+  }
+
+  .input.range {
+      height: 1rem;
+      color: #2596BE;
   }
