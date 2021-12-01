@@ -1,0 +1,14 @@
+.nav-bar {
+    background-color: #FFFFFFB2;
+    margin-bottom: 3rem;
+    justify-content: space-between;
+    padding: 0 1rem;
+    font-size: 3.75;
+    align-items: center;
+    height: 4.625rem;
+    /* height: 4.6rem; */
+}
+
+.links {
+    align-items: center;
+}

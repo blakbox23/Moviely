@@ -7,7 +7,6 @@
 }
 
 .movie-card {
-  /* border: 1px solid black; */
   width: 20rem;
   margin: auto;
   padding-bottom: 0.8rem;
@@ -32,6 +31,7 @@
 .card-title-div {
   justify-content: space-between;
   align-items: center;
+  height: 4.2rem;
 }
 
 .movie-item-icons {
