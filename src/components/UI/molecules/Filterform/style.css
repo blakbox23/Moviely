@@ -1,0 +1,23 @@
+
+
+.filter-top {
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+.filter-bottom {
+    justify-content: space-between;
+}
+.genres {
+    height: 4rem;
+    width: 18rem;
+    font-size: 1.25rem;
+    color: #00000087;
+    background-color: #fff;
+    border: 1px solid #2596BE;
+    border-radius: 20px;
+    appearance: none;
+    background-Image: url('../../../../assets/drop.png');
+    background-repeat: no-repeat;
+    background-position: 90% 50%;
+
+}
