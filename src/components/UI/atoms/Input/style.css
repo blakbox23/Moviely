@@ -1,0 +1,17 @@
+
+.input {
+    background-color: #fff;
+}
+
+.input.filter {
+    height: 4rem;
+    width: 18rem;
+    font-size: 1.25rem;
+    color: #00000087;
+
+}
+
+.input.border {
+    border: 1px solid #2596BE;
+    border-radius: 20px;
+  }
