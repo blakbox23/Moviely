@@ -9,7 +9,7 @@ interface Props {
 const Text: React.FC<Props> = ({ text, type }) => {
   return (
     <div>
-      <p className={`text ${type}`}>{text}</p>
+      <p className={`text ${type} `}>{text}</p>
     </div>
   )
 }
