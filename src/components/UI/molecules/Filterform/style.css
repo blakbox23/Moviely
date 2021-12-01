@@ -6,6 +6,7 @@
 }
 .filter-bottom {
     justify-content: space-between;
+    align-items: baseline;
 }
 .genres {
     height: 4rem;
@@ -19,5 +20,8 @@
     background-Image: url('../../../../assets/drop.png');
     background-repeat: no-repeat;
     background-position: 90% 50%;
+}
 
+.grade-label {
+    justify-content: space-between;
 }

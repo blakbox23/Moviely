@@ -25,20 +25,21 @@ function Filterform() {
           <option value="comedy">Comedy</option>
         </select>
         <Input placeholder="Year" inputplacement="filter" type="" border />
-        {/* <Input
-          placeholder="Year"
-          inputplacement="filter"
-          type="select"
-          border
-        /> */}
       </div>
       <div className="flex filter-bottom">
-        <Input
-          placeholder="myplace holder"
-          inputplacement="filter"
-          type="text"
-          border
-        />
+        <div>
+          <Input
+            placeholder="myplace holder"
+            inputplacement="filter"
+            type="range"
+            border
+          />
+          <div className="flex grade-label">
+            <div>0</div>
+            <div>Minimum grade</div>
+            <div>5</div>
+          </div>
+        </div>
         <Input
           placeholder="myplace holder"
           inputplacement="filter"
