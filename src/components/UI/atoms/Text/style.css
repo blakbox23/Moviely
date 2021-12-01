@@ -1,0 +1,13 @@
+.flex {
+  display: flex;
+}
+
+.text.small {
+  font-size: 0.75rem;
+  color: #00000066;
+}
+
+.text.movietitle {
+  font-size: 1.3rem;
+  margin-left: 1rem;
+}
