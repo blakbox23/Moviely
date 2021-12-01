@@ -6,6 +6,7 @@ interface InputProps {
   type: string
   inputplacement?: string
   border?: boolean
+  value?: string
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -13,6 +14,7 @@ export const Input: React.FC<InputProps> = ({
   type,
   inputplacement,
   border = false,
+  value,
 }) => {
   return (
     <div>

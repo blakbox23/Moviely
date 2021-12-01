@@ -2,6 +2,7 @@ import React from 'react'
 import { Input } from '../../atoms/Input/Input'
 import './style.css'
 // import polygone from '../../../../assets/drop.png'
+// import magnify from '../../../../assets/magnify.png'
 
 function Filterform() {
   const dropdownName = (a: string, b: string) => {
@@ -34,16 +35,17 @@ function Filterform() {
             type="range"
             border
           />
-          <div className="flex grade-label">
+          <label className="flex grade-label">
             <div>0</div>
             <div>Minimum grade</div>
             <div>5</div>
-          </div>
+          </label>
         </div>
         <Input
           placeholder="myplace holder"
           inputplacement="filter"
-          type="text"
+          type="submit"
+          value=""
           border
         />
       </div>
