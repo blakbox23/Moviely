@@ -15,34 +15,41 @@ function Filterform() {
   }
   return (
     <div>
-      <div className="flex filter-top">
-        <Input placeholder="Title" inputplacement="filter" type="text" border />
-        <select className="genres" name="genres">
-          <option className={'dropdName'} value="genre">
-            Genre
-          </option>
-          <option value="action">Action</option>
-          <option value="horror">Horror</option>
-          <option value="comedy">Comedy</option>
-        </select>
-        <Input placeholder="Year" inputplacement="filter" type="" border />
-      </div>
-      <div className="flex filter-bottom">
-        <div>
+      <form action="">
+        <div className="flex filter-top">
           <Input
-            placeholder="myplace holder"
+            placeholder="Title"
             inputplacement="filter"
-            type="range"
+            type="text"
             border
           />
-          <label className="flex grade-label">
-            <div>0</div>
-            <div>Minimum grade</div>
-            <div>5</div>
-          </label>
+          <select className="genres" name="genres">
+            <option className={'dropdName'} value="genre">
+              Genre
+            </option>
+            <option value="action">Action</option>
+            <option value="horror">Horror</option>
+            <option value="comedy">Comedy</option>
+          </select>
+          <Input placeholder="Year" inputplacement="filter" type="" border />
         </div>
-        <input className="submit-input" type="submit" value="" />
-      </div>
+        <div className="flex filter-bottom">
+          <div>
+            <Input
+              placeholder="myplace holder"
+              inputplacement="filter"
+              type="range"
+              border
+            />
+            <label className="flex grade-label">
+              <div>0</div>
+              <div>Minimum grade</div>
+              <div>5</div>
+            </label>
+          </div>
+          <input className="submit-input" type="submit" value="" />
+        </div>
+      </form>
     </div>
   )
 }

@@ -11,13 +11,15 @@
 
 .genres, .submit-input {
     height: 4rem;
-    width: 18rem;
+    width: 18.9rem;
     font-size: 1.25rem;
     color: #00000087;
     background-color: #fff;
     border: 1px solid #2596BE;
     border-radius: 20px;
     background-repeat: no-repeat;
+    padding-left: 1rem;
+    
 
 }
 .genres {
