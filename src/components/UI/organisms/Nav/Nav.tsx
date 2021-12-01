@@ -37,6 +37,17 @@ const Nav = () => {
       </div>
 
       <div className="flex links">
+        {user.admin ? (
+          <div className="flex links">
+            {adminNavLinks.map(({ id, text }) => (
+              <div key={id}>
+                <Text text={text} type="navlink" />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <Text text="List of my watched movies" type="navlink" />
+        )}
         <Text text="O" type="logo" />
       </div>
     </div>
