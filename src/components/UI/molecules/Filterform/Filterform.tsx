@@ -41,13 +41,7 @@ function Filterform() {
             <div>5</div>
           </label>
         </div>
-        <Input
-          placeholder="myplace holder"
-          inputplacement="filter"
-          type="submit"
-          value=""
-          border
-        />
+        <input className="submit-input" type="submit" value="" />
       </div>
     </div>
   )
