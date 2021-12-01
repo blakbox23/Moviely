@@ -2,6 +2,7 @@ import React from 'react'
 import Text from '../../atoms/Text/Text'
 import './style.css'
 import { fonts } from '../../../../constants/fonts'
+import usericon from '../../../../assets/user 1.png'
 
 interface NavProps {}
 
@@ -53,7 +54,7 @@ const Nav = () => {
             font={fonts.NAVFONT}
           />
         )}
-        <Text text="O" type="logo" />
+        <img src={usericon} alt="profile" />
       </div>
     </div>
   )
