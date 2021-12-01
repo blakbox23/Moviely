@@ -1,6 +1,7 @@
 import React from 'react'
 import Text from '../../atoms/Text/Text'
 import './style.css'
+import { fonts } from '../../../../constants/fonts'
 
 interface NavProps {}
 
@@ -33,20 +34,24 @@ const Nav = () => {
   return (
     <div className="nav-bar flex">
       <div>
-        <Text text="Home Page" type="logo" />
+        <Text text="Home Page" type="logo" font={fonts.NAVFONT} />
       </div>
 
       <div className="flex links">
-        {user.admin ? (
+        {user2.admin ? (
           <div className="flex links">
             {adminNavLinks.map(({ id, text }) => (
               <div key={id}>
-                <Text text={text} type="navlink" />
+                <Text text={text} type="navlink" font={fonts.NAVFONT} />
               </div>
             ))}
           </div>
         ) : (
-          <Text text="List of my watched movies" type="navlink" />
+          <Text
+            text="List of my watched movies"
+            type="navlink"
+            font={fonts.NAVFONT}
+          />
         )}
         <Text text="O" type="logo" />
       </div>
