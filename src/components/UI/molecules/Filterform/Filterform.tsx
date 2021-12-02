@@ -1,18 +1,9 @@
 import React from 'react'
 import { Input } from '../../atoms/Input/Input'
 import './style.css'
-// import polygone from '../../../../assets/drop.png'
-// import magnify from '../../../../assets/magnify.png'
+import { fonts } from '../../../../constants/fonts'
 
 function Filterform() {
-  const dropdownName = (a: string, b: string) => {
-    return (
-      <div className="">
-        <div>{a}</div>
-        <div>{b}</div>
-      </div>
-    )
-  }
   return (
     <div>
       <form action="">
@@ -41,7 +32,10 @@ function Filterform() {
               type="range"
               border
             />
-            <label className="flex grade-label">
+            <label
+              className="flex grade-label"
+              style={{ fontFamily: fonts.FORMFONT }}
+            >
               <div>0</div>
               <div>Minimum grade</div>
               <div>5</div>
