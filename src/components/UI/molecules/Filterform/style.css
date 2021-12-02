@@ -1,0 +1,40 @@
+
+
+.filter-top {
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+.filter-bottom {
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.genres, .submit-input {
+    height: 4rem;
+    width: 18.9rem;
+    font-size: 1.25rem;
+    color: #00000087;
+    background-color: #fff;
+    border: 1px solid #2596BE;
+    border-radius: 20px;
+    background-repeat: no-repeat;
+    padding-left: 1rem;
+    
+
+}
+.genres {
+    appearance: none;
+    background-Image: url('../../../../assets/drop.png');
+    background-position: 90% 50%;
+}
+
+.submit-input {
+    background-Image: url('../../../../assets/magnify.png');
+    background-position: 50% 50%;
+}
+
+.grade-label {
+    justify-content: space-between;
+
+}
+
