@@ -1,16 +1,17 @@
 import createSagaMiddleware from '@redux-saga/core'
-import myReducer from './Reducers/MoviesReducer'
-import {createStore, applyMiddleware, combineReducers} from 'redux'
-import MoviesSagas from './Sagas/MoviesSagas'
+// import moviesReducer from './Reducers/MoviesReducer'
+import {createStore, applyMiddleware} from 'redux'
+import rootSaga from './Sagas/rootSaga'
+import rootReducer from './Reducers/rootReducers'
+import logger from "redux-logger";
 
 
-function Store() {
 
     const sagaMiddleware = createSagaMiddleware();
-    const rootReducer =  combineReducers( {myReducer} )
-    const store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
 
-    sagaMiddleware.run(MoviesSagas)
-}
+    const store = createStore(rootReducer, applyMiddleware(sagaMiddleware, logger))
 
-export default Store
+    sagaMiddleware.run(rootSaga)
+
+
+export default store
