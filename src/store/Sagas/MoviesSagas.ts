@@ -2,23 +2,23 @@ import axios from 'axios';
 import { put, call, takeLatest, all } from 'redux-saga/effects';
 import { IMovie } from '../types/types'
 import { fetchmoviesFailure, fetchmoviesSuccess } from '../Actions/MoviesAction'
-import { getMovies } from '../../services/MovieServices';
+import { movieService } from '../../services/MovieServices'
 import { movieTypes } from '../ActionTypes/Movietypes'
 
 
 function* workFetchMovies(): any {
     try {
-       const response = yield call(getMovies);
+       const response = yield call(movieService.getMovies);
     yield put(
         fetchmoviesSuccess({
           movies: response.data
         })
       );
       console.log(response.data)
-    } catch (e) {
+    } catch (e: any) {
       yield put(
         fetchmoviesFailure({
-          error: "error"
+          error: e.message
         })
       );
     }
