@@ -5,7 +5,7 @@ import { fetchmoviesFailure, fetchmoviesSuccess } from '../Actions/MoviesAction'
 
 import { movieTypes } from '../ActionTypes/Movietypes'
 
-const getMovies = () => axios.get<IMovie[]>("https://jsonplaceholder.typicode.com/todos");
+const getMovies = () => axios.get<IMovie[]>("http://localhost:8000/movies");
 
 
 function* workFetchMovies(): any {

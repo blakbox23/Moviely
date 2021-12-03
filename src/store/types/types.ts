@@ -1,10 +1,17 @@
 import { movieTypes } from "../ActionTypes/Movietypes";
 
 export interface IMovie {
-    userId: number;
     id: number;
     title: string;
-    completed: boolean;
+    genre: string;
+    year: number;
+    runtime: number;
+    imageUrl: string;
+    country: string;
+    description: string;
+    comments: object[];
+    ratings: object[];
+    movieTrailer: string;
   }
   
 
