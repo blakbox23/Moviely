@@ -2,10 +2,8 @@ import axios from 'axios';
 import { put, call, takeLatest, all } from 'redux-saga/effects';
 import { IMovie } from '../types/types'
 import { fetchmoviesFailure, fetchmoviesSuccess } from '../Actions/MoviesAction'
-
+import { getMovies } from '../../services/MovieServices';
 import { movieTypes } from '../ActionTypes/Movietypes'
-
-const getMovies = () => axios.get<IMovie[]>("http://localhost:8000/movies");
 
 
 function* workFetchMovies(): any {
