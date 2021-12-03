@@ -14,6 +14,7 @@ export const MoviesList = () => {
       {movies.map((movie) => (
         <div key={movie.id}>
           <MovieItem
+            id={movie.id}
             title={movie.title}
             image={movie.imageUrl}
             description={movie.description}
