@@ -1,24 +1,34 @@
-import { takeEvery, put, call } from 'redux-saga/effects'
-import { GET_MOVIES, GET_MOVIES_SUCCESS } from '../Actions/MoviesAction'
+import axios from 'axios';
+import { put, call, takeLatest, all } from 'redux-saga/effects';
+import { IMovie } from '../types/types'
+import { fetchmoviesFailure, fetchmoviesSuccess } from '../Actions/MoviesAction'
 
-function fetchMovies(){
-    return fetch('https://jsonplaceholder.typicode.com/users').then(response => response.json());
-}
+import { movieTypes } from '../ActionTypes/Movietypes'
+
+const getMovies = () => axios.get<IMovie[]>("https://jsonplaceholder.typicode.com/todos");
 
 
-function* workGetMovies() {
+function* workFetchMovies(): any {
     try {
-       const movies = yield call(fetchMovies);
-       yield put({type: "GET_MOVIES_SUCCESS", movies});
+       const response = yield call(getMovies);
+    yield put(
+        fetchmoviesSuccess({
+          movies: response.data
+        })
+      );
+      console.log(response.data)
     } catch (e) {
-       console.log(e)
+      yield put(
+        fetchmoviesFailure({
+          error: "error"
+        })
+      );
     }
- }
+  }
 
-function* moviesSaga {
-    yield takeEvery("GET_MOVIES", workGetMovies);
+function* moviesSaga() {
+    yield all([takeLatest(movieTypes.FETCH_MOVIES, workFetchMovies)])
 }
-
 
 
 export default moviesSaga;
