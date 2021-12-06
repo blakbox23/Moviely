@@ -1,7 +1,12 @@
 import React from 'react'
+import { MoviesDetailsProfile } from '../UI/organisms/MovieDetailsProfile/MoviesDetailsProfile'
 
 function MovieDetails() {
-  return <div>This will be the details page</div>
+  return (
+    <div>
+      <MoviesDetailsProfile />
+    </div>
+  )
 }
 
 export default MovieDetails
