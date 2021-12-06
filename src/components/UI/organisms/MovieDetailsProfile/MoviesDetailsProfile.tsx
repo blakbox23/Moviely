@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import './style.css'
 import Text from '../../atoms/Text/Text'
 import edit from '../../../../assets/edit 1.png'
@@ -10,10 +11,16 @@ import Vector3 from '../../../../assets/Vector(3).png'
 import Vector4 from '../../../../assets/Vector(4).png'
 import { CommentItem } from '../../molecules/CommentItem/CommentItem'
 import { PageHeader } from '../../molecules/PageHeader/PageHeader'
+import fetchMovieById
 
 interface MoviesDetailsProfileProps {}
 
 export const MoviesDetailsProfile: React.FC<MoviesDetailsProfileProps> = ({}) => {
+  const id = 'cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec'
+  useEffect(() => {
+    dispatch(fetchMovieById(id))
+  }, [dispatch])
+
   return (
     <div className="movie-profile ">
       <div className="centerer flex">

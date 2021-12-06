@@ -20,7 +20,7 @@ function* workFetchMovies(): any {
         fetchmoviesFailure({
           error: e.message
         })
-      );
+      ); 
     }
   }
 
