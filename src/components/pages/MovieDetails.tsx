@@ -1,3 +1,8 @@
-// import React, { useEffect } from 'react'
-// import { useSelector, useDispatch } from 'react-redux'
-// import { useParams, Link } from 'react-router-dom'
+import React from 'react'
+
+function MovieDetails() {
+  return <div>This will be the details page</div>
+}
+
+export default MovieDetails
+

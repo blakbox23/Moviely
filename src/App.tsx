@@ -4,7 +4,8 @@ import Homebody from './components/UI/organisms/HomeBody/Homebody'
 import Nav from './components/UI/organisms/Nav/Nav'
 import { useDispatch } from 'react-redux'
 import { fetchMovies } from './store/Actions/MoviesAction'
-
+import MovieDetails from './components/pages/MovieDetails'
+import { Routes, Route } from 'react-router-dom'
 function App() {
   const dispatch = useDispatch()
 
@@ -12,10 +13,28 @@ function App() {
     dispatch(fetchMovies())
   }, [dispatch])
 
+  const routes = [
+    {
+      path: '/',
+      name: 'Home',
+      component: <Homebody />,
+      isNavItem: true,
+    },
+    {
+      path: '/movies/:id',
+      name: 'Details',
+      component: <MovieDetails />,
+    },
+  ]
+
   return (
     <div className="App">
       <Nav />
-      <Homebody />
+      <Routes>
+        {routes.map(({ path, component }) => (
+          <Route path={path} key={path} element={component} />
+        ))}
+      </Routes>
     </div>
   )
 }
