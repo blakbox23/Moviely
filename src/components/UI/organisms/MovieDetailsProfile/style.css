@@ -18,16 +18,11 @@ border-radius: 20px;;
 .movie-profile-pic, .movie-profile-details {
     width: 32.6rem;
     height: 21.6rem;
-
 }
 
 .movie-profile-pic img{
     width:100%;
     border-radius: 20px 0 0 20px;
-}
-
-.movie-comments {
-    margin-top: 1rem;
 }
 
 .movie-profile-title {
@@ -62,4 +57,12 @@ border-radius: 20px;;
 
 .movie-profile-listitem p{
     margin-left: 0.5rem;
+}
+
+.movie-comments {
+    margin: auto;
+    margin-top: 2rem;
+    width: 63.4rem;
+    padding: 1rem;
+    border-radius: 20px;
 }

@@ -1,0 +1,21 @@
+.comment-item {
+border-radius: 20px;
+margin: 1rem;
+
+}
+
+.movie-comment-profile {
+    align-items: center;
+    width: 14.8rem;
+    border-right: 1px solid black;
+    margin: 1rem;
+}
+
+.comment-item-text {
+    padding: 1rem;
+    align-items: center;
+}
+
+.movie-comment-profile img {
+    margin-right: 0.65rem;
+}

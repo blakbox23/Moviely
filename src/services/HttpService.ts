@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 import config from '../config'
 
 class HttpService {
-    client
+    client :AxiosInstance
     constructor(options = {}) {
       this.client = axios.create(options);
     }
