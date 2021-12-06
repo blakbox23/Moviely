@@ -1,31 +1,31 @@
-import { movieTypes} from '../ActionTypes/Movietypes'
-import { MoviesActions, MoviesState } from '../types/types';
+import { movieTypes} from '../../ActionTypes/Movietypes'
+import { MoviesActions, MovieState } from '../../types/types';
 
-const initialState: MoviesState = {
+const initialState: MovieState = {
     pending: false,
-    movies: [],
+    movie: {},
     error: null
   };
 
 
-const moviesReducer = (state = initialState, action: MoviesActions) => {
+const movieByIdReducer = (state = initialState, action: MoviesActions) => {
     switch (action.type) {
 
-        case movieTypes.FETCH_MOVIES:
+        case movieTypes.FETCH_MOVIE_BY_ID:
         return {
             ...state,
             pending: true
         };
 
-        case movieTypes.FETCH_MOVIES_SUCCESS: 
+        case movieTypes.FETCH_MOVIE_BY_ID_SUCCESS: 
         return {
         ...state,
         pending: false,
-        movies: action.payload.movies,
+        movie: action.payload.movie,
         error: null
       };
 
-      case movieTypes.FETCH_MOVIES_FAILURE:
+      case movieTypes.FETCH_MOVIE_BY_ID_FAILURE:
       return {
         ...state,
         pending: false,
@@ -40,4 +40,4 @@ const moviesReducer = (state = initialState, action: MoviesActions) => {
     }
 };
 
-export default moviesReducer
+export default movieByIdReducer

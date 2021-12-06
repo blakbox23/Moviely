@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import './style.css'
 import Text from '../../atoms/Text/Text'
 import edit from '../../../../assets/edit 1.png'
@@ -11,12 +11,21 @@ import Vector3 from '../../../../assets/Vector(3).png'
 import Vector4 from '../../../../assets/Vector(4).png'
 import { CommentItem } from '../../molecules/CommentItem/CommentItem'
 import { PageHeader } from '../../molecules/PageHeader/PageHeader'
-import fetchMovieById
+import { fetchMovieById } from '../../../../store/Actions/MoviesAction'
+import { IMovie } from '../../../../store/types/types'
+// import { FetchMovieByIDPayload } from '../../../../store/types/types'
+import { RootState } from '../../../../store/Reducers/rootReducers'
+// interface MoviesDetailsProfileProps {}
 
-interface MoviesDetailsProfileProps {}
+export const MoviesDetailsProfile: React.FC<IMovie> = ({ ...IMovie }) => {
+  let id = '52635p'
 
-export const MoviesDetailsProfile: React.FC<MoviesDetailsProfileProps> = ({}) => {
-  const id = 'cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec'
+  const { pending, movie, error } = useSelector(
+    (state: RootState) => state.movie,
+  )
+
+  const dispatch = useDispatch()
+
   useEffect(() => {
     dispatch(fetchMovieById(id))
   }, [dispatch])
@@ -41,7 +50,7 @@ export const MoviesDetailsProfile: React.FC<MoviesDetailsProfileProps> = ({}) =>
               <div className="movie-profile-list flex">
                 <div className="flex movie-profile-listitem">
                   <img src={Vector} alt="" />
-                  <p> 120 min</p>
+                  <p> {movie.country}</p>
                 </div>
                 <div className="flex movie-profile-listitem">
                   <img src={Vector1} alt="" />
