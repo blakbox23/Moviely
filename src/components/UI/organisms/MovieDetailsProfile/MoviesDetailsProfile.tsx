@@ -9,6 +9,7 @@ import Vector2 from '../../../../assets/Vector(2).png'
 import Vector3 from '../../../../assets/Vector(3).png'
 import Vector4 from '../../../../assets/Vector(4).png'
 import { CommentItem } from '../../molecules/CommentItem/CommentItem'
+import { PageHeader } from '../../molecules/PageHeader/PageHeader'
 
 interface MoviesDetailsProfileProps {}
 
@@ -66,6 +67,9 @@ export const MoviesDetailsProfile: React.FC<MoviesDetailsProfileProps> = ({}) =>
       </div>
 
       <div className="flex border movie-comments">
+        <div>
+          <PageHeader />
+        </div>
         <div className="movie-comments-container">
           <div className="movie-comment">
             <CommentItem />
