@@ -24,17 +24,29 @@ export interface MoviesState {
 export interface FetchmoviesSuccessPayload {
   movies: IMovie[]; 
 }
-
 export interface FetchmoviesFailurePayload {
   error: string;
 }
 export interface FetchMovieByIDPayload {
   id: string;
 }
+export interface FetchMovieByIDSuccessPayload {
+  movie: IMovie;
+}
+export interface FetchMovieByIDFailurePayload {
+  error: string;
+}
+
+
 
 export interface Fetchmovies {
   type: typeof movieTypes.FETCH_MOVIES;
 }
+export interface FetchMovieByID {
+  type: typeof movieTypes.FETCH_MOVIE_BY_ID;
+  payload: FetchMovieByIDPayload
+}
+
 
 export type FetchmoviesSuccess = {
   type: typeof movieTypes.FETCH_MOVIES_SUCCESS;
@@ -46,9 +58,13 @@ export type FetchmoviesFailure = {
   payload: FetchmoviesFailurePayload;
 };
 
-export interface FetchMovieByID {
-  type: typeof movieTypes.GET_MOVIE_BY_ID;
-  payload: FetchMovieByIDPayload
+export interface FetchMovieByIDSuccess {
+  type: typeof movieTypes.FETCH_MOVIE_BY_ID_SUCCESS;
+  payload: FetchMovieByIDSuccessPayload
+}
+export interface FetchMovieByIDFailure {
+  type: typeof movieTypes.FETCH_MOVIE_BY_ID_FAILURE;
+  payload: FetchMovieByIDFailurePayload
 }
 
 
@@ -58,3 +74,5 @@ export type MoviesActions =
   | FetchmoviesSuccess
   | FetchmoviesFailure
   | FetchMovieByID
+  | FetchMovieByIDSuccess
+  | FetchMovieByIDFailure

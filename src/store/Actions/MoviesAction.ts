@@ -7,6 +7,10 @@ import {
     FetchmoviesSuccessPayload,
     FetchMovieByID,
     FetchMovieByIDPayload,
+    FetchMovieByIDSuccess,
+    FetchMovieByIDSuccessPayload,
+    FetchMovieByIDFailure,
+    FetchMovieByIDFailurePayload,
   } from "../types/types";
 
 
@@ -27,7 +31,17 @@ import {
   }); 
 
   export const fetchMovieById = (payload: FetchMovieByIDPayload): FetchMovieByID => ({
-    type: movieTypes.GET_MOVIE_BY_ID, 
+    type: movieTypes.FETCH_MOVIE_BY_ID, 
+    payload
+  }); 
+
+  export const fetchMovieByIdSuccess = (payload: FetchMovieByIDSuccessPayload): FetchMovieByIDSuccess => ({
+    type: movieTypes.FETCH_MOVIE_BY_ID_SUCCESS,
+    payload
+  });
+  
+  export const fetchMovieByIdFailure = (payload: FetchMovieByIDFailurePayload): FetchMovieByIDFailure => ({
+    type: movieTypes.FETCH_MOVIE_BY_ID_FAILURE,
     payload
   }); 
 
