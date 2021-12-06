@@ -7,7 +7,7 @@ margin: 1rem;
 .movie-comment-profile {
     align-items: center;
     width: 14.8rem;
-    border-right: 1px solid black;
+    border-right: 1px solid #00000080;
     margin: 1rem;
 }
 

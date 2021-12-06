@@ -28,6 +28,9 @@ export interface FetchmoviesSuccessPayload {
 export interface FetchmoviesFailurePayload {
   error: string;
 }
+export interface FetchMovieByIDPayload {
+  id: string;
+}
 
 export interface Fetchmovies {
   type: typeof movieTypes.FETCH_MOVIES;
@@ -43,7 +46,15 @@ export type FetchmoviesFailure = {
   payload: FetchmoviesFailurePayload;
 };
 
+export interface FetchMovieByID {
+  type: typeof movieTypes.GET_MOVIE_BY_ID;
+  payload: FetchMovieByIDPayload
+}
+
+
+
 export type MoviesActions =
   | Fetchmovies
   | FetchmoviesSuccess
-  | FetchmoviesFailure;
+  | FetchmoviesFailure
+  | FetchMovieByID

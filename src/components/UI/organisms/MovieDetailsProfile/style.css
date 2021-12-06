@@ -1,7 +1,7 @@
 .movie-profile {
     max-width: 67.5rem;
     min-width: 33rem;
-    border: 1px solid black;
+    border: 1px solid #00000080;
     padding: 1rem;
     margin: auto;
     justify-content: space-aroeund;
@@ -11,7 +11,7 @@
 
 .movie-profile-container {
     margin: auto;
-border: 1px solid black;
+border: 1px solid #00000080;
 border-radius: 20px;;
 }
 
@@ -29,7 +29,7 @@ border-radius: 20px;;
     font-size: 40px;
     justify-content: space-between;
     padding:  0.5rem 1rem;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #00000080;
 }
 
 .movie-profile-icons img{
