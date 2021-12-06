@@ -2,8 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 import config from '../config'
 
 class HttpService {
-    client: AxiosInstance
-
+    client
     constructor(options = {}) {
       this.client = axios.create(options);
     }
