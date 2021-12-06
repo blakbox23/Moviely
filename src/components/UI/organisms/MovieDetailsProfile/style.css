@@ -1,0 +1,65 @@
+.movie-profile {
+    max-width: 67.5rem;
+    min-width: 33rem;
+    border: 1px solid black;
+    padding: 1rem;
+    margin: auto;
+    justify-content: space-aroeund;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.movie-profile-container {
+    margin: auto;
+border: 1px solid black;
+border-radius: 20px;;
+}
+
+.movie-profile-pic, .movie-profile-details {
+    width: 32.6rem;
+    height: 21.6rem;
+
+}
+
+.movie-profile-pic img{
+    width:100%;
+    border-radius: 20px 0 0 20px;
+}
+
+.movie-comments {
+    margin-top: 1rem;
+}
+
+.movie-profile-title {
+    font-size: 40px;
+    justify-content: space-between;
+    padding:  0.5rem 1rem;
+    border-bottom: 1px solid black;
+}
+
+.movie-profile-icons img{
+  margin-right: 1rem;
+  width: 2rem
+}
+
+.movie-profile-list {
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.movie-profile-description {
+    width: 15.3rem;
+    border-radius: 20px;
+    padding: 1rem;
+    font-size: 0.9rem;
+    height: 13.5rem;
+}
+
+.movie-profile-details-body {
+    justify-content: space-around;
+    padding-top: 1rem;
+}
+
+.movie-profile-listitem p{
+    margin-left: 0.5rem;
+}
