@@ -1,7 +1,6 @@
 .movie-profile {
     max-width: 67.5rem;
     min-width: 33rem;
-    /* border: 1px solid #00000080; */
     padding: 1rem;
     margin: auto;
     justify-content: space-aroeund;
@@ -11,6 +10,7 @@
 
 .movie-profile-container {
     margin: auto;
+    margin-bottom: 1rem;
 border: 1px solid #00000080;
 border-radius: 20px;;
 }
@@ -49,6 +49,7 @@ border-radius: 20px;;
     padding: 1rem;
     font-size: 0.9rem;
     height: 13.5rem;
+    border: 1px solid #00000080;
 }
 
 .movie-profile-details-body {
@@ -67,12 +68,16 @@ border-radius: 20px;;
     padding-top: 0;
     border-radius: 20px;
     flex-direction: column;
+    margin-top: 1rem;
+    border: 1px solid #00000080;
+
+
 }
 
 .add-watchlist-prompt {
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    /* padding: 1rem; */
 }
 
 .add-watchlist-button {

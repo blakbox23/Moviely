@@ -21,7 +21,7 @@ import { fonts } from '../../../../constants/fonts'
 var movie: IMovie
 
 const user = {
-  admin: false,
+  admin: true,
 }
 
 export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...IMovie }) => {
@@ -72,7 +72,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...IMovie }) => {
                   <p> {IMovie.ratings[0].grade}</p>
                 </div>
               </div>
-              <div className="movie-profile-description border">
+              <div className="movie-profile-description">
                 <p>{IMovie.description}</p>
               </div>
             </div>
@@ -89,7 +89,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...IMovie }) => {
         </div>
       )}
 
-      <div className="flex border movie-comments">
+      <div className="flex movie-comments">
         <div>
           <PageHeader />
         </div>
