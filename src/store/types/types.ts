@@ -34,11 +34,7 @@ export interface MoviesState {
   movies: IMovie[];
   movie: IMovie | undefined;
 }
-// export interface MovieState {
-//   pending: boolean;
-//   movie: IMovie | undefined;
-//   error: string | null;
-// }
+
 
 export interface FetchmoviesSuccessPayload {
   movies: IMovie[]; 
@@ -46,9 +42,7 @@ export interface FetchmoviesSuccessPayload {
 export interface FetchmoviesFailurePayload {
   error: string;
 }
-// export interface FetchMovieByIDPayload {
-//   id: string;
-// }
+
 export interface FetchMovieByIDSuccessPayload {
   movie: IMovie;
 }
@@ -95,4 +89,3 @@ export type MoviesActions =
   | FetchMovieByID
   | FetchMovieByIDSuccess
   | FetchMovieByIDFailure
-  // | FetchMovieByIDPayload

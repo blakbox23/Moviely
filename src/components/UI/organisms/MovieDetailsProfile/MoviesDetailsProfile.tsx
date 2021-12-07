@@ -15,13 +15,11 @@ import { fetchMovieById } from '../../../../store/Actions/MoviesAction'
 import { Icomment, IMovie, Irating } from '../../../../store/types/types'
 import star from '../../../../assets/star.png'
 import { fonts } from '../../../../constants/fonts'
-// import { FetchMovieByIDPayload } from '../../../../store/types/types'
-// import { RootState } from '../../../../store/Reducers/rootReducers'
 
 var movie: IMovie
 
 const user = {
-  admin: true,
+  admin: false,
 }
 
 export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...IMovie }) => {
@@ -70,6 +68,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...IMovie }) => {
                 <div className="flex movie-profile-listitem">
                   <img src={Vector4} alt="" />
                   <p> {IMovie.ratings[0].grade}</p>
+                  {console.log(IMovie.ratings)}
                 </div>
               </div>
               <div className="movie-profile-description">

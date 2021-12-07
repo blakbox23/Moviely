@@ -14,7 +14,7 @@ export const CommentItem: React.FC<CommentItemProps> = ({
   textbox = false,
 }) => {
   return (
-    <div className="comment-item border flex">
+    <div className="comment-item flex">
       <div className="movie-comment-profile flex">
         <div>
           <img src={manicon} alt="ppic" />

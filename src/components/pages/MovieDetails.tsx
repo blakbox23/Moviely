@@ -39,6 +39,3 @@ function MovieDetails() {
 }
 
 export default MovieDetails
-// function id(id: any): import('../../store/types/types').FetchMovieByID {
-//   throw new Error('Function not implemented.')
-// }
