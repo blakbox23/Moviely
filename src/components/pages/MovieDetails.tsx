@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchMovieById } from '../../store/Actions/MoviesAction'
 import { RootState } from '../../store/Reducers/rootReducers'
 import { MoviesDetailsProfile } from '../UI/organisms/MovieDetailsProfile/MoviesDetailsProfile'
+import './style.css'
 
 function MovieDetails() {
   const dispatch = useDispatch()
@@ -17,7 +18,7 @@ function MovieDetails() {
     (state: RootState) => state.movies,
   )
   return (
-    <div>
+    <div className="movie-details-page">
       {movie && (
         <MoviesDetailsProfile
           id={movie.id}

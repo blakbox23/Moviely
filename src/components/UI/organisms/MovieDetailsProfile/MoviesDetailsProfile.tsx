@@ -13,14 +13,20 @@ import { CommentItem } from '../../molecules/CommentItem/CommentItem'
 import { PageHeader } from '../../molecules/PageHeader/PageHeader'
 import { fetchMovieById } from '../../../../store/Actions/MoviesAction'
 import { Icomment, IMovie, Irating } from '../../../../store/types/types'
+import star from '../../../../assets/star.png'
+import { fonts } from '../../../../constants/fonts'
 // import { FetchMovieByIDPayload } from '../../../../store/types/types'
 // import { RootState } from '../../../../store/Reducers/rootReducers'
 
 var movie: IMovie
 
+const user = {
+  admin: false,
+}
+
 export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...IMovie }) => {
   return (
-    <div className="movie-profile ">
+    <div className="movie-profile" style={{ fontFamily: fonts.FORMFONT }}>
       <div className="centerer flex">
         <div className="movie-profile-container flex">
           <div className=" movie-profile-pic">
@@ -29,10 +35,18 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...IMovie }) => {
           <div className=" movie-profile-details">
             <div className="movie-profile-title flex">
               <p className="movie-profile-title-name">{IMovie.title}</p>
-              <div className="movie-profile-icons">
-                <img src={edit} alt="edit" />
-                <img src={remove} alt="remove" />
-              </div>
+              {user.admin ? (
+                <div className="movie-profile-icons">
+                  <img src={edit} alt="edit" />
+                  <img src={remove} alt="remove" />
+                </div>
+              ) : (
+                <div className="movie-rating ">
+                  <img src={star} alt="" />
+                  <img src={star} alt="" />
+                  <img src={star} alt="" />
+                </div>
+              )}
             </div>
 
             <div className="flex movie-profile-details-body">
@@ -66,11 +80,27 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...IMovie }) => {
         </div>
       </div>
 
+      {!user.admin && (
+        <div className="flex add-watchlist-prompt">
+          <p>
+            This movies is not in your watched list. Would you like to add it?
+          </p>
+          <button className="add-watchlist-button">Add to my watch list</button>
+        </div>
+      )}
+
       <div className="flex border movie-comments">
         <div>
           <PageHeader />
         </div>
         <div className="movie-comments-container">
+          <div className="movie-comment">
+            {user.admin === false && (
+              <div className="comment-item-text flex">
+                <CommentItem textbox={true} email="@dummyemail" />
+              </div>
+            )}
+          </div>
           {IMovie.comments?.map((comment) => (
             <div className="movie-comment" key={comment.id}>
               <CommentItem email={comment.email} comment={comment.content} />
