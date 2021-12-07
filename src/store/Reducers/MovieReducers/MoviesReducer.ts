@@ -3,8 +3,8 @@ import { MoviesActions, MoviesState } from '../../types/types';
 
 const initialState: MoviesState = {
     pending: false,
+    error: null,
     movies: [],
-    error: null
   };
 
 

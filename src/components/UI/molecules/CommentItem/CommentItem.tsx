@@ -2,22 +2,22 @@ import React from 'react'
 import './style.css'
 import manicon from '../../../../assets/man 1.png'
 
-interface CommentItemProps {}
+interface CommentItemProps {
+  comment: string
+  email: string
+}
 
-export const CommentItem: React.FC<CommentItemProps> = ({}) => {
+export const CommentItem: React.FC<CommentItemProps> = ({ comment, email }) => {
   return (
     <div className="comment-item border flex">
       <div className="movie-comment-profile flex">
         <div>
           <img src={manicon} alt="ppic" />
         </div>
-        <p>my-username</p>
+        <p>{email}</p>
       </div>
       <div className="comment-item-text flex">
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident
-          dolorem amet consequuntur?
-        </p>
+        <p>{comment}</p>
       </div>
     </div>
   )

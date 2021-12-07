@@ -3,7 +3,7 @@ import { MoviesActions, MovieState } from '../../types/types';
 
 const initialState: MovieState = {
     pending: false,
-    movie: {},
+    movie: undefined,
     error: null
   };
 

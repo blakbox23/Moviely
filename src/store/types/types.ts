@@ -1,7 +1,7 @@
 import { movieTypes } from "../ActionTypes/Movietypes";
 
 export interface IMovie {
-    id: number;
+    id: string;
     title: string;
     genre: string;
     year: number;
@@ -9,12 +9,25 @@ export interface IMovie {
     imageUrl: string;
     country: string;
     description: string;
-    comments: object[];
-    ratings: object[];
+    comments: Icomment[];
+    ratings: Irating[];
     movieTrailer: string;
   }
-  
 
+  export interface Irating {
+    id: string;
+    email: string;
+    movieId: string;
+    grade: number;
+  }
+  export interface Icomment {
+    id: string;
+    email: string;
+    movieId: string;
+    content: string;
+    approved: boolean;
+  }
+  
 export interface MoviesState {
   pending: boolean;
   movies: IMovie[];
@@ -22,7 +35,7 @@ export interface MoviesState {
 }
 export interface MovieState {
   pending: boolean;
-  movie: {};
+  movie: IMovie | undefined;
   error: string | null;
 }
 
@@ -81,4 +94,4 @@ export type MoviesActions =
   | FetchMovieByID
   | FetchMovieByIDSuccess
   | FetchMovieByIDFailure
-  | FetchMovieByIDPayload
+  // | FetchMovieByIDPayload

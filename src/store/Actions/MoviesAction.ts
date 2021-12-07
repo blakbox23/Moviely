@@ -6,7 +6,7 @@ import {
     FetchmoviesSuccess,
     FetchmoviesSuccessPayload,
     FetchMovieByID,
-    FetchMovieByIDPayload,
+    // FetchMovieByIDPayload,
     FetchMovieByIDSuccess,
     FetchMovieByIDSuccessPayload,
     FetchMovieByIDFailure,
@@ -30,7 +30,7 @@ import {
     payload
   }); 
 
-  export const fetchMovieById = (payload: FetchMovieByIDPayload): FetchMovieByID => ({
+  export const fetchMovieById = (payload: string): FetchMovieByID => ({
     type: movieTypes.FETCH_MOVIE_BY_ID, 
     payload
   }); 

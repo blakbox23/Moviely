@@ -12,34 +12,47 @@ import Vector4 from '../../../../assets/Vector(4).png'
 import { CommentItem } from '../../molecules/CommentItem/CommentItem'
 import { PageHeader } from '../../molecules/PageHeader/PageHeader'
 import { fetchMovieById } from '../../../../store/Actions/MoviesAction'
-import { IMovie } from '../../../../store/types/types'
+import { Icomment, IMovie, Irating } from '../../../../store/types/types'
 // import { FetchMovieByIDPayload } from '../../../../store/types/types'
 import { RootState } from '../../../../store/Reducers/rootReducers'
-// interface MoviesDetailsProfileProps {}
 
-export const MoviesDetailsProfile: React.FC<IMovie> = ({ ...IMovie }) => {
-  let id = '52635p'
+interface MoviesDetailsProfileProps {
+  id: string
+  title: string
+  genre?: string
+  year?: number
+  runtime?: number
+  imageUrl?: string
+  country?: string
+  description?: string
+  comments?: Icomment[]
+  ratings: Irating[]
+  movieTrailer?: string
+}
 
-  const { pending, movie, error } = useSelector(
-    (state: RootState) => state.movie,
-  )
-
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(fetchMovieById(id))
-  }, [dispatch])
-
+export const MoviesDetailsProfile: React.FC<MoviesDetailsProfileProps> = ({
+  id,
+  title,
+  genre,
+  year,
+  runtime,
+  imageUrl,
+  country,
+  description,
+  comments,
+  ratings,
+  movieTrailer,
+}) => {
   return (
     <div className="movie-profile ">
       <div className="centerer flex">
         <div className="movie-profile-container flex">
           <div className=" movie-profile-pic">
-            <img src="https://source.unsplash.com/B63UmuDkznY" alt="where" />
+            <img src={imageUrl} alt="where" />
           </div>
           <div className=" movie-profile-details">
             <div className="movie-profile-title flex">
-              <p className="movie-profile-title-name">Brave</p>
+              <p className="movie-profile-title-name">{title}</p>
               <div className="movie-profile-icons">
                 <img src={edit} alt="edit" />
                 <img src={remove} alt="remove" />
@@ -50,32 +63,27 @@ export const MoviesDetailsProfile: React.FC<IMovie> = ({ ...IMovie }) => {
               <div className="movie-profile-list flex">
                 <div className="flex movie-profile-listitem">
                   <img src={Vector} alt="" />
-                  <p> {movie.country}</p>
+                  <p> {runtime}</p>
                 </div>
                 <div className="flex movie-profile-listitem">
                   <img src={Vector1} alt="" />
-                  <p> USA</p>
+                  <p> {country}</p>
                 </div>
                 <div className="flex movie-profile-listitem">
                   <img src={Vector2} alt="" />
-                  <p> Animation</p>
+                  <p> {genre}</p>
                 </div>
                 <div className="flex movie-profile-listitem">
                   <img src={Vector3} alt="" />
-                  <p> 2012</p>
+                  <p> {year}</p>
                 </div>
                 <div className="flex movie-profile-listitem">
                   <img src={Vector4} alt="" />
-                  <p> 4.7</p>
+                  <p> {ratings[0].grade}</p>
                 </div>
               </div>
               <div className="movie-profile-description border">
-                <p>
-                  {' '}
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Fugiat molestias voluptas nisi soluta temporibus doloremque
-                  aliquid nam aspernatur inventore. Ad?
-                </p>
+                <p>{description}</p>
               </div>
             </div>
           </div>
@@ -87,12 +95,11 @@ export const MoviesDetailsProfile: React.FC<IMovie> = ({ ...IMovie }) => {
           <PageHeader />
         </div>
         <div className="movie-comments-container">
-          <div className="movie-comment">
-            <CommentItem />
-          </div>
-          <div className="movie-comment">
-            <CommentItem />
-          </div>
+          {comments?.map((comment) => (
+            <div className="movie-comment">
+              <CommentItem email={comment.email} comment={comment.content} />
+            </div>
+          ))}
         </div>
       </div>
     </div>

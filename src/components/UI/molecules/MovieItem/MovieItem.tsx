@@ -10,7 +10,7 @@ import { IMovie } from '../../../../store/types/types'
 import { NavLink } from 'react-router-dom'
 
 interface MovieItemProps {
-  id: number
+  id: string
   image?: string
   title: string
   description: string
