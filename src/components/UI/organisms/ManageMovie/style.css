@@ -1,0 +1,31 @@
+.manage-movie-container {
+    width: 66rem;
+    border: 1px solid black;
+    margin: auto;
+}
+
+.manage-movie-half-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.manage-movie {
+    width: 69.4rem;
+    background-color: #fff;
+    margin: auto;
+}
+
+.manage-movie-textarea {
+    width: 64rem;
+    height: 8rem;
+    color: #00000087;
+    font-size: 20px;
+    padding: 0 0.5rem;
+    margin-top: 1rem;
+    font-family: calibri;
+    padding: 1rem;
+    border-radius: 20px;
+    border: 1px solid #2596BE;
+    margin-bottom: 2rem;
+}
