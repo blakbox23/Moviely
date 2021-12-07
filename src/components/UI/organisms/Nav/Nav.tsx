@@ -33,6 +33,14 @@ const Nav = () => {
     },
   ]
 
+  const userNavLinks = [
+    {
+      id: '1',
+      text: 'List of my watched movies',
+      path: 'watched-movies',
+    },
+  ]
+
   return (
     <div className="nav-bar flex">
       <div>
@@ -42,7 +50,7 @@ const Nav = () => {
       </div>
 
       <div className="flex links">
-        {user2.admin ? (
+        {user.admin ? (
           <div className="flex links">
             {adminNavLinks.map(({ id, text, path }) => (
               <NavLink to={path}>
@@ -53,11 +61,15 @@ const Nav = () => {
             ))}
           </div>
         ) : (
-          <Text
-            text="List of my watched movies"
-            type="navlink"
-            font={fonts.NAVFONT}
-          />
+          <NavLink to="watched-movies">
+            <div>
+              <Text
+                text={'List of my watched movies'}
+                type="navlink"
+                font={fonts.NAVFONT}
+              />
+            </div>
+          </NavLink>
         )}
         <img src={usericon} alt="profile" />
       </div>
