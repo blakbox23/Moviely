@@ -30,14 +30,15 @@ export interface IMovie {
   
 export interface MoviesState {
   pending: boolean;
+  error: string | null;
   movies: IMovie[];
-  error: string | null;
-}
-export interface MovieState {
-  pending: boolean;
   movie: IMovie | undefined;
-  error: string | null;
 }
+// export interface MovieState {
+//   pending: boolean;
+//   movie: IMovie | undefined;
+//   error: string | null;
+// }
 
 export interface FetchmoviesSuccessPayload {
   movies: IMovie[]; 

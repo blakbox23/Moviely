@@ -30,7 +30,7 @@ function MovieDetails() {
   }, [dispatch])
 
   const { pending, movie, error } = useSelector(
-    (state: RootState) => state.movie,
+    (state: RootState) => state.movies,
   )
   return (
     <div>
