@@ -1,20 +1,21 @@
 import axios from 'axios';
 import { put, call, takeEvery, all } from 'redux-saga/effects';
-import { IMovie } from '../../types/types'
-import { fetchMovieByIdSuccess, fetchMovieByIdFailure } from '../../Actions/MoviesAction'
+import { IMovie, FetchMovieByID } from '../../types/types'
+import { fetchMovieByIdSuccess, fetchMovieById, fetchMovieByIdFailure } from '../../Actions/MoviesAction'
 import { movieService } from '../../../services/MovieServices'
 import { movieTypes } from '../../ActionTypes/Movietypes'
 
 
-function* workFetchMovie(): any {
+function* workFetchMovie(action:any): any {
+  console.log('payload')
+  console.log(action.payload)
     try {
-       const response = yield call(movieService.getMoviebyid);
+       const response = yield call(movieService.getMoviebyid("cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec"));
     yield put(
       fetchMovieByIdSuccess({
           movie: response.data
         })
       );
-      console.log(response.data)
     } catch (e: any) {
       yield put(
         fetchMovieByIdFailure({
@@ -25,9 +26,13 @@ function* workFetchMovie(): any {
   }
 
 function* movieSaga() {
-    yield all([takeEvery(movieTypes.FETCH_MOVIE_BY_ID, workFetchMovie)])
+    yield all([takeEvery(movieTypes.FETCH_MOVIE_BY_ID, workFetchMovie(action))])
 }
 
 
 
 export default movieSaga;
+
+function action(action: any): any {
+  throw new Error('Function not implemented.');
+}
