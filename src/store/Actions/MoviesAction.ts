@@ -45,5 +45,22 @@ import {
     payload
   }); 
 
+  export const createMovie = (data: object) => {
+    return {
+      type: movieTypes.CREATE_MOVIE,
+      payload: data
+    };
+  };
+
+  export const createMovieSuccess = (payload: FetchMovieByIDSuccessPayload): FetchMovieByIDSuccess => ({
+    type: movieTypes.FETCH_MOVIE_BY_ID_SUCCESS,
+    payload
+  });
+  
+  export const createMovieFailure = (payload: FetchMovieByIDFailurePayload): FetchMovieByIDFailure => ({
+    type: movieTypes.FETCH_MOVIE_BY_ID_FAILURE,
+    payload
+  }); 
+
 
   
