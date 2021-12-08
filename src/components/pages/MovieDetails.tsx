@@ -12,13 +12,11 @@ function MovieDetails({}) {
   // }
 
   const { id } = useParams() as any
-  console.log('id')
-  console.log(id)
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchMovieById('cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec'))
+    dispatch(fetchMovieById(id))
   }, [dispatch])
 
   const { pending, movie, error } = useSelector(

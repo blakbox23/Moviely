@@ -10,7 +10,7 @@ function* workFetchMovie(action:any): any {
   console.log('payload')
   console.log(action.payload)
     try {
-       const response = yield call(movieService.getMoviebyid("cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec"));
+       const response = yield call(movieService.getMoviebyid, action.payload); 
     yield put(
       fetchMovieByIdSuccess({
           movie: response.data
@@ -26,7 +26,7 @@ function* workFetchMovie(action:any): any {
   }
 
 function* movieSaga() {
-    yield all([takeEvery(movieTypes.FETCH_MOVIE_BY_ID, workFetchMovie(action))])
+    yield all([takeEvery(movieTypes.FETCH_MOVIE_BY_ID, workFetchMovie)])
 }
 
 
