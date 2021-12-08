@@ -23,6 +23,17 @@ const user = {
 }
 
 export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...IMovie }) => {
+  const averageGrade = () => {
+    // console.log(IMovie.ratings.length)
+    let averagegrade = 0
+    let totalGrade = 0
+    for (let i = 0; i < IMovie.ratings.length; i++) {
+      totalGrade += IMovie.ratings[i].grade
+    }
+    averagegrade = totalGrade / IMovie.ratings.length
+    return averagegrade
+  }
+
   return (
     <div className="movie-profile" style={{ fontFamily: fonts.FORMFONT }}>
       <div className="centerer flex">
@@ -67,8 +78,8 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...IMovie }) => {
                 </div>
                 <div className="flex movie-profile-listitem">
                   <img src={Vector4} alt="" />
-                  <p> {IMovie.ratings[0].grade}</p>
-                  {console.log(IMovie.ratings)}
+                  <p> {averageGrade()}</p>
+                  {/* {console.log(IMovie.ratings)} */}
                 </div>
               </div>
               <div className="movie-profile-description">

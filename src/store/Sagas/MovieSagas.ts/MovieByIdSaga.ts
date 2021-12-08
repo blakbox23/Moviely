@@ -7,8 +7,7 @@ import { movieTypes } from '../../ActionTypes/Movietypes'
 
 
 function* workFetchMovie(action:any): any {
-  console.log('payload')
-  console.log(action.payload)
+
     try {
        const response = yield call(movieService.getMoviebyid, action.payload); 
     yield put(
