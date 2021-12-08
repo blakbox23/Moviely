@@ -1,7 +1,7 @@
 import { movieTypes } from "../ActionTypes/Movietypes";
 
 export interface IMovie {
-    id: number;
+    id: string;
     title: string;
     genre: string;
     year: number;
@@ -9,29 +9,57 @@ export interface IMovie {
     imageUrl: string;
     country: string;
     description: string;
-    comments: object[];
-    ratings: object[];
+    comments: Icomment[];
+    ratings: Irating[];
     movieTrailer: string;
   }
-  
 
+  export interface Irating {
+    id: string;
+    email: string;
+    movieId: string;
+    grade: number;
+  }
+  export interface Icomment {
+    id: string;
+    email: string;
+    movieId: string;
+    content: string;
+    approved: boolean;
+  }
+  
 export interface MoviesState {
   pending: boolean;
-  movies: IMovie[];
   error: string | null;
+  movies: IMovie[];
+  movie: IMovie | undefined;
 }
+
 
 export interface FetchmoviesSuccessPayload {
   movies: IMovie[]; 
 }
-
 export interface FetchmoviesFailurePayload {
   error: string;
 }
 
+export interface FetchMovieByIDSuccessPayload {
+  movie: IMovie;
+}
+export interface FetchMovieByIDFailurePayload {
+  error: string;
+}
+
+
+
 export interface Fetchmovies {
   type: typeof movieTypes.FETCH_MOVIES;
 }
+export interface FetchMovieByID {
+  type: typeof movieTypes.FETCH_MOVIE_BY_ID;
+  payload: string
+}
+
 
 export type FetchmoviesSuccess = {
   type: typeof movieTypes.FETCH_MOVIES_SUCCESS;
@@ -43,7 +71,21 @@ export type FetchmoviesFailure = {
   payload: FetchmoviesFailurePayload;
 };
 
+export interface FetchMovieByIDSuccess {
+  type: typeof movieTypes.FETCH_MOVIE_BY_ID_SUCCESS;
+  payload: FetchMovieByIDSuccessPayload
+}
+export interface FetchMovieByIDFailure {
+  type: typeof movieTypes.FETCH_MOVIE_BY_ID_FAILURE;
+  payload: FetchMovieByIDFailurePayload
+}
+
+
+
 export type MoviesActions =
   | Fetchmovies
   | FetchmoviesSuccess
-  | FetchmoviesFailure;
+  | FetchmoviesFailure
+  | FetchMovieByID
+  | FetchMovieByIDSuccess
+  | FetchMovieByIDFailure

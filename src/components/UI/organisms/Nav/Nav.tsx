@@ -9,11 +9,9 @@ interface NavProps {}
 
 const Nav = () => {
   const user = {
-    admin: false,
-  }
-  const user2 = {
     admin: true,
   }
+
   const userNavLink = 'List of my watched movies'
   const adminNavLinks = [
     {

@@ -1,11 +1,9 @@
 import httpService from './HttpService';
 
 class ApiService {
-    api: any
-    apiClient: any
+    apiClient
   constructor() {
-    this.api = httpService;
-    this.apiClient = this.api.client;
+    this.apiClient = httpService.client;
   }
 }
 

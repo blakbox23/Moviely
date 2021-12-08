@@ -10,7 +10,7 @@ import { IMovie } from '../../../../store/types/types'
 import { NavLink } from 'react-router-dom'
 
 interface MovieItemProps {
-  id: number
+  id: string
   image?: string
   title: string
   description: string
@@ -23,7 +23,6 @@ export const MovieItem: React.FC<MovieItemProps> = ({
   description,
 }) => {
   const page = `/movies/${id}`
-  console.log(page)
   return (
     <div className="movie-card ">
       <div>

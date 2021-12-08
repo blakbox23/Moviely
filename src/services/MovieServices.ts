@@ -1,21 +1,19 @@
-// import axios from 'axios';
-// import { IMovie } from '../store/types/types'
-
-// export const getMovies = () => axios.get<IMovie[]>("http://localhost:8000/movies");
-
 import ApiService from "./ApiServices";
-// import { IMovie } from "../store/types/types";
 
 const ENDPOINTS = {
-    MOVIES: '/movies',
+    MOVIES: '/movies/',
+    // MOVIE: '/movies/cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec'
   };
 
   class MovieService extends ApiService {
 
     getMovies = (values: string) => {
-        console.log(ENDPOINTS.MOVIES)
         return this.apiClient.get(ENDPOINTS.MOVIES);  
+    }
+
+    getMoviebyid = (id: string ) => {       
+        return this.apiClient.get(ENDPOINTS.MOVIES + id + '/');  
     }
 }
 
-export const movieService: any = new MovieService();
+export const movieService: any = new MovieService(); 
