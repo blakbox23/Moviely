@@ -29,3 +29,26 @@
     border: 1px solid #2596BE;
     margin-bottom: 2rem;
 }
+.form-submit-button {
+    width: 26.5rem;
+    height: 4rem;
+    background-color: #2596BE;
+    margin: auto;
+    margin-bottom: 2rem;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 20px;
+    border: none;
+
+}
+
+.genre-drop {
+    background-color: #fff;
+    border-radius: 20px;
+    appearance: none;
+    background-Image: url('../../../../assets/drop.png');
+    background-position: 90% 50%;
+    border: 1px solid #2596BE;
+    background-repeat: no-repeat;
+    width: 32.5rem !important;
+}
