@@ -1,0 +1,24 @@
+.genre-drop {
+    background-color: #fff;
+    border-radius: 20px;
+    appearance: none;
+    background-Image: url('../../../../assets/drop.png');
+    background-position: 90% 50%;
+    border: 1px solid #2596BE;
+    background-repeat: no-repeat;
+    height: 4rem;
+    font-size:1.25rem;
+    padding-left: 0.5rem;
+    color: #00000087;
+
+}
+
+.genre-drop.filter {
+    width: 18rem;
+}
+
+.genre-drop.add-form {
+    width: 32.5rem;
+    align-items: center;
+    margin-top: 1rem;
+}

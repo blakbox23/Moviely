@@ -3,6 +3,8 @@ import './style.css'
 import { Input } from '../../atoms/Input/Input'
 import { PageHeader } from '../../molecules/PageHeader/PageHeader'
 import { fonts } from '../../../../constants/fonts'
+import { Dropdown } from '../../atoms/Dropdown/Dropdown'
+import { Textarea } from '../../atoms/Textarea/Textarea'
 interface ManageMovieProps {}
 
 export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
@@ -13,14 +15,7 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
         <div className="manage-movie-container">
           <div className="manage-movie-half-container">
             <Input type="manage-movie-half" placeholder="my title" border />
-
-            <select className="manage-movie-half genre-drop" name="genres">
-              <option value="genre">Genre</option>
-              <option value="action">Action</option>
-              <option value="horror">Horror</option>
-              <option value="comedy">Comedy</option>
-            </select>
-
+            <Dropdown type="add-form" />
             <Input type="manage-movie-half" placeholder="Year" border />
             <Input type="manage-movie-half" placeholder="Runtime" border />
             <Input type="manage-movie-half" placeholder="Image Url" border />
@@ -28,16 +23,9 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
           </div>
           <div>
             <Input type="manage-movie-full" placeholder="Trailer Url" border />
+            <Textarea />
           </div>
-          <div>
-            <textarea
-              className="manage-movie-textarea"
-              placeholder="This is some sort of description of movie!"
-              name="description"
-              // cols={130}
-              // rows={10}
-            ></textarea>
-          </div>
+
           <input
             type="submit"
             className="form-submit-button flex"

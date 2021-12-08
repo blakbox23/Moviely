@@ -2,6 +2,7 @@ import React from 'react'
 import { Input } from '../../atoms/Input/Input'
 import './style.css'
 import { fonts } from '../../../../constants/fonts'
+import { Dropdown } from '../../atoms/Dropdown/Dropdown'
 
 function Filterform() {
   return (
@@ -14,14 +15,7 @@ function Filterform() {
             type="text"
             border
           />
-          <select className="genres" name="genres">
-            <option className={'dropdName'} value="genre">
-              Genre
-            </option>
-            <option value="action">Action</option>
-            <option value="horror">Horror</option>
-            <option value="comedy">Comedy</option>
-          </select>
+          <Dropdown type="filter" />
           <Input placeholder="Year" inputplacement="filter" type="" border />
         </div>
         <div className="flex filter-bottom">

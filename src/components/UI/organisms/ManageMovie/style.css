@@ -42,14 +42,3 @@
     border: none;
 
 }
-
-.genre-drop {
-    background-color: #fff;
-    border-radius: 20px;
-    appearance: none;
-    background-Image: url('../../../../assets/drop.png');
-    background-position: 90% 50%;
-    border: 1px solid #2596BE;
-    background-repeat: no-repeat;
-    width: 32.5rem !important;
-}

@@ -14,6 +14,8 @@ const ENDPOINTS = {
     getMoviebyid = (values: string) => {      
         return this.apiClient.get(ENDPOINTS.MOVIE);  
     }
+
+    
 }
 
 export const movieService: any = new MovieService();
