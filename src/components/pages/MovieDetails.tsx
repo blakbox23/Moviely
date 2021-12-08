@@ -18,7 +18,7 @@ function MovieDetails() {
     (state: RootState) => state.movies,
   )
   return (
-    <div className="movie-details-page">
+    <div className="outer-page-container">
       {movie && (
         <MoviesDetailsProfile
           id={movie.id}

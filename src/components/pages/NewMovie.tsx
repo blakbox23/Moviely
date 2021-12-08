@@ -4,7 +4,7 @@ import './style.css'
 
 function NewMovie() {
   return (
-    <div className="movie-details-page">
+    <div className="outer-page-container">
       <ManageMovie />
     </div>
   )

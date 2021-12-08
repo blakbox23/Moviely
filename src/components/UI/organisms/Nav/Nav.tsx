@@ -9,7 +9,7 @@ interface NavProps {}
 
 const Nav = () => {
   const user = {
-    admin: false,
+    admin: true,
   }
   const user2 = {
     admin: true,
