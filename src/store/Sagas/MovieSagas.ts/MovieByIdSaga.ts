@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { put, call, takeEvery, all } from 'redux-saga/effects';
 import { IMovie, FetchMovieByID } from '../../types/types'
-import { fetchMovieByIdSuccess, fetchMovieById, fetchMovieByIdFailure } from '../../Actions/MoviesAction'
+import { fetchMovieByIdSuccess, fetchMovieByIdFailure } from '../../Actions/MoviesAction'
 import { movieService } from '../../../services/MovieServices'
 import { movieTypes } from '../../ActionTypes/Movietypes'
 
@@ -28,10 +28,6 @@ function* movieSaga() {
     yield all([takeEvery(movieTypes.FETCH_MOVIE_BY_ID, workFetchMovie)])
 }
 
-
-
 export default movieSaga;
 
-function action(action: any): any {
-  throw new Error('Function not implemented.');
-}
+

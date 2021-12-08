@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import './style.css'
-import Text from '../../atoms/Text/Text'
 import edit from '../../../../assets/edit 1.png'
 import remove from '../../../../assets/remove 1.png'
 import Vector from '../../../../assets/Vector.png'
@@ -11,7 +10,6 @@ import Vector3 from '../../../../assets/Vector(3).png'
 import Vector4 from '../../../../assets/Vector(4).png'
 import { CommentItem } from '../../molecules/CommentItem/CommentItem'
 import { PageHeader } from '../../molecules/PageHeader/PageHeader'
-import { fetchMovieById } from '../../../../store/Actions/MoviesAction'
 import { Icomment, IMovie, Irating } from '../../../../store/types/types'
 import star from '../../../../assets/star.png'
 import { fonts } from '../../../../constants/fonts'
@@ -19,12 +17,11 @@ import { fonts } from '../../../../constants/fonts'
 var movie: IMovie
 
 const user = {
-  admin: false,
+  admin: true,
 }
 
 export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...IMovie }) => {
   const averageGrade = () => {
-    // console.log(IMovie.ratings.length)
     let averagegrade = 0
     let totalGrade = 0
     for (let i = 0; i < IMovie.ratings.length; i++) {
@@ -79,7 +76,6 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...IMovie }) => {
                 <div className="flex movie-profile-listitem">
                   <img src={Vector4} alt="" />
                   <p> {averageGrade()}</p>
-                  {/* {console.log(IMovie.ratings)} */}
                 </div>
               </div>
               <div className="movie-profile-description">
