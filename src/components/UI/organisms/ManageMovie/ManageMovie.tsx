@@ -2,11 +2,12 @@ import React from 'react'
 import './style.css'
 import { Input } from '../../atoms/Input/Input'
 import { PageHeader } from '../../molecules/PageHeader/PageHeader'
+import { fonts } from '../../../../constants/fonts'
 interface ManageMovieProps {}
 
 export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
   return (
-    <div className="manage-movie">
+    <div className="manage-movie" style={{ fontFamily: fonts.FORMFONT }}>
       <PageHeader text="New Movie" />
       <form action="">
         <div className="manage-movie-container">

@@ -1,6 +1,5 @@
 .manage-movie-container {
     width: 66rem;
-    border: 1px solid black;
     margin: auto;
 }
 
@@ -14,6 +13,8 @@
     width: 69.4rem;
     background-color: #fff;
     margin: auto;
+    border-radius: 20px;
+    padding-bottom: 1rem;
 }
 
 .manage-movie-textarea {
@@ -34,10 +35,10 @@
     height: 4rem;
     background-color: #2596BE;
     margin: auto;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     border-radius: 20px;
     color: #fff;
-    font-size: 20px;
+    font-size: 30px;
     border: none;
 
 }

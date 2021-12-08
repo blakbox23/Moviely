@@ -7,6 +7,7 @@ import { fetchMovies } from './store/Actions/MoviesAction'
 import MovieDetails from './components/pages/MovieDetails'
 import { Routes, Route } from 'react-router-dom'
 import { ManageMovie } from './components/UI/organisms/ManageMovie/ManageMovie'
+import NewMovie from './components/pages/NewMovie'
 function App() {
   const dispatch = useDispatch()
 
@@ -18,7 +19,7 @@ function App() {
     {
       path: '/',
       name: 'Home',
-      component: <ManageMovie />,
+      component: <NewMovie />,
       isNavItem: true,
     },
     {
