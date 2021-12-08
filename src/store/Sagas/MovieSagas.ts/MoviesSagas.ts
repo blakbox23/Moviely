@@ -14,7 +14,6 @@ function* workFetchMovies(): any {
           movies: response.data
         })
       );
-      console.log(response.data)
     } catch (e: any) {
       yield put(
         fetchmoviesFailure({
