@@ -1,14 +1,19 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router'
 import { fetchMovieById } from '../../store/Actions/MoviesAction'
 import { RootState } from '../../store/Reducers/rootReducers'
 import { MoviesDetailsProfile } from '../UI/organisms/MovieDetailsProfile/MoviesDetailsProfile'
 import './style.css'
 
-function MovieDetails() {
-  const dispatch = useDispatch()
+function MovieDetails({}) {
+  // interface RouteParams {
+  //   id: string
+  // }
 
-  let id = 'cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec'
+  const { id } = useParams() as any
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchMovieById(id))
@@ -39,6 +44,7 @@ function MovieDetails() {
 }
 
 export default MovieDetails
+
 // function id(id: any): import('../../store/types/types').FetchMovieByID {
 //   throw new Error('Function not implemented.')
 // }

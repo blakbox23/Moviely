@@ -30,7 +30,6 @@ const moviesReducer = (state = initialState, action: MoviesActions) => {
       return {
         ...state,
         pending: false,
-        movies: [],
         error: action.payload.error
       };
 
@@ -52,7 +51,6 @@ const moviesReducer = (state = initialState, action: MoviesActions) => {
         return {
           ...state,
           pending: false,
-          movies: [],
           error: action.payload.error
         };
             

@@ -6,7 +6,6 @@ import {
     FetchmoviesSuccess,
     FetchmoviesSuccessPayload,
     FetchMovieByID,
-    // FetchMovieByIDPayload,
     FetchMovieByIDSuccess,
     FetchMovieByIDSuccessPayload,
     FetchMovieByIDFailure,
@@ -21,7 +20,6 @@ import {
 
 
   //action creator
- 
   export const fetchMovies = (): Fetchmovies => ({
     type: movieTypes.FETCH_MOVIES
   });

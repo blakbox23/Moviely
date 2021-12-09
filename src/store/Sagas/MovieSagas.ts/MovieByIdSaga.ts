@@ -4,15 +4,15 @@ import { movieService } from '../../../services/MovieServices'
 import { movieTypes } from '../../ActionTypes/Movietypes'
 
 
-function* workFetchMovie(): any {
+function* workFetchMovie(action:any): any {
+
     try {
-       const response = yield call(movieService.getMoviebyid);
+       const response = yield call(movieService.getMoviebyid, action.payload); 
     yield put(
       fetchMovieByIdSuccess({
           movie: response.data
         })
       );
-      console.log(response.data)
     } catch (e: any) {
       yield put(
         fetchMovieByIdFailure({
@@ -26,6 +26,6 @@ function* movieSaga() {
     yield all([takeEvery(movieTypes.FETCH_MOVIE_BY_ID, workFetchMovie)])
 }
 
-
-
 export default movieSaga;
+
+

@@ -16,10 +16,20 @@ import { fonts } from '../../../../constants/fonts'
 var movie: IMovie
 
 const user = {
-  admin: false,
+  admin: true,
 }
 
 export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...IMovie }) => {
+  const averageGrade = () => {
+    let averagegrade = 0
+    let totalGrade = 0
+    for (let i = 0; i < IMovie.ratings.length; i++) {
+      totalGrade += IMovie.ratings[i].grade
+    }
+    averagegrade = totalGrade / IMovie.ratings.length
+    return averagegrade
+  }
+
   return (
     <div className="movie-profile" style={{ fontFamily: fonts.FORMFONT }}>
       <div className="centerer flex">
@@ -64,10 +74,10 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...IMovie }) => {
                 </div>
                 <div className="flex movie-profile-listitem">
                   <img src={Vector4} alt="" />
-                  <p> {IMovie.ratings[0].grade}</p>
+                  <p> {averageGrade()}</p>
                 </div>
               </div>
-              <div className="movie-profile-description border">
+              <div className="movie-profile-description">
                 <p>{IMovie.description}</p>
               </div>
             </div>
@@ -84,7 +94,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...IMovie }) => {
         </div>
       )}
 
-      <div className="flex border movie-comments">
+      <div className="flex movie-comments">
         <div>
           <PageHeader />
         </div>
