@@ -6,7 +6,7 @@ import { fonts } from '../../../../constants/fonts'
 import { Dropdown } from '../../atoms/Dropdown/Dropdown'
 import { Textarea } from '../../atoms/Textarea/Textarea'
 import { Formik, Form } from 'formik'
-import * as Yup from 'yup'
+import { validate } from '../../../../Validation/ManageMoviesValidation'
 
 interface ManageMovieProps {}
 
@@ -22,18 +22,6 @@ interface MyFormValues {
 }
 
 export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
-  const validate = Yup.object({
-    title: Yup.string()
-      // .max(5, 'Must be 15 characters or less')
-      .required('*Required'),
-    genre: Yup.string().required('Required'),
-    year: Yup.string().required('Required'),
-    runtime: Yup.string().required('Required'),
-    imageUrl: Yup.string().required('Required'),
-    country: Yup.string().required('Required'),
-    trailerUrl: Yup.string().required('Required'),
-  })
-
   const initialValues: MyFormValues = {
     title: '',
     genre: '',
@@ -113,8 +101,6 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
                 type="submit"
                 value="Submit"
               />
-
-              <button type="reset">reset</button>
             </div>
           </Form>
         </div>

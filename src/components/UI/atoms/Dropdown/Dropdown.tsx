@@ -16,6 +16,7 @@ export const Dropdown: React.FC<any> = ({ ...props }) => {
         <option value="horror">Horror</option>
         <option value="comedy">Comedy</option>
       </select>
+      <ErrorMessage component="div" name={field.name} className="error" />
     </div>
   )
 }
