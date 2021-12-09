@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.css'
-import { useField } from 'formik'
+import { ErrorMessage, useField } from 'formik'
 
 interface InputProps {
   placeholder: string
@@ -30,6 +30,7 @@ export const Input: React.FC<InputProps> = (
         {...field}
         {...props}
       />
+      <ErrorMessage component="div" name={field.name} className="error" />
     </div>
   )
 }

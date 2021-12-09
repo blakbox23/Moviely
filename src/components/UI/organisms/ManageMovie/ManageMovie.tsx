@@ -6,6 +6,7 @@ import { fonts } from '../../../../constants/fonts'
 import { Dropdown } from '../../atoms/Dropdown/Dropdown'
 import { Textarea } from '../../atoms/Textarea/Textarea'
 import { Formik, Form } from 'formik'
+import * as Yup from 'yup'
 
 interface ManageMovieProps {}
 
@@ -13,7 +14,7 @@ interface MyFormValues {
   title: string
   genre: string
   year: string
-  runtime: number
+  runtime: number | string
   imageUrl: string
   country: string
   trailerUrl: string
@@ -21,11 +22,35 @@ interface MyFormValues {
 }
 
 export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
+  const validate = Yup.object({
+    title: Yup.string()
+      .max(5, 'Must be 15 characters or less')
+      .required('*Required'),
+    genre: Yup.string()
+      .max(5, 'Must be 15 characters or less')
+      .required('Required'),
+    year: Yup.string()
+      .max(5, 'Must be 15 characters or less')
+      .required('Required'),
+    runtime: Yup.string()
+      .max(5, 'Must be 15 characters or less')
+      .required('Required'),
+    imageUrl: Yup.string()
+      .max(5, 'Must be 15 characters or less')
+      .required('Required'),
+    country: Yup.string()
+      .max(5, 'Must be 15 characters or less')
+      .required('Required'),
+    trailerUrl: Yup.string()
+      .max(5, 'Must be 15 characters or less')
+      .required('Required'),
+  })
+
   const initialValues: MyFormValues = {
     title: '',
     genre: '',
     year: '',
-    runtime: 0,
+    runtime: '',
     imageUrl: '',
     country: '',
     trailerUrl: '',
@@ -35,15 +60,15 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
     <Formik
       initialValues={initialValues}
       onSubmit={(values, actions) => {
-        // console.log({ values, actions })
+        console.log('submit')
+        console.log(values)
         alert(JSON.stringify(values, null, 2))
         actions.setSubmitting(false)
       }}
+      validationSchema={validate}
     >
       {(formik) => (
         <div className="manage-movie" style={{ fontFamily: fonts.FORMFONT }}>
-          {console.log('values')}
-          {console.log(formik.values)}
           <PageHeader text="New Movie" />
           <Form>
             <div className="manage-movie-container">
@@ -71,10 +96,10 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
                   border
                 />
                 <Input
-                  type="text"
                   styleclass="manage-movie-half"
+                  type="text"
                   placeholder="Image Url"
-                  name="imageurl"
+                  name="imageUrl"
                   border
                 />
                 <Input
@@ -90,7 +115,7 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
                   styleclass="manage-movie-full"
                   type="text"
                   placeholder="Trailer Url"
-                  name="trailerurl"
+                  name="trailerUrl"
                   border
                 />
                 <Textarea />

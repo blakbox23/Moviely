@@ -27,7 +27,6 @@
     font-size: 20px;
     padding: 0 0.5rem;
     margin-top: 1rem;
-
 }
 
 .input.border {
@@ -39,3 +38,9 @@
       height: 1rem;
       color: #2596BE;
   } 
+
+  .error {
+      color: red;
+      font-size: 0.75rem;
+      font-weight: bold;
+  }
