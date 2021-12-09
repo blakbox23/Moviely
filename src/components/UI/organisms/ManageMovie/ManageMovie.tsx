@@ -48,8 +48,9 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
     <Formik
       initialValues={initialValues}
       validationSchema={validate}
-      onSubmit={(values: MyFormValues) => {
+      onSubmit={(values: MyFormValues, { resetForm }) => {
         console.log(values)
+        resetForm({ values: initialValues })
       }}
     >
       {(formik) => (

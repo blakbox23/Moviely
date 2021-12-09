@@ -7,9 +7,7 @@ export const Input: React.FC<any> = ({ ...props }) => {
   return (
     <div>
       <input
-        className={`input ${props.inputplacement} ${props.styleclass} ${
-          props.border ? 'border' : ''
-        } `}
+        className={`input ${props.styleclass} ${props.border ? 'border' : ''} `}
         {...field}
         {...props}
       />
