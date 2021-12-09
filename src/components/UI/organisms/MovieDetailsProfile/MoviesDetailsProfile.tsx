@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
 import './style.css'
-import Text from '../../atoms/Text/Text'
 import edit from '../../../../assets/edit 1.png'
 import remove from '../../../../assets/remove 1.png'
 import Vector from '../../../../assets/Vector.png'
@@ -11,12 +9,9 @@ import Vector3 from '../../../../assets/Vector(3).png'
 import Vector4 from '../../../../assets/Vector(4).png'
 import { CommentItem } from '../../molecules/CommentItem/CommentItem'
 import { PageHeader } from '../../molecules/PageHeader/PageHeader'
-import { fetchMovieById } from '../../../../store/Actions/MoviesAction'
-import { Icomment, IMovie, Irating } from '../../../../store/types/types'
+import { IMovie } from '../../../../store/types/types'
 import star from '../../../../assets/star.png'
 import { fonts } from '../../../../constants/fonts'
-// import { FetchMovieByIDPayload } from '../../../../store/types/types'
-// import { RootState } from '../../../../store/Reducers/rootReducers'
 
 var movie: IMovie
 

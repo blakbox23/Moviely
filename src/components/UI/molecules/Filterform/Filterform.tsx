@@ -7,7 +7,7 @@ import { Dropdown } from '../../atoms/Dropdown/Dropdown'
 function Filterform() {
   return (
     <div>
-      {/* <form action="">
+      <form action="">
         <div className="flex filter-top">
           <Input
             placeholder="Title"
@@ -37,7 +37,7 @@ function Filterform() {
           </div>
           <input className="submit-input" type="submit" value="" />
         </div>
-      </form> */}
+      </form>
     </div>
   )
 }
