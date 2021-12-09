@@ -1,14 +1,15 @@
+import { useField } from 'formik'
 import React from 'react'
 
-interface TextareaProps {}
-
-export const Textarea: React.FC<TextareaProps> = ({}) => {
+export const Textarea: React.FC<any> = ({ ...props }) => {
+  const [field, meta] = useField(props)
   return (
     <div>
       <textarea
         className="manage-movie-textarea"
         placeholder="This is some sort of description of movie!"
-        name="description"
+        {...field}
+        {...props}
       ></textarea>
     </div>
   )

@@ -24,26 +24,14 @@ interface MyFormValues {
 export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
   const validate = Yup.object({
     title: Yup.string()
-      .max(5, 'Must be 15 characters or less')
+      // .max(5, 'Must be 15 characters or less')
       .required('*Required'),
-    genre: Yup.string()
-      .max(5, 'Must be 15 characters or less')
-      .required('Required'),
-    year: Yup.string()
-      .max(5, 'Must be 15 characters or less')
-      .required('Required'),
-    runtime: Yup.string()
-      .max(5, 'Must be 15 characters or less')
-      .required('Required'),
-    imageUrl: Yup.string()
-      .max(5, 'Must be 15 characters or less')
-      .required('Required'),
-    country: Yup.string()
-      .max(5, 'Must be 15 characters or less')
-      .required('Required'),
-    trailerUrl: Yup.string()
-      .max(5, 'Must be 15 characters or less')
-      .required('Required'),
+    genre: Yup.string().required('Required'),
+    year: Yup.string().required('Required'),
+    runtime: Yup.string().required('Required'),
+    imageUrl: Yup.string().required('Required'),
+    country: Yup.string().required('Required'),
+    trailerUrl: Yup.string().required('Required'),
   })
 
   const initialValues: MyFormValues = {
@@ -59,17 +47,15 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(values, actions) => {
-        console.log('submit')
-        console.log(values)
-        alert(JSON.stringify(values, null, 2))
-        actions.setSubmitting(false)
-      }}
       validationSchema={validate}
+      onSubmit={(values: MyFormValues) => {
+        console.log(values)
+      }}
     >
       {(formik) => (
         <div className="manage-movie" style={{ fontFamily: fonts.FORMFONT }}>
           <PageHeader text="New Movie" />
+
           <Form>
             <div className="manage-movie-container">
               <div className="manage-movie-half-container">
@@ -80,7 +66,7 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
                   type="text"
                   border
                 />
-                <Dropdown type="add-form" />
+                <Dropdown styleclass="add-form" name="genre" />
                 <Input
                   styleclass="manage-movie-half"
                   type="text"
@@ -118,14 +104,15 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
                   name="trailerUrl"
                   border
                 />
-                <Textarea />
+                <Textarea name="description" />
               </div>
 
               <input
-                type="submit"
                 className="form-submit-button flex"
+                type="submit"
                 value="Submit"
               />
+
               <button type="reset">reset</button>
             </div>
           </Form>
