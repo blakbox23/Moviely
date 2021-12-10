@@ -6,6 +6,7 @@ const initialState: MoviesState = {
     error: null,
     movies: [],
     movie: undefined,
+    moviesByTitle: undefined,
   };
 
 
@@ -33,6 +34,28 @@ const moviesReducer = (state = initialState, action: MoviesActions) => {
         error: action.payload.error
       };
 
+      case movieTypes.FETCH_MOVIES_BY_TITLE:
+        return {
+            ...state,
+            pending: true
+        };
+
+        case movieTypes.FETCH_MOVIES_BY_TITLE_SUCCESS: 
+        return {
+        ...state,
+        pending: false,
+        moviesByTitle: action.payload.moviesByTitle,
+        error: null
+      };
+
+      case movieTypes.FETCH_MOVIES_BY_TITLE_FAILURE:
+        return {
+          ...state,
+          pending: false,
+          error: action.payload.error
+        };
+
+
       case movieTypes.FETCH_MOVIE_BY_ID:
         return {
             ...state,
@@ -48,6 +71,28 @@ const moviesReducer = (state = initialState, action: MoviesActions) => {
       };
 
       case movieTypes.FETCH_MOVIE_BY_ID_FAILURE:
+        return {
+          ...state,
+          pending: false,
+          error: action.payload.error
+        };
+
+      case movieTypes.CREATE_MOVIE:
+        return {
+            ...state,
+            pending: true
+        };
+        
+
+        case movieTypes.CREATE_MOVIE_SUCCESS: 
+        return {
+        ...state,
+        pending: false,
+        movies: [...state.movies, action.payload.movie],
+        error: null
+      };
+
+      case movieTypes.CREATE_MOVIE_FAILURE:
         return {
           ...state,
           pending: false,

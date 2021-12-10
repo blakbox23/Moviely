@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './style.css'
 import { Input } from '../../atoms/Input/Input'
 import { PageHeader } from '../../molecules/PageHeader/PageHeader'
@@ -7,6 +7,13 @@ import { Dropdown } from '../../atoms/Dropdown/Dropdown'
 import { Textarea } from '../../atoms/Textarea/Textarea'
 import { Formik, Form } from 'formik'
 import { validate } from '../../../../Validation/ManageMoviesValidation'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  createMovie,
+  fetchMoviesByTitle,
+} from '../../../../store/Actions/MoviesAction'
+import { RootState } from '../../../../store/Reducers/rootReducers'
+import Toast from 'react-bootstrap/Toast'
 
 interface ManageMovieProps {}
 
@@ -22,6 +29,25 @@ interface MyFormValues {
 }
 
 export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
+  // const [show, setShow] = useState<boolean>(false)
+
+  const dispatch = useDispatch()
+
+  const { pending, moviesByTitle, error } = useSelector(
+    (state: RootState) => state.movies,
+  )
+
+  console.log(moviesByTitle)
+
+  // let movieTitles: string[] = movies.map((movie) => movie.title)
+
+  // const checker = (movieTitles: string[], newMovietitle: string) => {
+  //   const found = movies.some(
+  //     (movie: { title: string }) => movie.title === newMovietitle,
+  //   )
+  //   if (found) return true
+  // }
+
   const initialValues: MyFormValues = {
     title: '',
     genre: '',
@@ -37,7 +63,18 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
       initialValues={initialValues}
       validationSchema={validate}
       onSubmit={(values: MyFormValues, { resetForm }) => {
-        console.log(values)
+        // if (checker(movieTitles, values.title)) {
+        //   return alert(`The movie title ${values.title} already exists.`)
+        // } else {
+        //   dispatch(createMovie(values))
+        //   resetForm({ values: initialValues })
+        // }
+        console.log(moviesByTitle)
+
+        dispatch(fetchMoviesByTitle(values.title))
+        moviesByTitle && moviesByTitle.length < 1
+          ? alert('This title is taken')
+          : dispatch(createMovie(values))
         resetForm({ values: initialValues })
       }}
     >
@@ -108,3 +145,7 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
     </Formik>
   )
 }
+
+// function getMoviesByTitle(): any {
+//   throw new Error('Function not implemented.')
+// }

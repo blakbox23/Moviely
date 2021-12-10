@@ -15,12 +15,18 @@ import {
     CreateMovieFailure,
     CreateMovieSuccessPayload,
     CreateMovieFailurePayload,
+    FetchMoviesByTitle,
+    FetchMoviesByTitleSuccessPayload,
+    FetchMoviesByTitleSuccess,
+    FetchMoviesByTitleFailurePayload,
+    FetchMoviesByTitleFailure,
+    
 
   } from "../types/types";
 
 
   //action creator
-  export const fetchMovies = (): Fetchmovies => ({
+  export const fetchMovies = (): Fetchmovies => ({ 
     type: movieTypes.FETCH_MOVIES
   });
   export const fetchmoviesSuccess = (payload: FetchmoviesSuccessPayload): FetchmoviesSuccess => ({
@@ -29,6 +35,18 @@ import {
   });
   export const fetchmoviesFailure = (payload: FetchmoviesFailurePayload): FetchmoviesFailure => ({
     type: movieTypes.FETCH_MOVIES_FAILURE,
+    payload
+  }); 
+
+  export const fetchMoviesByTitle = (payload: string): FetchMoviesByTitle => ({
+    type: movieTypes.FETCH_MOVIES_BY_TITLE
+  }); 
+  export const fetchMoviesByTitleSuccess = (payload: FetchMoviesByTitleSuccessPayload): FetchMoviesByTitleSuccess => ({
+    type: movieTypes.FETCH_MOVIES_BY_TITLE_SUCCESS,
+    payload
+  });
+  export const fetchMovieByTitleFailure = (payload: FetchMoviesByTitleFailurePayload): FetchMoviesByTitleFailure => ({
+    type: movieTypes.FETCH_MOVIES_BY_TITLE_FAILURE,
     payload
   }); 
 
@@ -47,10 +65,11 @@ import {
   }); 
 
 
-  export const createMovie = (data: object): CreateMovie => {
+
+  export const createMovie = (payload: object): CreateMovie => {
     return {
       type: movieTypes.CREATE_MOVIE,
-      payload: data
+      payload
     };
   };
   export const createMovieSuccess = (payload: CreateMovieSuccessPayload): CreateMovieSuccess => ({
