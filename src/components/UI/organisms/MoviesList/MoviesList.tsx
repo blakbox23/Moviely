@@ -11,16 +11,17 @@ export const MoviesList = () => {
 
   return (
     <div className="movies-list flex">
-      {movies.map((movie) => (
-        <div key={movie.id}>
-          <MovieItem
-            id={movie.id}
-            title={movie.title}
-            image={movie.imageUrl}
-            description={movie.description}
-          />
-        </div>
-      ))}
+      {movies &&
+        movies.map((movie) => (
+          <div key={movie.id}>
+            <MovieItem
+              id={movie.id}
+              title={movie.title}
+              image={movie.imageUrl}
+              description={movie.description}
+            />
+          </div>
+        ))}
     </div>
   )
 }
