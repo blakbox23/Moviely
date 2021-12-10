@@ -4,10 +4,10 @@ import { fonts } from '../../../../constants/fonts'
 import './style.css'
 
 interface PageHeaderProps {
-  text?: string
+  text: string
 }
 
-export const PageHeader: React.FC<PageHeaderProps> = ({ text = 'coments' }) => {
+export const PageHeader: React.FC<PageHeaderProps> = ({ text }) => {
   return (
     <div className="page-header">
       <Text text={text} type="page-header" font={fonts.NAVFONT} />

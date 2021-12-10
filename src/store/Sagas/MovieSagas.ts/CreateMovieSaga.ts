@@ -1,23 +1,25 @@
-import axios from 'axios';
 import { put, call, takeEvery, all } from 'redux-saga/effects';
-import { IMovie } from '../../types/types'
 import { createMovieSuccess, createMovieFailure } from '../../Actions/MoviesAction'
 import { movieService } from '../../../services/MovieServices'
 import { movieTypes } from '../../ActionTypes/Movietypes'
+import { RootState } from '../../Reducers/rootReducers';
 
 
-function* workCreateMovie(): any {
+function* workCreateMovie(action:any): any {
     try {
-       const response = yield call(movieService.getMoviebyid);
+       const response = yield call(movieService.createMovie, action.payload);
+
     yield put(
         createMovieSuccess({
           movie: response.data
         })
-      );
-      console.log(response.data)
+      )
+
+      alert('Movie was created successfylly!');
     } catch (e: any) {
+      alert("Something went wrong!");
       yield put(
-        createMovieFailure({
+        createMovieFailure({ 
           error: e.message
         })
       ); 

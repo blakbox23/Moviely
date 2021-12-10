@@ -20,7 +20,7 @@ export interface IMovie {
     movieId: string;
     grade: number;
   }
-  export interface Icomment {
+  export interface Icomment { 
     id: string;
     email: string;
     movieId: string;

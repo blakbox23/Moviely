@@ -13,6 +13,7 @@ function* workFetchMovie(action:any): any {
           movie: response.data
         })
       );
+
     } catch (e: any) {
       yield put(
         fetchMovieByIdFailure({
