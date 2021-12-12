@@ -10,6 +10,7 @@ import { ManageMovie } from './components/UI/organisms/ManageMovie/ManageMovie'
 import NewMovie from './components/pages/NewMovie'
 import Homebody from './components/UI/organisms/HomeBody/Homebody'
 import WatchedMovies from './components/pages/WatchedMoviesPage'
+import PendingCommentsPage from './components/pages/PendingCommentsPage'
 function App() {
   const dispatch = useDispatch()
 
@@ -21,7 +22,7 @@ function App() {
     {
       path: '/',
       name: 'Home',
-      component: <WatchedMovies />,
+      component: <PendingCommentsPage />,
       isNavItem: true,
     },
     {
