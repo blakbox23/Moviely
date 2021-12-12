@@ -4,9 +4,9 @@ import { movieService } from '../../../services/MovieServices'
 import { movieTypes } from '../../ActionTypes/Movietypes'
 
 
-function* workMoviesByTitleSaga(): any {
+function* workMoviesByTitleSaga(action: any): any {
     try {
-       const response = yield call(movieService.getMoviesByTitle);
+       const response = yield call(movieService.getMoviesByTitle, action.payload);
     yield put(
         fetchMoviesByTitleSuccess({
           moviesByTitle: response.data

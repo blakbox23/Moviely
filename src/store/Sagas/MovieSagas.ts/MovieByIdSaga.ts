@@ -2,6 +2,7 @@ import { put, call, takeEvery, all } from 'redux-saga/effects';
 import { fetchMovieByIdSuccess, fetchMovieByIdFailure } from '../../Actions/MoviesAction'
 import { movieService } from '../../../services/MovieServices'
 import { movieTypes } from '../../ActionTypes/Movietypes'
+import {notify, success} from '../../../components/UI/organisms/Toasts/Toast';
 
 
 function* workFetchMovie(action:any): any {
@@ -13,6 +14,7 @@ function* workFetchMovie(action:any): any {
           movie: response.data
         })
       );
+      success('Success')
 
     } catch (e: any) {
       yield put(

@@ -14,6 +14,7 @@ import {
 } from '../../../../store/Actions/MoviesAction'
 import { RootState } from '../../../../store/Reducers/rootReducers'
 import Toast from 'react-bootstrap/Toast'
+import { notify } from '../Toasts/Toast'
 
 interface ManageMovieProps {}
 
@@ -37,7 +38,7 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
     (state: RootState) => state.movies,
   )
 
-  console.log(moviesByTitle)
+  // console.log(moviesByTitle)
 
   // let movieTitles: string[] = movies.map((movie) => movie.title)
 
@@ -69,11 +70,12 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
         //   dispatch(createMovie(values))
         //   resetForm({ values: initialValues })
         // }
-        console.log(moviesByTitle)
 
         dispatch(fetchMoviesByTitle(values.title))
-        moviesByTitle && moviesByTitle.length < 1
-          ? alert('This title is taken')
+        console.log(moviesByTitle)
+
+        moviesByTitle && moviesByTitle.length !== 0
+          ? notify('Movie with given title already exists')
           : dispatch(createMovie(values))
         resetForm({ values: initialValues })
       }}
@@ -145,7 +147,3 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
     </Formik>
   )
 }
-
-// function getMoviesByTitle(): any {
-//   throw new Error('Function not implemented.')
-// }

@@ -3,6 +3,7 @@ import { createMovieSuccess, createMovieFailure } from '../../Actions/MoviesActi
 import { movieService } from '../../../services/MovieServices'
 import { movieTypes } from '../../ActionTypes/Movietypes'
 import { RootState } from '../../Reducers/rootReducers';
+import {notify, success} from '../../../components/UI/organisms/Toasts/Toast'
 
 
 function* workCreateMovie(action:any): any {
@@ -15,9 +16,11 @@ function* workCreateMovie(action:any): any {
         })
       )
 
-      alert('Movie was created successfylly!');
+      // alert('Movie was created successfylly!');
+      success('Movie added successfully')
     } catch (e: any) {
-      alert("Something went wrong!");
+      // alert("Something went wrong!");
+      notify("An error occured")
       yield put(
         createMovieFailure({ 
           error: e.message
