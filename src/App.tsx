@@ -9,6 +9,7 @@ import { Routes, Route } from 'react-router-dom'
 import { ManageMovie } from './components/UI/organisms/ManageMovie/ManageMovie'
 import NewMovie from './components/pages/NewMovie'
 import Homebody from './components/UI/organisms/HomeBody/Homebody'
+import WatchedMovies from './components/pages/WatchedMoviesPage'
 function App() {
   const dispatch = useDispatch()
 
@@ -20,7 +21,7 @@ function App() {
     {
       path: '/',
       name: 'Home',
-      component: <Homebody />,
+      component: <WatchedMovies />,
       isNavItem: true,
     },
     {

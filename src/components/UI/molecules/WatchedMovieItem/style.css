@@ -1,0 +1,32 @@
+.watched-movie-item {
+    border: 1px solid black;
+    width: 54.5rem;
+    border-radius: 20px;
+    margin: auto;
+    padding: 1rem;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.watchedmovie-text {
+    width: 100%;
+    justify-content: space-evenly;
+    border-left: 2px solid #00000033;
+    border-right: 2px solid #00000033
+    ;
+    align-items: center;
+}
+
+
+.watchedmovie-image, .delete-watchedmovie {
+    width: 30%;
+    justify-content: center;
+    /* border: 1px solid black; */
+    align-items: center;
+
+}
+
+.watchedmovie-image img {
+    width: 75%;
+    border-radius: 20px;
+}
