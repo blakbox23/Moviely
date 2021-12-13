@@ -5,6 +5,9 @@ import { fonts } from '../../../../constants/fonts'
 import { Dropdown } from '../../atoms/Dropdown/Dropdown'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../../../store/Reducers/rootReducers'
+import { fetchFilteredMovies } from '../../../../store/Actions/MoviesAction'
 
 interface FilterFormValues {
   title: string
@@ -14,6 +17,15 @@ interface FilterFormValues {
 }
 
 function Filterform() {
+  const dispatch = useDispatch()
+
+  const { pending, searchedMovies, error } = useSelector(
+    (state: RootState) => state.movies,
+  )
+
+  console.log('searchedMoviescomponent')
+  console.log(searchedMovies)
+
   const validate = Yup.object({
     title: Yup.string()
       // .max(5, 'Must be 15 characters or less')
@@ -34,6 +46,7 @@ function Filterform() {
       validationSchema={validate}
       onSubmit={(values: FilterFormValues, { resetForm }) => {
         console.log(values)
+        dispatch(fetchFilteredMovies(values))
         resetForm({ values: initialValues })
       }}
     >

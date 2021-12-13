@@ -27,13 +27,20 @@ export interface IMovie {
     content: string;
     approved: boolean;
   }
+
+  export interface IfilteredMovie { 
+    title: string;
+    genre: string;
+    year: string;
+    grade: number;
+  }
   
 export interface MoviesState {
   pending: boolean;
   error: string | null;
   movies: IMovie[];
   movie: IMovie | undefined;
-  moviesByTitle: IMovie[];
+  searchedMovies: IMovie[];
 }
 
 
@@ -44,10 +51,10 @@ export interface FetchmoviesFailurePayload {
   error: string;
 }
 
-export interface FetchMoviesByTitleSuccessPayload {
-  moviesByTitle: IMovie[]; 
+export interface FetchFilteredMoviesSuccessPayload {
+  searchedMovies: IMovie; 
 }
-export interface FetchMoviesByTitleFailurePayload {
+export interface FetchFilteredMoviesFailurePayload {
   error: string;
 }
 
@@ -69,9 +76,9 @@ export interface CreateMovieFailurePayload {
 export interface Fetchmovies {
   type: typeof movieTypes.FETCH_MOVIES;
 }
-export interface FetchMoviesByTitle {
-  type: typeof movieTypes.FETCH_MOVIES_BY_TITLE;
-  payload: string;
+export interface FetchFilteredMovies {
+  type: typeof movieTypes.FETCH_FILTERED_MOVIES;
+  payload: object;
 }
 export interface FetchMovieByID {
   type: typeof movieTypes.FETCH_MOVIE_BY_ID;
@@ -92,13 +99,13 @@ export type FetchmoviesFailure = {
   payload: FetchmoviesFailurePayload;
 };
 
-export type FetchMoviesByTitleSuccess = {
-  type: typeof movieTypes.FETCH_MOVIES_BY_TITLE_SUCCESS;
-  payload: FetchMoviesByTitleSuccessPayload;
+export type FetchFilteredMoviesSuccess = {
+  type: typeof movieTypes.FETCH_FILTERED_MOVIES_SUCCESS;
+  payload: FetchFilteredMoviesSuccessPayload;
 };
-export interface FetchMoviesByTitleFailure {
-  type: typeof movieTypes.FETCH_MOVIES_BY_TITLE_FAILURE;
-  payload: FetchMoviesByTitleFailurePayload
+export interface FetchFilteredMoviesFailure {
+  type: typeof movieTypes.FETCH_FILTERED_MOVIES_FAILURE;
+  payload: FetchFilteredMoviesFailurePayload
 }
 
 export interface FetchMovieByIDSuccess {
@@ -131,6 +138,6 @@ export type MoviesActions =
   | CreateMovie
   | CreateMovieSuccess
   | CreateMovieFailure
-  | FetchMoviesByTitle
-  | FetchMoviesByTitleSuccess
-  | FetchMoviesByTitleFailure
+  | FetchFilteredMovies
+  | FetchFilteredMoviesSuccess
+  | FetchFilteredMoviesFailure

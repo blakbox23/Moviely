@@ -15,11 +15,11 @@ import {
     CreateMovieFailure,
     CreateMovieSuccessPayload,
     CreateMovieFailurePayload,
-    FetchMoviesByTitle,
-    FetchMoviesByTitleSuccessPayload,
-    FetchMoviesByTitleSuccess,
-    FetchMoviesByTitleFailurePayload,
-    FetchMoviesByTitleFailure,
+    FetchFilteredMovies,
+    FetchFilteredMoviesSuccessPayload,
+    FetchFilteredMoviesSuccess,
+    FetchFilteredMoviesFailurePayload,
+    FetchFilteredMoviesFailure,
     
 
   } from "../types/types";
@@ -38,16 +38,16 @@ import {
     payload
   }); 
 
-  export const fetchMoviesByTitle = (payload: string): FetchMoviesByTitle => ({
-    type: movieTypes.FETCH_MOVIES_BY_TITLE,
+  export const fetchFilteredMovies = (payload: object): FetchFilteredMovies => ({
+    type: movieTypes.FETCH_FILTERED_MOVIES,
     payload
   }); 
-  export const fetchMoviesByTitleSuccess = (payload: FetchMoviesByTitleSuccessPayload): FetchMoviesByTitleSuccess => ({
-    type: movieTypes.FETCH_MOVIES_BY_TITLE_SUCCESS,
+  export const fetchFilteredMoviesSuccess = (payload: FetchFilteredMoviesSuccessPayload): FetchFilteredMoviesSuccess => ({
+    type: movieTypes.FETCH_FILTERED_MOVIES_SUCCESS,
     payload
   });
-  export const fetchMovieByTitleFailure = (payload: FetchMoviesByTitleFailurePayload): FetchMoviesByTitleFailure => ({
-    type: movieTypes.FETCH_MOVIES_BY_TITLE_FAILURE,
+  export const fetchFilteredMoviesFailure = (payload: FetchFilteredMoviesFailurePayload): FetchFilteredMoviesFailure => ({
+    type: movieTypes.FETCH_FILTERED_MOVIES_FAILURE,
     payload
   }); 
 

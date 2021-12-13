@@ -1,7 +1,9 @@
 import ApiService from "./ApiServices";
+import { IfilteredMovie } from "../store/types/types";
 
 const ENDPOINTS = {
     MOVIES: '/movies/',
+    FILTER: '/movies/?',
   };
 
   class MovieService extends ApiService {
@@ -20,6 +22,16 @@ const ENDPOINTS = {
 
     createMovie = (values: object) => {
         return this.apiClient.post(ENDPOINTS.MOVIES, values);
+      }
+
+    searchedMovies = (values: IfilteredMovie) => {
+        let endPoint = (
+        ENDPOINTS.FILTER + "title=" + values.title 
+        + "&genre=" + values.genre 
+        + "&year=" + values.year
+        + "&grade=" + values.grade
+        )
+        return this.apiClient.get(endPoint);
       }
 }
 
