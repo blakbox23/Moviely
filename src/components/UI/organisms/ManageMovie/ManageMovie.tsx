@@ -38,17 +38,6 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
     (state: RootState) => state.movies,
   )
 
-  // console.log(moviesByTitle)
-
-  // let movieTitles: string[] = movies.map((movie) => movie.title)
-
-  // const checker = (movieTitles: string[], newMovietitle: string) => {
-  //   const found = movies.some(
-  //     (movie: { title: string }) => movie.title === newMovietitle,
-  //   )
-  //   if (found) return true
-  // }
-
   const initialValues: MyFormValues = {
     title: '',
     genre: '',
@@ -64,19 +53,7 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
       initialValues={initialValues}
       validationSchema={validate}
       onSubmit={(values: MyFormValues, { resetForm }) => {
-        // if (checker(movieTitles, values.title)) {
-        //   return alert(`The movie title ${values.title} already exists.`)
-        // } else {
-        //   dispatch(createMovie(values))
-        //   resetForm({ values: initialValues })
-        // }
-
-        dispatch(fetchMoviesByTitle(values.title))
-        console.log(moviesByTitle)
-
-        moviesByTitle && moviesByTitle.length !== 0
-          ? notify('Movie with given title already exists')
-          : dispatch(createMovie(values))
+        dispatch(createMovie(values))
         resetForm({ values: initialValues })
       }}
     >
@@ -132,7 +109,10 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
                   name="trailerUrl"
                   border
                 />
-                <Textarea name="description" />
+                <Textarea
+                  name="description"
+                  placeholder="This is some sort of description of movie!"
+                />
               </div>
 
               <input
