@@ -6,7 +6,6 @@ const initialState: MoviesState = {
     error: null,
     movies: [],
     movie: undefined,
-    moviesByTitle: [],
   };
 
 
@@ -33,28 +32,6 @@ const moviesReducer = (state = initialState, action: MoviesActions) => {
         pending: false,
         error: action.payload.error
       };
-
-      case movieTypes.FETCH_MOVIES_BY_TITLE:
-        return {
-            ...state,
-            pending: true
-        };
-
-        case movieTypes.FETCH_MOVIES_BY_TITLE_SUCCESS: 
-        return {
-        ...state,
-        pending: false,
-        moviesByTitle: action.payload.moviesByTitle,
-        error: null
-      };
-
-      case movieTypes.FETCH_MOVIES_BY_TITLE_FAILURE:
-        return {
-          ...state,
-          pending: false,
-          error: action.payload.error
-        };
-
 
       case movieTypes.FETCH_MOVIE_BY_ID:
         return {
