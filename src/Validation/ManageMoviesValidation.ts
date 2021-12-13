@@ -8,4 +8,5 @@ export const validate = Yup.object({
     imageUrl: Yup.string().required('Required'),
     country: Yup.string().required('Required'),
     trailerUrl: Yup.string().required('Required'),
+    description: Yup.string().required('Required'),
     })
