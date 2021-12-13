@@ -6,7 +6,7 @@ const initialState: MoviesState = {
     error: null,
     movies: [],
     movie: undefined,
-    moviesByTitle: undefined,
+    moviesByTitle: [],
   };
 
 

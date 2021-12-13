@@ -11,7 +11,7 @@ const ENDPOINTS = {
     }
 
     getMoviesByTitle = (values: string) => {
-        return this.apiClient.get(ENDPOINTS.MOVIES+'?title='+values);  
+        return this.apiClient.get(ENDPOINTS.MOVIES+'?title=' + values);  
     }
 
     getMoviebyid = (id: string ) => {       

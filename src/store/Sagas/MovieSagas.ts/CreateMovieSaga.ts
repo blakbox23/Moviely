@@ -8,18 +8,30 @@ import {notify, success} from '../../../components/UI/organisms/Toasts/Toast'
 
 function* workCreateMovie(action:any): any {
     try {
-       const response = yield call(movieService.createMovie, action.payload);
+      const responseByTitle = yield call(movieService.getMoviesByTitle, action.payload.title);
+
+      console.log('responseByTitle')
+      console.log(responseByTitle.data)
+
+   if(responseByTitle.data.length===0){
+    const response = yield call(movieService.createMovie, action.payload);
 
     yield put(
         createMovieSuccess({
           movie: response.data
         })
       )
-
-      // alert('Movie was created successfylly!');
       success('Movie added successfully')
-    } catch (e: any) {
-      // alert("Something went wrong!");
+    } else {
+         yield put(
+        createMovieFailure({ 
+          error: 'Movie title already exists'
+        })
+      ); 
+      notify('Movie with given title already exists')
+    }}
+    
+    catch (e: any) {
       notify("An error occured")
       yield put(
         createMovieFailure({ 

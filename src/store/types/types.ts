@@ -33,7 +33,7 @@ export interface MoviesState {
   error: string | null;
   movies: IMovie[];
   movie: IMovie | undefined;
-  moviesByTitle: string[] | undefined;
+  moviesByTitle: IMovie[];
 }
 
 
@@ -45,7 +45,7 @@ export interface FetchmoviesFailurePayload {
 }
 
 export interface FetchMoviesByTitleSuccessPayload {
-  moviesByTitle: string[]; 
+  moviesByTitle: IMovie[]; 
 }
 export interface FetchMoviesByTitleFailurePayload {
   error: string;
@@ -71,6 +71,7 @@ export interface Fetchmovies {
 }
 export interface FetchMoviesByTitle {
   type: typeof movieTypes.FETCH_MOVIES_BY_TITLE;
+  payload: string;
 }
 export interface FetchMovieByID {
   type: typeof movieTypes.FETCH_MOVIE_BY_ID;

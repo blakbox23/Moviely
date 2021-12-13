@@ -39,7 +39,8 @@ import {
   }); 
 
   export const fetchMoviesByTitle = (payload: string): FetchMoviesByTitle => ({
-    type: movieTypes.FETCH_MOVIES_BY_TITLE
+    type: movieTypes.FETCH_MOVIES_BY_TITLE,
+    payload
   }); 
   export const fetchMoviesByTitleSuccess = (payload: FetchMoviesByTitleSuccessPayload): FetchMoviesByTitleSuccess => ({
     type: movieTypes.FETCH_MOVIES_BY_TITLE_SUCCESS,
