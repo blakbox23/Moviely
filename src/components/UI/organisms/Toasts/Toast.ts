@@ -7,8 +7,8 @@ toast.configure()
 export function notify(msg: string) {
         return toast.error(msg, {theme: 'colored'})
 } 
-export const success = (msg: string) => {
-        return toast.success(msg)
+export function success(msg: string) {
+        return toast.success(msg, {theme: 'colored'})
     }
     
 
