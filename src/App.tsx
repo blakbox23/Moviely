@@ -8,9 +8,9 @@ import MovieDetails from './components/pages/MovieDetails'
 import { Routes, Route } from 'react-router-dom'
 import { ManageMovie } from './components/UI/organisms/ManageMovie/ManageMovie'
 import NewMovie from './components/pages/NewMovie'
-import Homebody from './components/UI/organisms/HomeBody/Homebody'
-import WatchedMovies from './components/pages/WatchedMoviesPage'
-import PendingCommentsPage from './components/pages/PendingCommentsPage'
+// import Homebody from './components/UI/organisms/HomeBody/Homebody'
+// import WatchedMovies from './components/pages/WatchedMoviesPage'
+import PendingUsersPage from './components/pages/PendingUsersPage'
 function App() {
   const dispatch = useDispatch()
 
@@ -22,7 +22,7 @@ function App() {
     {
       path: '/',
       name: 'Home',
-      component: <PendingCommentsPage />,
+      component: <PendingUsersPage />,
       isNavItem: true,
     },
     {
