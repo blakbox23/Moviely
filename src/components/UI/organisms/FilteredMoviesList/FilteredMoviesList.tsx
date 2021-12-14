@@ -9,14 +9,9 @@ export const FilteredMoviesList = () => {
     (state: RootState) => state.movies,
   )
 
-  let filtered = searchedMovies[0]
-
-  console.log('searchedMovies')
-  console.log(filtered)
-
   return (
     <div className="movies-list flex">
-      {filtered &&
+      {searchedMovies &&
         searchedMovies.map((movie) => (
           <div key={movie.id}>
             <MovieItem
