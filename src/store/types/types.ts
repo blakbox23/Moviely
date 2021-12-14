@@ -20,7 +20,7 @@ export interface IMovie {
     movieId: string;
     grade: number;
   }
-  export interface Icomment {
+  export interface Icomment { 
     id: string;
     email: string;
     movieId: string;
@@ -50,14 +50,25 @@ export interface FetchMovieByIDFailurePayload {
   error: string;
 }
 
+export interface CreateMovieSuccessPayload {
+  movie: IMovie;
+}
+export interface CreateMovieFailurePayload {
+  error: string;
+}
 
 
 export interface Fetchmovies {
   type: typeof movieTypes.FETCH_MOVIES;
 }
+
 export interface FetchMovieByID {
   type: typeof movieTypes.FETCH_MOVIE_BY_ID;
   payload: string
+}
+export interface CreateMovie {
+  type: typeof movieTypes.CREATE_MOVIE;
+  payload: object
 }
 
 
@@ -65,7 +76,6 @@ export type FetchmoviesSuccess = {
   type: typeof movieTypes.FETCH_MOVIES_SUCCESS;
   payload: FetchmoviesSuccessPayload;
 };
-
 export type FetchmoviesFailure = {
   type: typeof movieTypes.FETCH_MOVIES_FAILURE;
   payload: FetchmoviesFailurePayload;
@@ -80,6 +90,15 @@ export interface FetchMovieByIDFailure {
   payload: FetchMovieByIDFailurePayload
 }
 
+export interface CreateMovieSuccess {
+  type: typeof movieTypes.CREATE_MOVIE_SUCCESS;
+  payload: CreateMovieSuccessPayload
+}
+export interface CreateMovieFailure {
+  type: typeof movieTypes.CREATE_MOVIE_FAILURE;
+  payload: CreateMovieFailurePayload
+}
+
 
 
 export type MoviesActions =
@@ -89,3 +108,7 @@ export type MoviesActions =
   | FetchMovieByID
   | FetchMovieByIDSuccess
   | FetchMovieByIDFailure
+  | CreateMovie
+  | CreateMovieSuccess
+  | CreateMovieFailure
+ 

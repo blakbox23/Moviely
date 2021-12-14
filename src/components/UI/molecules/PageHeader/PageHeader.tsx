@@ -3,12 +3,14 @@ import Text from '../../atoms/Text/Text'
 import { fonts } from '../../../../constants/fonts'
 import './style.css'
 
-interface PageHeaderProps {}
+interface PageHeaderProps {
+  text: string
+}
 
-export const PageHeader: React.FC<PageHeaderProps> = ({}) => {
+export const PageHeader: React.FC<PageHeaderProps> = ({ text }) => {
   return (
     <div className="page-header">
-      <Text text="Comments" type="page-header" font={fonts.NAVFONT} />
+      <Text text={text} type="page-header" font={fonts.NAVFONT} />
     </div>
   )
 }

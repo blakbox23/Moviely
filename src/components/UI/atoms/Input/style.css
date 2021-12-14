@@ -9,7 +9,24 @@
     font-size: 1.25rem;
     color: #00000087;
     padding-left: 1rem;
+}
 
+.manage-movie-half {
+    height: 4rem;
+    width:31.25rem;
+    color: #00000087;
+    font-size: 20px;
+    padding: 0 0.5rem;
+    margin-top: 1rem;
+}
+
+.manage-movie-full {
+    width: 65rem;
+    height: 4rem;
+    color: #00000087;
+    font-size: 20px;
+    padding: 0 0.5rem;
+    margin-top: 1rem;
 }
 
 .input.border {
@@ -20,4 +37,10 @@
   .input.range {
       height: 1rem;
       color: #2596BE;
+  } 
+
+  .error {
+      color: red;
+      font-size: 0.75rem;
+      font-weight: bold;
   }

@@ -7,10 +7,6 @@ import { MoviesDetailsProfile } from '../UI/organisms/MovieDetailsProfile/Movies
 import './style.css'
 
 function MovieDetails({}) {
-  // interface RouteParams {
-  //   id: string
-  // }
-
   const { id } = useParams() as any
 
   const dispatch = useDispatch()
@@ -44,7 +40,3 @@ function MovieDetails({}) {
 }
 
 export default MovieDetails
-
-// function id(id: any): import('../../store/types/types').FetchMovieByID {
-//   throw new Error('Function not implemented.')
-// }

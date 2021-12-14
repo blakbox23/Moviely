@@ -6,7 +6,6 @@ import comment from '../../../../assets/comment.png'
 import Button from '../../atoms/Button/Button'
 import { images } from '../../../../constants/missingimage'
 import { colors } from '../../../../constants/colors'
-import { IMovie } from '../../../../store/types/types'
 import { NavLink } from 'react-router-dom'
 
 interface MovieItemProps {
