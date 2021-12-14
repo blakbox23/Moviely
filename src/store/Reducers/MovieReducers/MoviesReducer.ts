@@ -7,6 +7,7 @@ const initialState: MoviesState = {
     movies: [],
     movie: undefined,
     searchedMovies: [],
+    searched: false,
   };
 
 
@@ -37,7 +38,7 @@ const moviesReducer = (state = initialState, action: MoviesActions) => {
       case movieTypes.FETCH_FILTERED_MOVIES:
         return {
             ...state,
-            searchedMovies: [],
+            searched: true,
             pending: true
         };
 

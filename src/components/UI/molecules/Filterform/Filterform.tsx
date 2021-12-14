@@ -19,10 +19,6 @@ interface FilterFormValues {
 function Filterform() {
   const dispatch = useDispatch()
 
-  const { pending, searchedMovies, error } = useSelector(
-    (state: RootState) => state.movies,
-  )
-
   const initialValues: FilterFormValues = {
     title: '',
     genre: '',

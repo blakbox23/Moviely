@@ -7,15 +7,14 @@ import { RootState } from '../../../../store/Reducers/rootReducers'
 import { useSelector } from 'react-redux'
 
 function Homebody() {
-  const { pending, searchedMovies, error } = useSelector(
-    (state: RootState) => state.movies,
-  )
+  const { searched } = useSelector((state: RootState) => state.movies)
+
   const filtered = false
   return (
     <div className="homebody">
       <Filter />
 
-      {searchedMovies.length === 0 ? <MoviesList /> : <FilteredMoviesList />}
+      {searched === false ? <MoviesList /> : <FilteredMoviesList />}
     </div>
   )
 }

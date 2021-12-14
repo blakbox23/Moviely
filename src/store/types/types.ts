@@ -41,6 +41,8 @@ export interface MoviesState {
   movies: IMovie[];
   movie: IMovie | undefined;
   searchedMovies: IMovie[];
+  searched: boolean,
+
 }
 
 
