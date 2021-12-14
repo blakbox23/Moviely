@@ -53,28 +53,6 @@ const moviesReducer = (state = initialState, action: MoviesActions) => {
           pending: false,
           error: action.payload.error
         };
-
-      case movieTypes.CREATE_MOVIE:
-        return {
-            ...state,
-            pending: true
-        };
-        
-
-        case movieTypes.CREATE_MOVIE_SUCCESS: 
-        return {
-        ...state,
-        pending: false,
-        movies: [...state.movies, action.payload.movie],
-        error: null
-      };
-
-      case movieTypes.CREATE_MOVIE_FAILURE:
-        return {
-          ...state,
-          pending: false,
-          error: action.payload.error
-        };
             
       default:
             return {

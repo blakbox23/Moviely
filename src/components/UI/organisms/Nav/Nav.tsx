@@ -5,6 +5,8 @@ import { fonts } from '../../../../constants/fonts'
 import usericon from '../../../../assets/user 1.png'
 import { NavLink } from 'react-router-dom'
 
+interface NavProps {}
+
 const Nav = () => {
   const user = {
     admin: true,

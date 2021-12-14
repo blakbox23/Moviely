@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import './style.css'
 import edit from '../../../../assets/edit 1.png'
 import remove from '../../../../assets/remove 1.png'
@@ -9,30 +10,25 @@ import Vector3 from '../../../../assets/Vector(3).png'
 import Vector4 from '../../../../assets/Vector(4).png'
 import { CommentItem } from '../../molecules/CommentItem/CommentItem'
 import { PageHeader } from '../../molecules/PageHeader/PageHeader'
-import { IMovie } from '../../../../store/types/types'
+import { Icomment, IMovie, Irating } from '../../../../store/types/types'
 import star from '../../../../assets/star.png'
 import { fonts } from '../../../../constants/fonts'
 
-let movie: IMovie
+var movie: IMovie
 
 const user = {
   admin: true,
 }
 
-export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
+export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...IMovie }) => {
   const averageGrade = () => {
     let averagegrade = 0
     let totalGrade = 0
-
-    if (movie.ratings === undefined) {
-      return 0
-    } else {
-      for (let i = 0; i < movie.ratings.length; i++) {
-        totalGrade += movie.ratings[i].grade
-      }
-      averagegrade = totalGrade / movie.ratings.length
-      return averagegrade
+    for (let i = 0; i < IMovie.ratings.length; i++) {
+      totalGrade += IMovie.ratings[i].grade
     }
+    averagegrade = totalGrade / IMovie.ratings.length
+    return averagegrade
   }
 
   return (
@@ -40,11 +36,11 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
       <div className="centerer flex">
         <div className="movie-profile-container flex">
           <div className=" movie-profile-pic">
-            <img src={movie.imageUrl} alt="where" />
+            <img src={IMovie.imageUrl} alt="where" />
           </div>
           <div className=" movie-profile-details">
             <div className="movie-profile-title flex">
-              <p className="movie-profile-title-name">{movie.title}</p>
+              <p className="movie-profile-title-name">{IMovie.title}</p>
               {user.admin ? (
                 <div className="movie-profile-icons">
                   <img src={edit} alt="edit" />
@@ -63,19 +59,19 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
               <div className="movie-profile-list flex">
                 <div className="flex movie-profile-listitem">
                   <img src={Vector} alt="" />
-                  <p> {movie.runtime}</p>
+                  <p> {IMovie.runtime}</p>
                 </div>
                 <div className="flex movie-profile-listitem">
                   <img src={Vector1} alt="" />
-                  <p> {movie.country}</p>
+                  <p> {IMovie.country}</p>
                 </div>
                 <div className="flex movie-profile-listitem">
                   <img src={Vector2} alt="" />
-                  <p> {movie.genre}</p>
+                  <p> {IMovie.genre}</p>
                 </div>
                 <div className="flex movie-profile-listitem">
                   <img src={Vector3} alt="" />
-                  <p> {movie.year}</p>
+                  <p> {IMovie.year}</p>
                 </div>
                 <div className="flex movie-profile-listitem">
                   <img src={Vector4} alt="" />
@@ -83,7 +79,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
                 </div>
               </div>
               <div className="movie-profile-description">
-                <p>{movie.description}</p>
+                <p>{IMovie.description}</p>
               </div>
             </div>
           </div>
@@ -101,7 +97,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
 
       <div className="flex movie-comments">
         <div>
-          <PageHeader text="Comments" />
+          <PageHeader />
         </div>
         <div className="movie-comments-container">
           <div className="movie-comment">
@@ -111,7 +107,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
               </div>
             )}
           </div>
-          {movie.comments?.map((comment) => (
+          {IMovie.comments?.map((comment) => (
             <div className="movie-comment" key={comment.id}>
               <CommentItem email={comment.email} comment={comment.content} />
             </div>
