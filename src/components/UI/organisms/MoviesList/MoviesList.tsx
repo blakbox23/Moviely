@@ -9,13 +9,11 @@ export const MoviesList = () => {
     (state: RootState) => state.movies,
   )
 
-  const { searchedMovies } = useSelector((state: RootState) => state.movies)
-
-  let filtered = searchedMovies[0]
+  // const { searchedMovies } = useSelector((state: RootState) => state.movies)
 
   return (
     <div className="movies-list flex">
-      {filtered &&
+      {/* {filtered &&
         searchedMovies.map((movie) => (
           <div key={movie.id}>
             <MovieItem
@@ -25,7 +23,7 @@ export const MoviesList = () => {
               description={movie.description}
             />
           </div>
-        ))}
+        ))} */}
       {movies &&
         movies.map((movie) => (
           <div key={movie.id}>

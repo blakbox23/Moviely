@@ -9,9 +9,6 @@ import { Formik, Form } from 'formik'
 import { validate } from '../../../../Validation/ManageMoviesValidation'
 import { useDispatch, useSelector } from 'react-redux'
 import { createMovie } from '../../../../store/Actions/MoviesAction'
-import { RootState } from '../../../../store/Reducers/rootReducers'
-import Toast from 'react-bootstrap/Toast'
-import { notify } from '../Toasts/Toast'
 
 interface ManageMovieProps {}
 
@@ -27,13 +24,7 @@ interface MyFormValues {
 }
 
 export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
-  // const [show, setShow] = useState<boolean>(false)
-
   const dispatch = useDispatch()
-
-  // const { pending, moviesByTitle, error } = useSelector(
-  //   (state: RootState) => state.movies,
-  // )
 
   const initialValues: MyFormValues = {
     title: '',
