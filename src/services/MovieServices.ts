@@ -25,12 +25,31 @@ const ENDPOINTS = {
       }
 
     searchedMovies = (values: IfilteredMovie) => {
-        let endPoint = (
-        ENDPOINTS.FILTER + "title=" + values.title 
+        if (values.year === ''){values.year=undefined}
+        let endPoint = ENDPOINTS.FILTER 
+        if(!values.title && values.year && values.genre && values.grade){
+          endPoint = endPoint + "genre=" + values.genre 
+          + "&year=" + values.year
+          + "&grade=" + values.grade
+        }else if(!values.year && values.title && values.genre && values.grade ){
+          endPoint = endPoint  + "title=" + values.title 
+          + "&genre=" + values.genre
+          + "&grade=" + values.grade
+        
+        }else if(values.year===undefined && !values.title){
+          endPoint = ENDPOINTS.FILTER + "genre=" + values.genre
+        + "&grade=" + values.grade
+            
+        }
+        else{
+          
+          endPoint = ENDPOINTS.FILTER  + "title=" + values.title 
         + "&genre=" + values.genre 
         + "&year=" + values.year
         + "&grade=" + values.grade
-        )
+        }
+        console.log('endPoint')
+        console.log(endPoint)
         return this.apiClient.get(endPoint);
       }
 }
