@@ -1,17 +1,28 @@
 import React from 'react'
 import './style.css'
-import { ErrorMessage, useField } from 'formik'
 
-export const Input: React.FC<any> = ({ ...props }) => {
-  const [field, meta] = useField(props)
+interface InputProps {
+  placeholder: string
+  type: string
+  inputplacement?: string
+  border?: boolean
+}
+
+export const Input: React.FC<InputProps> = ({
+  placeholder,
+  type,
+  inputplacement,
+  border = false,
+}) => {
   return (
     <div>
       <input
-        className={`input ${props.styleclass} ${props.border ? 'border' : ''} `}
-        {...field}
-        {...props}
+        className={`input ${inputplacement} ${type} ${
+          border ? 'border' : ''
+        } style={{ fontFamily: font }} `}
+        type={type}
+        placeholder={placeholder}
       />
-      <ErrorMessage component="div" name={field.name} className="error" />
     </div>
   )
 }
