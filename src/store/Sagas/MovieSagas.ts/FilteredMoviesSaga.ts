@@ -8,8 +8,6 @@ import {notify, success} from '../../../components/UI/organisms/Toasts/Toast';
 function* workFilteredMovies(action: any): any {
     try {
        const response = yield call(movieService.searchedMovies, action.payload);
-       console.log('response')
-       console.log(response.data)
 
     yield put(
       fetchFilteredMoviesSuccess({
@@ -34,7 +32,5 @@ function* workFilteredMovies(action: any): any {
 function* FilteredMoviesSaga() {
     yield all([takeLatest(movieTypes.FETCH_FILTERED_MOVIES, workFilteredMovies)])
 }
-
-
 
 export default FilteredMoviesSaga;

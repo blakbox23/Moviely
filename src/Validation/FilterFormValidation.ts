@@ -6,8 +6,7 @@ let day = currentTime.getDate()
 let year = currentTime.getFullYear()
 
 export const validate = Yup.object({
-    // title: Yup.string().required('*Required'),
-    // genre: Yup.string().required('Required'),
+
     year: Yup.number()
     .typeError('Year must be a number')
     .positive('year must be appropriate')

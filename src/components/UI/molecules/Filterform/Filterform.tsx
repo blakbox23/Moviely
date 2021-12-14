@@ -4,7 +4,6 @@ import './style.css'
 import { fonts } from '../../../../constants/fonts'
 import { Dropdown } from '../../atoms/Dropdown/Dropdown'
 import { Formik, Form } from 'formik'
-import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../../store/Reducers/rootReducers'
 import { fetchFilteredMovies } from '../../../../store/Actions/MoviesAction'
@@ -24,9 +23,6 @@ function Filterform() {
     (state: RootState) => state.movies,
   )
 
-  console.log('searchedMoviescomponent')
-  console.log(searchedMovies)
-
   const initialValues: FilterFormValues = {
     title: '',
     genre: '',
@@ -38,9 +34,7 @@ function Filterform() {
       initialValues={initialValues}
       validationSchema={validate}
       onSubmit={(values: FilterFormValues, { resetForm }) => {
-        console.log(values)
         dispatch(fetchFilteredMovies(values))
-        // resetForm({ values: initialValues })
       }}
     >
       {(formik) => (
