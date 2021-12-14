@@ -29,10 +29,10 @@ export interface IMovie {
   }
 
   export interface IfilteredMovie { 
-    title: string;
-    genre: string;
-    year: string;
-    grade: number;
+    title?: string;
+    genre?: string;
+    year?: string;
+    grade?: number;
   }
   
 export interface MoviesState {
@@ -52,7 +52,7 @@ export interface FetchmoviesFailurePayload {
 }
 
 export interface FetchFilteredMoviesSuccessPayload {
-  searchedMovies: IMovie; 
+  searchedMovies: IMovie[]; 
 }
 export interface FetchFilteredMoviesFailurePayload {
   error: string;
