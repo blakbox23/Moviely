@@ -8,6 +8,7 @@ import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../../store/Reducers/rootReducers'
 import { fetchFilteredMovies } from '../../../../store/Actions/MoviesAction'
+import { validate } from '../../../../Validation/FilterFormValidation'
 
 interface FilterFormValues {
   title: string
@@ -26,14 +27,6 @@ function Filterform() {
   console.log('searchedMoviescomponent')
   console.log(searchedMovies)
 
-  const validate = Yup.object({
-    title: Yup.string()
-      // .max(5, 'Must be 15 characters or less')
-      .required('*Required'),
-    genre: Yup.string().required('Required'),
-    year: Yup.string().required('Required'),
-  })
-
   const initialValues: FilterFormValues = {
     title: '',
     genre: '',
@@ -47,7 +40,7 @@ function Filterform() {
       onSubmit={(values: FilterFormValues, { resetForm }) => {
         console.log(values)
         dispatch(fetchFilteredMovies(values))
-        resetForm({ values: initialValues })
+        // resetForm({ values: initialValues })
       }}
     >
       {(formik) => (
