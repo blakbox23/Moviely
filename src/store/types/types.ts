@@ -82,6 +82,7 @@ export interface FetchFilteredMovies {
   type: typeof movieTypes.FETCH_FILTERED_MOVIES;
   payload: object;
 }
+
 export interface FetchMovieByID {
   type: typeof movieTypes.FETCH_MOVIE_BY_ID;
   payload: string
@@ -143,3 +144,4 @@ export type MoviesActions =
   | FetchFilteredMovies
   | FetchFilteredMoviesSuccess
   | FetchFilteredMoviesFailure
+ 

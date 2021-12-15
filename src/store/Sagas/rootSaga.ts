@@ -6,4 +6,3 @@ import FilteredMoviesSaga from "./MovieSagas.ts/FilteredMoviesSaga";
 
 export default function* rootSaga() {
   yield all([fork(moviesSaga), fork(movieSaga), fork(CreateMovieSaga), fork(FilteredMoviesSaga)]);
-}

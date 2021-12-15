@@ -20,8 +20,7 @@ import {
     FetchFilteredMoviesSuccess,
     FetchFilteredMoviesFailurePayload,
     FetchFilteredMoviesFailure,
-    
-
+  
   } from "../types/types";
 
 

@@ -9,6 +9,7 @@ import { Formik, Form } from 'formik'
 import { validate } from '../../../../Validation/ManageMoviesValidation'
 import { useDispatch, useSelector } from 'react-redux'
 import { createMovie } from '../../../../store/Actions/MoviesAction'
+import { RootState } from '../../../../store/Reducers/rootReducers'
 
 interface ManageMovieProps {}
 
