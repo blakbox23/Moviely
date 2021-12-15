@@ -25,7 +25,7 @@
 .genres {
     appearance: none;
     background-Image: url('../../../../assets/drop.png');
-    background-position: 90% 50%;
+    background-position: 90% 50%; 
 }
 
 .submit-input {

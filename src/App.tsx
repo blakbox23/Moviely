@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react'
 import './App.css'
-import Homebody from './components/UI/organisms/HomeBody/Homebody'
+// import Homebody from './components/UI/organisms/HomeBody/Homebody'
 import Nav from './components/UI/organisms/Nav/Nav'
 import { useDispatch } from 'react-redux'
 import { fetchMovies } from './store/Actions/MoviesAction'
 import MovieDetails from './components/pages/MovieDetails'
 import { Routes, Route } from 'react-router-dom'
+import { ManageMovie } from './components/UI/organisms/ManageMovie/ManageMovie'
+import NewMovie from './components/pages/NewMovie'
+import Homebody from './components/UI/organisms/HomeBody/Homebody'
 function App() {
   const dispatch = useDispatch()
 
@@ -24,6 +27,11 @@ function App() {
       path: '/movies/:id',
       name: 'Details',
       component: <MovieDetails />,
+    },
+    {
+      path: '/add-movie',
+      name: 'Details',
+      component: <NewMovie />,
     },
   ]
 

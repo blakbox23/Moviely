@@ -6,6 +6,8 @@ const initialState: MoviesState = {
     error: null,
     movies: [],
     movie: undefined,
+    searchedMovies: [],
+    searched: false,
   };
 
 
@@ -33,6 +35,29 @@ const moviesReducer = (state = initialState, action: MoviesActions) => {
         error: action.payload.error
       };
 
+      case movieTypes.FETCH_FILTERED_MOVIES:
+        return {
+            ...state,
+            searched: true,
+            pending: true
+        };
+
+        case movieTypes.FETCH_FILTERED_MOVIES_SUCCESS: 
+        return {
+        ...state,
+        pending: false,
+        searchedMovies: action.payload.searchedMovies,
+        error: null
+      };
+
+      case movieTypes.FETCH_FILTERED_MOVIES_FAILURE:
+        return {
+          ...state,
+          pending: false,
+          error: action.payload.error
+        };
+
+
       case movieTypes.FETCH_MOVIE_BY_ID:
         return {
             ...state,
@@ -48,6 +73,28 @@ const moviesReducer = (state = initialState, action: MoviesActions) => {
       };
 
       case movieTypes.FETCH_MOVIE_BY_ID_FAILURE:
+        return {
+          ...state,
+          pending: false,
+          error: action.payload.error
+        };
+
+      case movieTypes.CREATE_MOVIE:
+        return {
+            ...state,
+            pending: true
+        };
+        
+
+        case movieTypes.CREATE_MOVIE_SUCCESS: 
+        return {
+        ...state,
+        pending: false,
+        movies: [...state.movies, action.payload.movie],
+        error: null
+      };
+
+      case movieTypes.CREATE_MOVIE_FAILURE:
         return {
           ...state,
           pending: false,
