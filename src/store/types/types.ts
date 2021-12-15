@@ -1,4 +1,5 @@
 import { movieTypes } from "../ActionTypes/Movietypes";
+import { ratingTypes } from "../ActionTypes/RatingTypes";
 
 export interface IMovie {
     id: string;
@@ -12,7 +13,7 @@ export interface IMovie {
     comments: Icomment[];
     ratings: Irating[];
     movieTrailer: string;
-  }
+  } 
 
   export interface Irating {
     id: string;
@@ -34,6 +35,11 @@ export interface IMovie {
     year?: string;
     grade?: number;
   }
+  export interface Iratingobject { 
+    email: string;
+    movieId: string;
+    grade?: number;
+  }
   
 export interface MoviesState {
   pending: boolean;
@@ -42,7 +48,12 @@ export interface MoviesState {
   movie: IMovie | undefined;
   searchedMovies: IMovie[];
   searched: boolean,
+}
 
+export interface RatingsState {
+  pending: boolean;
+  error: string | null;
+  movieRating: number | null,
 }
 
 
@@ -73,6 +84,13 @@ export interface CreateMovieSuccessPayload {
 export interface CreateMovieFailurePayload {
   error: string;
 }
+export interface UpdateRatingFailurePayload {
+  error: string;
+}
+
+export interface UpdateRatingSuccessPayload {
+  movieRating: Irating;
+}
 
 
 export interface Fetchmovies {
@@ -88,6 +106,10 @@ export interface FetchMovieByID {
 }
 export interface CreateMovie {
   type: typeof movieTypes.CREATE_MOVIE;
+  payload: object
+}
+export interface UpdateRating {
+  type: typeof ratingTypes.UPDATE_RATING;
   payload: object
 }
 
@@ -128,6 +150,16 @@ export interface CreateMovieFailure {
   payload: CreateMovieFailurePayload
 }
 
+export interface UpdateRatingSuccess {
+  type: typeof ratingTypes.UPDATE_RATING_SUCCESS;
+  payload: UpdateRatingSuccessPayload
+}
+
+export interface UpdateRatingFailure {
+  type: typeof ratingTypes.UPDATE_RATING_FAILURE;
+  payload: FetchmoviesFailurePayload
+}
+
 
 
 export type MoviesActions =
@@ -143,3 +175,10 @@ export type MoviesActions =
   | FetchFilteredMovies
   | FetchFilteredMoviesSuccess
   | FetchFilteredMoviesFailure
+
+
+  export type RatingActions =
+  | UpdateRating
+  | UpdateRatingSuccess
+  | UpdateRatingFailure
+
