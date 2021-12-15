@@ -2,7 +2,6 @@ import { put, call, takeEvery, all } from 'redux-saga/effects';
 import { createMovieSuccess, createMovieFailure } from '../../Actions/MoviesAction'
 import { movieService } from '../../../services/MovieServices'
 import { movieTypes } from '../../ActionTypes/Movietypes'
-import { RootState } from '../../Reducers/rootReducers';
 import {notify, success} from '../../../components/UI/organisms/Toasts/Toast'
 
 
