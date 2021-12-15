@@ -12,11 +12,12 @@ import { PageHeader } from '../../molecules/PageHeader/PageHeader'
 import { IMovie } from '../../../../store/types/types'
 import star from '../../../../assets/star.png'
 import { fonts } from '../../../../constants/fonts'
+import { RatingComponent } from '../../molecules/RatingComponent/RatingComponent'
 
 let movie: IMovie
 
 const user = {
-  admin: true,
+  admin: false,
 }
 
 export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
@@ -35,6 +36,8 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
     }
   }
 
+  let avg = averageGrade()
+
   return (
     <div className="movie-profile" style={{ fontFamily: fonts.FORMFONT }}>
       <div className="centerer flex">
@@ -52,9 +55,10 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
                 </div>
               ) : (
                 <div className="movie-rating ">
-                  <img src={star} alt="" />
-                  <img src={star} alt="" />
-                  <img src={star} alt="" />
+                  <RatingComponent
+                    movieId={movie.id}
+                    movieRating={movie.ratings}
+                  />
                 </div>
               )}
             </div>
