@@ -12,9 +12,9 @@ import Homebody from './components/UI/organisms/HomeBody/Homebody'
 function App() {
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(fetchMovies())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(fetchMovies())
+  // }, [dispatch])
 
   const routes = [
     {

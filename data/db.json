@@ -170,6 +170,42 @@
       "email": "joana.cripps@maildrop.cc",
       "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
       "grade": 3
+    },
+    {
+      "email": "dev@rate.com",
+      "movieId": "lzXsNkD",
+      "grade": 2,
+      "id": "WPAFN6W"
+    },
+    {
+      "email": "dev@rate.com",
+      "movieId": "lzXsNkD",
+      "grade": 2,
+      "id": "YJPma5D"
+    },
+    {
+      "email": "dev@rate.com",
+      "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
+      "grade": 4,
+      "id": "Vx4Yr9N"
+    },
+    {
+      "email": "dev@rate.com",
+      "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
+      "grade": 4,
+      "id": "IXQV9Ql"
+    },
+    {
+      "email": "dev@rate.com",
+      "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
+      "grade": 4,
+      "id": "juojbBW"
+    },
+    {
+      "email": "dev@rate.com",
+      "movieId": "lzXsNkD",
+      "grade": 2,
+      "id": "_IsPmpl"
     }
   ]
 }
