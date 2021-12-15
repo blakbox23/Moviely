@@ -36,8 +36,6 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
     }
   }
 
-  let avg = averageGrade()
-
   return (
     <div className="movie-profile" style={{ fontFamily: fonts.FORMFONT }}>
       <div className="centerer flex">
@@ -57,7 +55,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
                 <div className="movie-rating ">
                   <RatingComponent
                     movieId={movie.id}
-                    movieRating={movie.ratings}
+                    averageRating={averageGrade()}
                   />
                 </div>
               )}

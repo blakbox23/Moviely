@@ -17,6 +17,7 @@ const moviesReducer = (state = initialState, action: MoviesActions) => {
         case movieTypes.FETCH_MOVIES:
         return {
             ...state,
+            movie: undefined,
             pending: true
         };
 

@@ -8,10 +8,10 @@ import './style.css'
 
 interface RatingComponent {
   movieId: string
-  movieRating: Irating[]
+  averageRating: number
 }
 
-interface ratingObject {
+export interface IratingObject {
   email: string
   movieId: string
   grade: number
@@ -19,32 +19,13 @@ interface ratingObject {
 
 export const RatingComponent: React.FC<RatingComponent> = ({
   movieId,
-  movieRating,
+  averageRating,
 }) => {
   const dispatch = useDispatch()
 
-  const averageGrade = (): number => {
-    let averagegrade = 0
-    let totalGrade = 0
+  const initialGrade = averageRating
 
-    if (movieRating === undefined) {
-      return 0
-    } else {
-      for (let i = 0; i < movieRating.length; i++) {
-        totalGrade += movieRating[i].grade
-      }
-      averagegrade = totalGrade / movieRating.length
-      return averagegrade
-    }
-  }
-
-  const initialRating: ratingObject = {
-    email: 'dev@rate.com',
-    movieId: movieId,
-    grade: averageGrade(),
-  }
-
-  let starRating = initialRating.grade * 20
+  let starRating = initialGrade * 20
 
   console.log('starRating1')
   console.log(starRating)
@@ -57,8 +38,11 @@ export const RatingComponent: React.FC<RatingComponent> = ({
 
     setRating(grade * 20)
 
-    initialRating.grade = grade
-    let newRating = initialRating
+    let newRating = {
+      email: 'dev@try.com',
+      movieId: movieId,
+      grade: grade,
+    }
     console.log('newRating')
     console.log(newRating)
 
