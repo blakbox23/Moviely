@@ -38,7 +38,7 @@
     {
       "id": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
       "title": "The Terminator",
-      "genre": "ACTION",
+      "genre": "action",
       "year": 1984,
       "runtime": 107,
       "imageUrl": "https://goombastomp.com/wp-content/uploads/2019/11/The-Terminator-Film-Review.jpeg",
@@ -58,7 +58,7 @@
           "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
           "content": "Too much action! :(",
           "approved": false
-        }  
+        }
       ],
       "ratings": [
         {
@@ -66,7 +66,7 @@
           "email": "joana.cripps@maildrop.cc",
           "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
           "grade": 3
-        }  
+        }
       ],
       "movieTrailer": "https://www.youtube.com/watch?v=k64P4l2Wmeg"
     },
@@ -115,15 +115,37 @@
       "id": "JBqIzhz"
     },
     {
-      "title": "Bat man 2",
+      "title": "joker2",
       "genre": "action",
-      "year": "ads",
-      "runtime": "asdf",
-      "imageUrl": "adf",
+      "year": "2012",
+      "runtime": "dzfb",
+      "imageUrl": "asdfa",
       "country": "asdf",
-      "trailerUrl": "asdf",
+      "trailerUrl": "sdf",
       "description": "asdf",
-      "id": "iRnsD8R"
+      "id": "-haKMZr"
+    },
+    {
+      "title": "nuw",
+      "genre": "action",
+      "year": "2012",
+      "runtime": "22",
+      "imageUrl": "feffrfrfrrfr",
+      "country": "rfrf",
+      "trailerUrl": "rfrrfrf",
+      "description": "ecre",
+      "id": "ftBH4lp"
+    },
+    {
+      "title": "Sitcom",
+      "genre": "comedy",
+      "year": "hiu",
+      "runtime": "hiuh",
+      "imageUrl": "iuh",
+      "country": "iuh",
+      "trailerUrl": "ih",
+      "description": "ih",
+      "id": "UwpNn1V"
     }
   ],
   "comments": [
