@@ -9,7 +9,9 @@ function* workUpdateRating(action:any): any {
       const response = yield call(ratingService.editMovieRating, action.payload);
 
       console.log('Rating response')
-      console.log(response.data)
+      console.log(response.data.grade)
+      
+      success("Successful")
 
     yield put(
         updateRatingSuccess({

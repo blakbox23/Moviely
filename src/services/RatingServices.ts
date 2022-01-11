@@ -1,5 +1,5 @@
 import ApiService from "./ApiServices";
-import { IratingObject } from "../components/UI/molecules/RatingComponent/RatingComponent"
+import { IfetchRatingObject, IratingObject } from "../components/UI/molecules/RatingComponent/RatingComponent"
 
 const ENDPOINTS = {
     RATINGS: '/ratings/',
@@ -8,8 +8,12 @@ const ENDPOINTS = {
  
 class RatingService extends ApiService {
 
-    editMovieRating = (values: IratingObject) => {
-        return this.apiClient.put(ENDPOINTS.MOVIES + values.movieId + '/ratings', values)
+    editMovieRating = (values: IratingObject[]) => {
+        return this.apiClient.patch(ENDPOINTS.MOVIES, values)
+    }
+
+    getMovieRating = (movieId: string) => {
+        return this.apiClient.get(ENDPOINTS.MOVIES + movieId + '/ratings')
     }
 
 }

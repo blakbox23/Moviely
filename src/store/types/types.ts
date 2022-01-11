@@ -1,3 +1,4 @@
+import { IfetchRatingObject } from "../../components/UI/molecules/RatingComponent/RatingComponent";
 import { movieTypes } from "../ActionTypes/Movietypes";
 import { ratingTypes } from "../ActionTypes/RatingTypes";
 
@@ -48,12 +49,15 @@ export interface MoviesState {
   movie: IMovie | undefined;
   searchedMovies: IMovie[];
   searched: boolean,
+  
 }
 
 export interface RatingsState {
   pending: boolean;
   error: string | null;
   movieRating: number | null,
+  currentGrade: number | null,
+
 }
 
 
@@ -87,9 +91,14 @@ export interface CreateMovieFailurePayload {
 export interface UpdateRatingFailurePayload {
   error: string;
 }
-
 export interface UpdateRatingSuccessPayload {
   movieRating: Irating;
+}
+export interface FetchRatingFailurePayload {
+  error: string;
+}
+export interface FetchRatingSuccessPayload {
+  currentGrade: number;
 }
 
 
@@ -111,6 +120,10 @@ export interface CreateMovie {
 export interface UpdateRating {
   type: typeof ratingTypes.UPDATE_RATING;
   payload: object
+}
+export interface FetchRating {
+  type: typeof ratingTypes.FETCH_RATING;
+  payload: IfetchRatingObject
 }
 
 
@@ -160,6 +173,16 @@ export interface UpdateRatingFailure {
   payload: FetchmoviesFailurePayload
 }
 
+export interface FetchRatingSuccess {
+  type: typeof ratingTypes.FETCH_RATING_SUCCESS;
+  payload: FetchRatingSuccessPayload
+}
+
+export interface FetchRatingFailure {
+  type: typeof ratingTypes.FETCH_RATING_FAILURE;
+  payload: FetchRatingFailurePayload
+}
+
 
 
 export type MoviesActions =
@@ -181,4 +204,7 @@ export type MoviesActions =
   | UpdateRating
   | UpdateRatingSuccess
   | UpdateRatingFailure
+  | FetchRating
+  | FetchRatingSuccess
+  | FetchRatingFailure
 
