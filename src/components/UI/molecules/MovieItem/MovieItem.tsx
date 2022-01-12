@@ -7,6 +7,7 @@ import Button from '../../atoms/Button/Button'
 import { images } from '../../../../constants/missingimage'
 import { colors } from '../../../../constants/colors'
 import { NavLink } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
 interface MovieItemProps {
   id: string
@@ -22,6 +23,14 @@ export const MovieItem: React.FC<MovieItemProps> = ({
   description,
 }) => {
   const page = `/movies/${id}`
+
+  const dispatch = useDispatch()
+
+  const handleDelete = () => {
+    console.log('Deleted')
+    // dispatch(deleteMovie())
+  }
+
   return (
     <div className="movie-card ">
       <div>
@@ -62,11 +71,13 @@ export const MovieItem: React.FC<MovieItemProps> = ({
           placement={'movie-card-button'}
           color={colors.PRIMARYBTN}
         />
-        <Button
-          buttontext="Delete"
-          placement={'movie-card-button'}
-          color={colors.SECONDARYBTN}
-        />
+        <div onClick={handleDelete}>
+          <Button
+            buttontext="Delete"
+            placement={'movie-card-button'}
+            color={colors.SECONDARYBTN}
+          />
+        </div>
       </div>
     </div>
   )
