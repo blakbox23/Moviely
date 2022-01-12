@@ -8,6 +8,7 @@ import { images } from '../../../../constants/missingimage'
 import { colors } from '../../../../constants/colors'
 import { NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { deleteMovie } from '../../../../store/Actions/MoviesAction'
 
 interface MovieItemProps {
   id: string

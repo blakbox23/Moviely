@@ -20,6 +20,11 @@ import {
     FetchFilteredMoviesSuccess,
     FetchFilteredMoviesFailurePayload,
     FetchFilteredMoviesFailure,
+    DeleteMovie,
+    DeleteMovieSuccess,
+    DeleteMovieFailure,
+    DeleteMovieSuccessPayload,
+    DeleteMovieFailurePayload,
     
 
   } from "../types/types";
@@ -79,6 +84,22 @@ import {
   });
   export const createMovieFailure = (payload: CreateMovieFailurePayload): CreateMovieFailure => ({
     type: movieTypes.CREATE_MOVIE_FAILURE,
+    payload
+  }); 
+
+
+  export const deleteMovie = (payload: object): DeleteMovie => {
+    return {
+      type: movieTypes.DELETE_MOVIE,
+      payload
+    };
+  };
+  export const deleteMovieSuccess = (payload: DeleteMovieSuccessPayload): DeleteMovieSuccess => ({
+    type: movieTypes.DELETE_MOVIE_SUCCESS,
+    payload
+  });
+  export const deleteMovieFailure = (payload: DeleteMovieFailurePayload): DeleteMovieFailure => ({
+    type: movieTypes.DELETE_MOVIE_FAILURE,
     payload
   }); 
 

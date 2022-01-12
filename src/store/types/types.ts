@@ -100,6 +100,12 @@ export interface FetchRatingFailurePayload {
 export interface FetchRatingSuccessPayload {
   currentGrade: number;
 }
+export interface DeleteMovieSuccessPayload {
+  movie: IMovie;
+}
+export interface DeleteMovieFailurePayload {
+  error: string;
+}
 
 
 export interface Fetchmovies {
@@ -124,6 +130,10 @@ export interface UpdateRating {
 export interface FetchRating {
   type: typeof ratingTypes.FETCH_RATING;
   payload: IfetchRatingObject
+}
+export interface DeleteMovie {
+  type: typeof movieTypes.DELETE_MOVIE;
+  payload: object
 }
 
 
@@ -183,6 +193,15 @@ export interface FetchRatingFailure {
   payload: FetchRatingFailurePayload
 }
 
+export interface DeleteMovieSuccess {
+  type: typeof movieTypes.DELETE_MOVIE_SUCCESS;
+  payload: DeleteMovieSuccessPayload
+}
+export interface DeleteMovieFailure {
+  type: typeof movieTypes.DELETE_MOVIE_FAILURE;
+  payload: DeleteMovieFailurePayload
+}
+
 
 
 export type MoviesActions =
@@ -198,6 +217,9 @@ export type MoviesActions =
   | FetchFilteredMovies
   | FetchFilteredMoviesSuccess
   | FetchFilteredMoviesFailure
+  | DeleteMovie
+  | DeleteMovieSuccess
+  | DeleteMovieFailure
 
 
   export type RatingActions =
