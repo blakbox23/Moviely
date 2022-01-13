@@ -49,6 +49,7 @@ export interface MoviesState {
   movie: IMovie | undefined;
   searchedMovies: IMovie[];
   searched: boolean,
+  movie_id: string | null,
   
 }
 
@@ -101,7 +102,7 @@ export interface FetchRatingSuccessPayload {
   currentGrade: number;
 }
 export interface DeleteMovieSuccessPayload {
-  movie: IMovie;
+  movie_id: string;
 }
 export interface DeleteMovieFailurePayload {
   error: string;
@@ -133,7 +134,7 @@ export interface FetchRating {
 }
 export interface DeleteMovie {
   type: typeof movieTypes.DELETE_MOVIE;
-  payload: object
+  payload: string
 }
 
 

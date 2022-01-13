@@ -88,16 +88,16 @@ import {
   }); 
 
 
-  export const deleteMovie = (payload: object): DeleteMovie => {
-    return {
+  export const deleteMovie = (payload: string): DeleteMovie => ({
       type: movieTypes.DELETE_MOVIE,
-      payload
-    };
-  };
+      payload  
+  });
+
   export const deleteMovieSuccess = (payload: DeleteMovieSuccessPayload): DeleteMovieSuccess => ({
     type: movieTypes.DELETE_MOVIE_SUCCESS,
     payload
   });
+
   export const deleteMovieFailure = (payload: DeleteMovieFailurePayload): DeleteMovieFailure => ({
     type: movieTypes.DELETE_MOVIE_FAILURE,
     payload
