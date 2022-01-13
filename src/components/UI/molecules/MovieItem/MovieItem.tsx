@@ -28,8 +28,8 @@ export const MovieItem: React.FC<MovieItemProps> = ({
   const dispatch = useDispatch()
 
   const handleDelete = () => {
-    console.log('Deleted')
-    // dispatch(deleteMovie())
+    // console.log(`deleted id: ${id}`)
+    dispatch(deleteMovie(id))
   }
 
   return (
