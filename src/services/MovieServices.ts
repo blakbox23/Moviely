@@ -46,6 +46,10 @@ const ENDPOINTS = {
 
         return this.apiClient.get(endPoint);
       }
+
+      removeMovie = (id: any) => {
+        return this.apiClient.delete(ENDPOINTS.MOVIES + id, id);
+      }
 }
 
 export const movieService: any = new MovieService(); 
