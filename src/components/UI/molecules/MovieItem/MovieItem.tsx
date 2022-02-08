@@ -10,7 +10,6 @@ import { NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { deleteMovie } from '../../../../store/Actions/MoviesAction'
 import Modal from 'react-bootstrap/Modal'
-// import 'bootstrap/dist/css/bootstrap.min.css'
 
 interface MovieItemProps {
   id: string
