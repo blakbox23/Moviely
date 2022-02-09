@@ -9,7 +9,9 @@ import { colors } from '../../../../constants/colors'
 import { NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { deleteMovie } from '../../../../store/Actions/MoviesAction'
-import Modal from 'react-bootstrap/Modal'
+import Modal from 'react-modal'
+
+Modal.setAppElement('#root')
 
 interface MovieItemProps {
   id: string
@@ -28,9 +30,9 @@ export const MovieItem: React.FC<MovieItemProps> = ({
 
   const dispatch = useDispatch()
 
-  const [show, setShow] = useState(false)
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const handleClose = () => setModalIsOpen(false)
+  const handleShow = () => setModalIsOpen(true)
 
   const handleDelete = () => {
     dispatch(deleteMovie(id))
@@ -88,29 +90,66 @@ export const MovieItem: React.FC<MovieItemProps> = ({
         </div>
       </div>
 
-      <Modal show={show} onHide={handleClose} backdrop="static">
-        <Modal.Header closeButton>
-          <Modal.Title>Delete Movie</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Are you sure you want to delete this movie?</Modal.Body>
-        <Modal.Footer>
-          <div>
-            <div onClick={handleClose}>
-              <Button
-                buttontext="Cancel"
-                placement={'movie-card-button'}
-                color={colors.PRIMARYBTN}
-              />
-            </div>
-            <div onClick={handleDelete}>
-              <Button
-                buttontext="Delete"
-                placement={'movie-card-button'}
-                color={colors.SECONDARYBTN}
-              />
-            </div>
+      <Modal
+        isOpen={modalIsOpen}
+        style={{
+          content: {
+            width: '250px',
+            height: '200px',
+            borderRadius: '20px',
+            top: '35%',
+            left: '40%',
+            right: 'auto',
+            bottom: 'auto',
+            textAlign: 'center',
+          },
+          overlay: {
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+          },
+        }}
+      >
+        {/* <Modal.Header closeButton> */}
+        <h2
+          style={{
+            color: '#87ceeb',
+            marginBottom: '2rem',
+          }}
+        >
+          Delete Movie
+        </h2>
+        {/* </Modal.Header> */}
+        <p
+          style={{
+            color: 'purple',
+            fontSize: '1.2rem',
+          }}
+        >
+          Are you sure you want to delete this movie?
+        </p>
+        {/* <Modal.Footer> */}
+        <div
+          className="flex"
+          style={{
+            marginTop: '2rem',
+            justifyContent: 'space-evenly',
+          }}
+        >
+          <div onClick={handleClose}>
+            <Button
+              buttontext="Cancel"
+              placement={'movie-card-button'}
+              color={colors.PRIMARYBTN}
+            />
           </div>
-        </Modal.Footer>
+          <div onClick={handleDelete}>
+            <Button
+              buttontext="Delete"
+              placement={'movie-card-button'}
+              color={colors.SECONDARYBTN}
+            />
+          </div>
+        </div>
+        {/* </Modal.Footer> */}
       </Modal>
     </>
   )
