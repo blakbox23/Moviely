@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './style.css'
 import edit from '../../../../assets/edit 1.png'
 import remove from '../../../../assets/remove 1.png'
@@ -9,17 +9,42 @@ import Vector3 from '../../../../assets/Vector(3).png'
 import Vector4 from '../../../../assets/Vector(4).png'
 import { CommentItem } from '../../molecules/CommentItem/CommentItem'
 import { PageHeader } from '../../molecules/PageHeader/PageHeader'
-import { IMovie } from '../../../../store/types/types'
+import { IMovie, Irating } from '../../../../store/types/types'
 import star from '../../../../assets/star.png'
 import { fonts } from '../../../../constants/fonts'
+import { RatingComponent } from '../../molecules/RatingComponent/RatingComponent'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../../../store/Reducers/rootReducers'
+import { fetchRating } from '../../../../store/Actions/RatingsActions'
 
 let movie: IMovie
 
+export interface Iuser {
+  admin: boolean
+  email: string
+}
+
 const user = {
-  admin: true,
+  admin: false,
+  email: 'dev@try.com',
 }
 
 export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
+  const dispatch = useDispatch()
+
+  let fetchRatingObject = {
+    email: user.email,
+    movieId: movie.id,
+  }
+
+  const { pending, currentGrade, error } = useSelector(
+    (state: RootState) => state.ratings,
+  )
+
+  // useEffect(() => {
+  //   dispatch(fetchRating(fetchRatingObject))
+  // }, [dispatch])
+
   const averageGrade = () => {
     let averagegrade = 0
     let totalGrade = 0
@@ -34,6 +59,31 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
       return averagegrade
     }
   }
+  const currentMovieGrade = () => {
+    if (movie.ratings === undefined) {
+      return 0
+    } else {
+      let userRating = movie.ratings.find(
+        (rating: Irating) => rating.email === user.email,
+      )
+      return userRating ? userRating.grade : 0
+    }
+  }
+  const currentMovieRating = () => {
+    if (movie.ratings === undefined) {
+      return 'no ratings'
+    } else if (!movie.ratings.some((rating) => rating.email === user.email)) {
+      return 'no ratings'
+    } else {
+      let ratings = movie.ratings.find(
+        (rating: Irating) => rating.email === user.email,
+      )
+      return ratings ? ratings.id : 'no ratings'
+    }
+  }
+
+  console.log('currentMovieRating()')
+  console.log(currentMovieRating())
 
   return (
     <div className="movie-profile" style={{ fontFamily: fonts.FORMFONT }}>
@@ -52,9 +102,12 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
                 </div>
               ) : (
                 <div className="movie-rating ">
-                  <img src={star} alt="" />
-                  <img src={star} alt="" />
-                  <img src={star} alt="" />
+                  <RatingComponent
+                    movieId={movie.id}
+                    user={user}
+                    currentGrade={currentMovieGrade()}
+                    currentRatingId={currentMovieRating()}
+                  />
                 </div>
               )}
             </div>

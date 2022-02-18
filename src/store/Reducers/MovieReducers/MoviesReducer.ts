@@ -8,6 +8,7 @@ const initialState: MoviesState = {
     movie: undefined,
     searchedMovies: [],
     searched: false,
+    movie_id: null,
   };
 
 
@@ -17,6 +18,7 @@ const moviesReducer = (state = initialState, action: MoviesActions) => {
         case movieTypes.FETCH_MOVIES:
         return {
             ...state,
+            movie: undefined,
             pending: true
         };
 
@@ -95,6 +97,28 @@ const moviesReducer = (state = initialState, action: MoviesActions) => {
       };
 
       case movieTypes.CREATE_MOVIE_FAILURE:
+        return {
+          ...state,
+          pending: false,
+          error: action.payload.error
+        };
+
+        case movieTypes.DELETE_MOVIE:
+        return {
+            ...state,
+            pending: true,
+            movie_id: action.payload
+        };
+
+        case movieTypes.DELETE_MOVIE_SUCCESS: 
+        return {
+        ...state,
+        pending: false,
+        movies: state.movies.filter((movie) => movie.id !== state.movie_id),
+        error: null
+      };
+
+      case movieTypes.DELETE_MOVIE_FAILURE:
         return {
           ...state,
           pending: false,

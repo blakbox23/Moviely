@@ -66,6 +66,12 @@
           "email": "joana.cripps@maildrop.cc",
           "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
           "grade": 3
+        },
+        {
+          "id": "e4da3888-6903-4fda-811f-0007fb3a4f0",
+          "email": "dev@try.com",
+          "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
+          "grade": 5
         }
       ],
       "movieTrailer": "https://www.youtube.com/watch?v=k64P4l2Wmeg"
@@ -79,10 +85,18 @@
       "country": "USA",
       "trailerUrl": "cs",
       "description": "Arthur Fleck, a party clown, leads an impoverished life with his ailing mother. However, when society shuns him and brands him as a freak, he decides to embrace the life of crime and chaos.",
-      "id": "lzXsNkD"
+      "id": "lzXsNkD",
+      "ratings": [
+        {
+          "id": "e4da3888-6903-4fda-811f-0007fb3a4f0",
+          "email": "dev@try.com",
+          "movieId": "lzXsNkD",
+          "grade": 3
+        }
+      ]
     },
     {
-      "title": "Bat man",
+      "title": "Batman",
       "genre": "action",
       "year": "2007",
       "runtime": "100",
@@ -92,6 +106,7 @@
       "description": "Batman is a superhero who appears in American comic books published by DC Comics. The character was created by artist Bob Kane and writer Bill Finger, and debuted in the 27th issue of the comic book ",
       "id": "MavDo5c"
     }
+
   ],
   "comments": [
     {
@@ -115,6 +130,18 @@
       "email": "joana.cripps@maildrop.cc",
       "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
       "grade": 3
+    },
+    {
+      "email": "dev@rate.com",
+      "movieId": "lzXsNkD",
+      "grade": 2,
+      "id": "WPAFN6W"
+    },
+    {
+      "email": "dev@try.com",
+      "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
+      "grade": 4,
+      "id": "2F6pR5x"
     }
   ]
 }

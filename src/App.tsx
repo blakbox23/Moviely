@@ -14,9 +14,9 @@ import PendingUsersPage from './components/pages/PendingUsersPage'
 function App() {
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(fetchMovies())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(fetchMovies())
+  // }, [dispatch])
 
   const routes = [
     {
