@@ -1,6 +1,7 @@
 import { IfetchRatingObject } from "../../components/UI/molecules/RatingComponent/RatingComponent";
 import { movieTypes } from "../ActionTypes/Movietypes";
 import { ratingTypes } from "../ActionTypes/RatingTypes";
+import { userTypes } from "../ActionTypes/Usertypes";
 
 export interface IMovie {
     id: string;
@@ -51,6 +52,12 @@ export interface MoviesState {
   searched: boolean,
   movie_id: string | null,
   
+}
+
+export interface UserState {
+  pending: boolean;
+  error: string | null;
+  user: object | null;
 }
 
 export interface RatingsState {
@@ -107,6 +114,12 @@ export interface DeleteMovieSuccessPayload {
 export interface DeleteMovieFailurePayload {
   error: string;
 }
+export interface LoginSuccessPayload {
+  user: object;
+}
+export interface LoginFailurePayload {
+  error: string;
+}
 
 
 export interface Fetchmovies {
@@ -137,6 +150,11 @@ export interface DeleteMovie {
   type: typeof movieTypes.DELETE_MOVIE;
   payload: string
 }
+export interface Logintype {
+  type: typeof userTypes.LOGIN;
+  payload: object
+}
+
 
 
 export type FetchmoviesSuccess = {
@@ -173,6 +191,14 @@ export interface CreateMovieSuccess {
 export interface CreateMovieFailure {
   type: typeof movieTypes.CREATE_MOVIE_FAILURE;
   payload: CreateMovieFailurePayload
+}
+export interface LoginSuccessType {
+  type: typeof userTypes.LOGIN_SUCCESS;
+  payload: object
+}
+export interface LoginFailureType {
+  type: typeof userTypes.LOGIN_FAILURE;
+  payload: LoginFailurePayload
 }
 
 export interface UpdateRatingSuccess {
@@ -231,4 +257,11 @@ export type MoviesActions =
   | FetchRating
   | FetchRatingSuccess
   | FetchRatingFailure
+
+  
+  export type UserActions =
+  | Logintype
+  | LoginSuccessType
+  | LoginFailureType
+
 
