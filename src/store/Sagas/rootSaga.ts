@@ -6,7 +6,8 @@ import FilteredMoviesSaga from "./MovieSagas/FilteredMoviesSaga";
 import UpdateRatingSaga from './RatingSagas/UpdateRatingSaga'
 import FetchRatingSaga from "./RatingSagas/FetchRatingSaga";
 import DeleteMovieSaga from "./MovieSagas/DeleteMovieSaga";
+import LoginSaga from "./UserSagas/LoginSaga";
 
 export default function* rootSaga() {
-  yield all([fork(moviesSaga), fork(movieSaga), fork(CreateMovieSaga), fork(FilteredMoviesSaga), fork(UpdateRatingSaga), fork(FetchRatingSaga), fork(DeleteMovieSaga)]);
+  yield all([fork(moviesSaga), fork(movieSaga), fork(CreateMovieSaga), fork(FilteredMoviesSaga), fork(UpdateRatingSaga), fork(FetchRatingSaga), fork(DeleteMovieSaga), fork(LoginSaga)]);
 }
