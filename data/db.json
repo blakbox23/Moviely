@@ -6,7 +6,7 @@
       "lastName": "Smith",
       "role": "ADMINISTRATOR",
       "email": "jake.smith@maildrop.cc",
-      "password": "needsToBeHashed",
+      "password": "ne",
       "sex": "MALE",
       "approved": true,
       "watchedMovies": "undefined"
@@ -23,16 +23,17 @@
       "watchedMovies": "undefined"
     },
     {
+      "email": "m.gillings@maildrop.cc",
+      "password": "$2a$10$eV88SYo0L6pInc/s128hpOp6L2/SDJgL/iytdKlvJGKtYD8pUr/Wa",
       "id": "419fd44c-73b6-45ce-937e-49d92e04ce73",
       "firstName": "Mike",
       "lastName": "Gillings",
       "role": "USER",
-      "email": "m.gillings@maildrop.cc",
-      "password": "needsToBeHashed3",
       "sex": "OTHER",
       "approved": true,
       "watchedMovies": "undefined"
     }
+ 
   ],
   "movies": [
     {
@@ -106,7 +107,6 @@
       "description": "Batman is a superhero who appears in American comic books published by DC Comics. The character was created by artist Bob Kane and writer Bill Finger, and debuted in the 27th issue of the comic book ",
       "id": "MavDo5c"
     }
-
   ],
   "comments": [
     {
