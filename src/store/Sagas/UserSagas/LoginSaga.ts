@@ -12,12 +12,12 @@ function* workLogin(action:any): any {
       const loginResponse = yield call(userService.getLogin, action.payload);
 
       console.log('loginResponse')
-      console.log(loginResponse)
+      console.log(loginResponse.data)
 
 
       yield put(
         LoginSuccess({
-            user: loginResponse
+            user: loginResponse.data
           })
         );
   

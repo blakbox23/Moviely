@@ -20,7 +20,7 @@ const userReducer = (state = initialState, action: UserActions) => {
         return {
         ...state,
         pending: false,
-        user: action.payload,
+        user: action.payload.user,
         error: null
       };
 
