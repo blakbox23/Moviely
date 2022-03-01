@@ -58,6 +58,12 @@ export const Loginform: React.FC<LoginProps> = ({}) => {
                 />
               </div>
 
+              {/* <input
+                className="form-submit-button flex"
+                type="submit"
+                value="Submit"
+              /> */}
+
               <input
                 className="form-submit-button flex"
                 type="submit"
