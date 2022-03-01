@@ -14,6 +14,8 @@ function* workLogin(action:any): any {
       console.log('loginResponse')
       console.log(loginResponse.data)
 
+      localStorage.setItem('user', JSON.stringify(loginResponse.data));
+
 
       yield put(
         LoginSuccess({
