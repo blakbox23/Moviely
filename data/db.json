@@ -12,12 +12,12 @@
       "watchedMovies": "undefined"
     },
     {
+      "email": "joana.cripps@maildrop.cc",
+      "password": "$2a$10$qpqhcZqLSQMAVGhOAwLDFOo9CiZdqnaz.tLgr72S0gWnK87b8QzBO",
       "id": "af087c55-8bac-44bc-af57-9323314ad0c3",
       "firstName": "Joana",
       "lastName": "Cripps",
-      "role": "USER",
-      "email": "joana.cripps@maildrop.cc",
-      "password": "needsToBeHashed2",
+      "role": "ADMIN",
       "sex": "FEMALE",
       "approved": true,
       "watchedMovies": "undefined"
@@ -33,7 +33,7 @@
       "approved": true,
       "watchedMovies": "undefined"
     }
- 
+    
   ],
   "movies": [
     {

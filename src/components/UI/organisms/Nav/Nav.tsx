@@ -1,14 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Text from '../../atoms/Text/Text'
 import './style.css'
 import { fonts } from '../../../../constants/fonts'
 import usericon from '../../../../assets/user 1.png'
 import { NavLink } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { RootState } from '../../../../store/Reducers/rootReducers'
+import { isLoggedIn } from '../../../../store/Actions/UserActions'
 
 const Nav = () => {
-  const user = {
-    admin: true,
-  }
+  const dispatch = useDispatch()
+
+  const user = useSelector((state: RootState) => state.user.user)
+
+  useEffect(() => {
+    dispatch(isLoggedIn())
+  }, [dispatch])
+
+  let role
+  if (user) role = user.role
+
+  // const user = {
+  //   admin: true,
+  // }
 
   const userNavLink = 'List of my watched movies'
   const adminNavLinks = [
@@ -46,7 +60,7 @@ const Nav = () => {
       </div>
 
       <div className="flex links">
-        {user.admin ? (
+        {role == 'ADMIN' ? (
           <div className="flex links">
             {adminNavLinks.map(({ id, text, path }) => (
               <NavLink to={path}>

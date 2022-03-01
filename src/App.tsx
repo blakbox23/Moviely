@@ -22,7 +22,13 @@ function App() {
     dispatch(isLoggedIn())
   }, [dispatch])
 
-  const firstName = useSelector((state: RootState) => state.user.user)
+  const user = useSelector((state: RootState) => state.user.user)
+
+  // user ? console.log(user.role) : console.log('non')
+
+  // if (user) {
+  //   console.log(user.role)
+  // }
 
   useEffect(() => {
     dispatch(fetchMovies())
@@ -49,7 +55,7 @@ function App() {
 
   return (
     <div className="App">
-      {firstName ? (
+      {user ? (
         <>
           <Nav />
           <Routes>
