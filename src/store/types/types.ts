@@ -54,6 +54,19 @@ export interface MoviesState {
   
 }
 
+export interface IUser {
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  role: string;
+  sex: string;
+  approved: string;
+  watchedMovies: [];
+  password: string;
+ 
+} 
+
 export interface UserState {
   pending: boolean;
   error: string | null;
@@ -115,7 +128,7 @@ export interface DeleteMovieFailurePayload {
   error: string;
 }
 export interface LoginSuccessPayload {
-  user: object;
+  user: IUser;
 }
 export interface LoginFailurePayload {
   error: string;
@@ -194,7 +207,7 @@ export interface CreateMovieFailure {
 }
 export interface LoginSuccessType {
   type: typeof userTypes.LOGIN_SUCCESS;
-  payload: object
+  payload: LoginSuccessPayload
 }
 export interface LoginFailureType {
   type: typeof userTypes.LOGIN_FAILURE;
