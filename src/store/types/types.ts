@@ -70,7 +70,7 @@ export interface IUser {
 export interface UserState {
   pending: boolean;
   error: string | null;
-  user: object | null;
+  user: IUser | null;
 }
 
 export interface RatingsState {
@@ -133,6 +133,9 @@ export interface LoginSuccessPayload {
 export interface LoginFailurePayload {
   error: string;
 }
+export interface isLoggedInTypePayload {
+  user : IUser | null;
+}
 
 
 export interface Fetchmovies {
@@ -166,6 +169,10 @@ export interface DeleteMovie {
 export interface Logintype {
   type: typeof userTypes.LOGIN;
   payload: object
+}
+export interface isLoggedInType {
+  type: typeof userTypes.LOGGED_IN;
+  payload: IUser | null
 }
 
 
@@ -276,5 +283,6 @@ export type MoviesActions =
   | Logintype
   | LoginSuccessType
   | LoginFailureType
+  | isLoggedInType
 
 
