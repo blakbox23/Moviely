@@ -1,6 +1,7 @@
 import { IfetchRatingObject } from "../../components/UI/molecules/RatingComponent/RatingComponent";
 import { movieTypes } from "../ActionTypes/Movietypes";
 import { ratingTypes } from "../ActionTypes/RatingTypes";
+import { userTypes } from "../ActionTypes/Usertypes";
 
 export interface IMovie {
     id: string;
@@ -51,6 +52,25 @@ export interface MoviesState {
   searched: boolean,
   movie_id: string | null,
   
+}
+
+export interface IUser {
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  role: string;
+  sex: string;
+  approved: string;
+  watchedMovies: [];
+  password: string;
+ 
+} 
+
+export interface UserState {
+  pending: boolean;
+  error: string | null;
+  user: IUser | null;
 }
 
 export interface RatingsState {
@@ -107,6 +127,15 @@ export interface DeleteMovieSuccessPayload {
 export interface DeleteMovieFailurePayload {
   error: string;
 }
+export interface LoginSuccessPayload {
+  user: IUser;
+}
+export interface LoginFailurePayload {
+  error: string;
+}
+export interface isLoggedInTypePayload {
+  user : IUser | null;
+}
 
 
 export interface Fetchmovies {
@@ -137,6 +166,15 @@ export interface DeleteMovie {
   type: typeof movieTypes.DELETE_MOVIE;
   payload: string
 }
+export interface Logintype {
+  type: typeof userTypes.LOGIN;
+  payload: object
+}
+export interface isLoggedInType {
+  type: typeof userTypes.LOGGED_IN;
+  payload: IUser | null
+}
+
 
 
 export type FetchmoviesSuccess = {
@@ -173,6 +211,14 @@ export interface CreateMovieSuccess {
 export interface CreateMovieFailure {
   type: typeof movieTypes.CREATE_MOVIE_FAILURE;
   payload: CreateMovieFailurePayload
+}
+export interface LoginSuccessType {
+  type: typeof userTypes.LOGIN_SUCCESS;
+  payload: LoginSuccessPayload
+}
+export interface LoginFailureType {
+  type: typeof userTypes.LOGIN_FAILURE;
+  payload: LoginFailurePayload
 }
 
 export interface UpdateRatingSuccess {
@@ -231,4 +277,12 @@ export type MoviesActions =
   | FetchRating
   | FetchRatingSuccess
   | FetchRatingFailure
+
+  
+  export type UserActions =
+  | Logintype
+  | LoginSuccessType
+  | LoginFailureType
+  | isLoggedInType
+
 
