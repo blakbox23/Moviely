@@ -40,7 +40,7 @@ export const Loginform: React.FC<LoginProps> = ({}) => {
     >
       {(formik) => (
         <div className="login">
-          <div className="auth-header">Sign up</div>
+          <div className="auth-header">Sign in</div>
           <Form>
             <div>
               <div>
