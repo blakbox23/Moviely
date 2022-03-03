@@ -32,8 +32,20 @@ const user = {
 export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
   const dispatch = useDispatch()
 
+  const nuser = useSelector((state: RootState) => state.user.user)
+
+  let role
+  let userEmail: any
+  if (nuser) {
+    role = nuser.role
+    userEmail = nuser.email
+  }
+  // console.log('nuser')
+  // console.log(role)
+  // console.log(userEmail)
+
   let fetchRatingObject = {
-    email: user.email,
+    email: userEmail,
     movieId: movie.id,
   }
 
@@ -64,7 +76,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
       return 0
     } else {
       let userRating = movie.ratings.find(
-        (rating: Irating) => rating.email === user.email,
+        (rating: Irating) => rating.email === userEmail,
       )
       return userRating ? userRating.grade : 0
     }
@@ -72,18 +84,18 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
   const currentMovieRating = () => {
     if (movie.ratings === undefined) {
       return 'no ratings'
-    } else if (!movie.ratings.some((rating) => rating.email === user.email)) {
+    } else if (!movie.ratings.some((rating) => rating.email === userEmail)) {
       return 'no ratings'
     } else {
       let ratings = movie.ratings.find(
-        (rating: Irating) => rating.email === user.email,
+        (rating: Irating) => rating.email === userEmail,
       )
       return ratings ? ratings.id : 'no ratings'
     }
   }
 
-  console.log('currentMovieRating()')
-  console.log(currentMovieRating())
+  // console.log('currentMovieRating()')
+  // console.log(currentMovieRating())
 
   return (
     <div className="movie-profile" style={{ fontFamily: fonts.FORMFONT }}>
@@ -95,7 +107,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
           <div className=" movie-profile-details">
             <div className="movie-profile-title flex">
               <p className="movie-profile-title-name">{movie.title}</p>
-              {user.admin ? (
+              {role === 'ADMIN' ? (
                 <div className="movie-profile-icons">
                   <img src={edit} alt="edit" />
                   <img src={remove} alt="remove" />
@@ -143,7 +155,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
         </div>
       </div>
 
-      {!user.admin && (
+      {role !== 'ADMIN' && (
         <div className="flex add-watchlist-prompt">
           <p>
             This movies is not in your watched list. Would you like to add it?
@@ -158,7 +170,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
         </div>
         <div className="movie-comments-container">
           <div className="movie-comment">
-            {user.admin === false && (
+            {role !== 'ADMIN' && (
               <div className="comment-item-text flex">
                 <CommentItem textbox={true} email="@dummyemail" />
               </div>
