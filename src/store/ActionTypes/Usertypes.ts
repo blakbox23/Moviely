@@ -3,5 +3,6 @@ export enum userTypes {
     LOGIN_SUCCESS = "LOGIN_SUCCESS",
     LOGIN_FAILURE = "LOGIN_FAILURE",
     LOGGED_IN = "LOGGED_IN",
+    LOG_OUT = "LOG_OUT",
   }
   

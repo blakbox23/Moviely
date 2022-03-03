@@ -6,8 +6,9 @@ import usericon from '../../../../assets/user 1.png'
 import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../../../../store/Reducers/rootReducers'
-import { isLoggedIn } from '../../../../store/Actions/UserActions'
+import { isLoggedIn, logOut } from '../../../../store/Actions/UserActions'
 import Modal from 'react-modal'
+import { useNavigate } from 'react-router-dom'
 
 const Nav = () => {
   const dispatch = useDispatch()
@@ -52,13 +53,17 @@ const Nav = () => {
     },
   ]
 
+  const navigate = useNavigate()
+
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const handleClose = () => setModalIsOpen(false)
   const handleShow = () => setModalIsOpen(true)
 
   const handleLogout = () => {
-    // dispatch(deleteMovie(id))
-    console.log('LOGGED OUT')
+    // dispatch(logOut())
+    localStorage.removeItem('user')
+    dispatch(isLoggedIn())
+    navigate('/')
     handleClose()
   }
 
@@ -92,7 +97,7 @@ const Nav = () => {
             </div>
           </NavLink>
         )}
-        <div onClick={handleShow}>
+        <div onClick={handleShow} style={{ cursor: 'pointer' }}>
           <img src={usericon} alt="profile" />
         </div>
 

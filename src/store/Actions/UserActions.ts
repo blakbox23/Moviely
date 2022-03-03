@@ -5,7 +5,8 @@ import {
   LoginFailureType, 
   LoginFailurePayload, 
   LoginSuccessPayload, 
-  isLoggedInType
+  isLoggedInType,
+  logOutType
 } from "../types/types";
 
 console.log('localStorage.getItem(user)');
@@ -35,4 +36,9 @@ localStorage.getItem('user') ? console.log(JSON.parse(`${localStorage.getItem('u
   export const isLoggedIn = (): isLoggedInType => ({
       type: userTypes.LOGGED_IN,
       payload: localStorage.getItem('user') ? JSON.parse(`${localStorage.getItem('user')}`).user : null,
+  });
+
+  export const logOut = (): logOutType => ({
+      type: userTypes.LOG_OUT,
+      payload: null,
   });

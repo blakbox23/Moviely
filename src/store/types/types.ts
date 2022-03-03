@@ -174,6 +174,10 @@ export interface isLoggedInType {
   type: typeof userTypes.LOGGED_IN;
   payload: IUser | null
 }
+export interface logOutType {
+  type: typeof userTypes.LOG_OUT;
+  payload: null
+}
 
 
 
@@ -284,5 +288,6 @@ export type MoviesActions =
   | LoginSuccessType
   | LoginFailureType
   | isLoggedInType
+  | logOutType
 
 
