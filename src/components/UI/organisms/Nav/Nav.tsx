@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Text from '../../atoms/Text/Text'
 import './style.css'
 import { fonts } from '../../../../constants/fonts'
@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../../../../store/Reducers/rootReducers'
 import { isLoggedIn } from '../../../../store/Actions/UserActions'
+import Modal from 'react-modal'
 
 const Nav = () => {
   const dispatch = useDispatch()
@@ -51,6 +52,16 @@ const Nav = () => {
     },
   ]
 
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const handleClose = () => setModalIsOpen(false)
+  const handleShow = () => setModalIsOpen(true)
+
+  const handleLogout = () => {
+    // dispatch(deleteMovie(id))
+    console.log('LOGGED OUT')
+    handleClose()
+  }
+
   return (
     <div className="nav-bar flex">
       <div>
@@ -81,7 +92,57 @@ const Nav = () => {
             </div>
           </NavLink>
         )}
-        <img src={usericon} alt="profile" />
+        <div onClick={handleShow}>
+          <img src={usericon} alt="profile" />
+        </div>
+
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={handleClose}
+          shouldCloseOnOverlayClick={true}
+          style={{
+            content: {
+              width: '175px',
+              borderRadius: '20px',
+              position: 'absolute',
+              top: '80px',
+              right: '0',
+              marginLeft: 'auto',
+              textAlign: 'center',
+              height: '90px',
+              padding: '10px 0',
+              overflow: 'hidden',
+            },
+            overlay: {
+              backgroundColor: 'rgba(255, 255, 255, 0)',
+            },
+          }}
+        >
+          <div className="logoutmod">
+            <div
+              style={{
+                color: 'purple',
+                fontSize: '20px',
+                cursor: 'pointer',
+              }}
+            >
+              Profile
+            </div>
+
+            <hr className="trik" />
+
+            <div
+              onClick={handleLogout}
+              style={{
+                color: 'purple',
+                fontSize: '20px',
+                cursor: 'pointer',
+              }}
+            >
+              Log out
+            </div>
+          </div>
+        </Modal>
       </div>
     </div>
   )
