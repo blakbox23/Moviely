@@ -84,7 +84,7 @@ export const MovieItem: React.FC<MovieItemProps> = ({
           </NavLink>
         </div>
 
-        {role === 'Admin' && (
+        {role === 'ADMIN' && (
           <div className="buttons flex">
             <Button
               buttontext="Edit"
