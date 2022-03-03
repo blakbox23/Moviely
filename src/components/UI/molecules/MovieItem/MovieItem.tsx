@@ -7,9 +7,10 @@ import Button from '../../atoms/Button/Button'
 import { images } from '../../../../constants/missingimage'
 import { colors } from '../../../../constants/colors'
 import { NavLink } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { deleteMovie } from '../../../../store/Actions/MoviesAction'
 import Modal from 'react-modal'
+import { RootState } from '../../../../store/Reducers/rootReducers'
 
 Modal.setAppElement('#root')
 
@@ -29,6 +30,15 @@ export const MovieItem: React.FC<MovieItemProps> = ({
   const page = `/movies/${id}`
 
   const dispatch = useDispatch()
+
+  const user = useSelector((state: RootState) => state.user.user)
+
+  let role
+  if (user) {
+    role = user.role
+  }
+  console.log('user item')
+  console.log(role)
 
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const handleClose = () => setModalIsOpen(false)
@@ -74,20 +84,22 @@ export const MovieItem: React.FC<MovieItemProps> = ({
           </NavLink>
         </div>
 
-        <div className="buttons flex">
-          <Button
-            buttontext="Edit"
-            placement={'movie-card-button'}
-            color={colors.PRIMARYBTN}
-          />
-          <div onClick={handleShow}>
+        {role === 'Admin' && (
+          <div className="buttons flex">
             <Button
-              buttontext="Delete"
+              buttontext="Edit"
               placement={'movie-card-button'}
-              color={colors.SECONDARYBTN}
+              color={colors.PRIMARYBTN}
             />
+            <div onClick={handleShow}>
+              <Button
+                buttontext="Delete"
+                placement={'movie-card-button'}
+                color={colors.SECONDARYBTN}
+              />
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       <Modal
