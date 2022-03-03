@@ -4,5 +4,41 @@
     width: 70rem;
     margin: auto;
     border-radius: 20px;
+}
 
+.login {
+    background-color: #fff;
+    width: 30%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.login-submit {
+    margin-top: 5rem;
+}
+
+.popcorn {
+    height: 100px;
+    margin-bottom: 2rem;
+}
+
+.auth-header {
+    background-color: #2596BE;
+    color: white;
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+    font-family: oregano;
+    font-size: 3rem;
+    width: calc(100% + 2rem);
+    border-radius: 20px 20px 0 0;
+    position: relative;
+    right: 1rem;
+    
 }

@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import './style.css'
+import padlock from '../../assets/padlock.png'
+import popcorn from '../../assets/popcorn.png'
 
 import { Formik, Form } from 'formik'
 import { validate } from '../../../src/Validation/LoginFormValidation'
@@ -23,6 +25,8 @@ export const Loginform: React.FC<LoginProps> = ({}) => {
     email: '',
     password: '',
   }
+
+  const padi = '&#xF002;'
   return (
     <Formik
       initialValues={initialValues}
@@ -35,41 +39,41 @@ export const Loginform: React.FC<LoginProps> = ({}) => {
       }}
     >
       {(formik) => (
-        <div>
-          <PageHeader text="Login" />
-
+        <div className="login">
+          <div className="auth-header">Sign up</div>
           <Form>
-            <div className="manage-movie-container">
-              <div className="manage-movie-half-container">
+            <div>
+              <div>
+                <img className="popcorn" src={popcorn} alt="" />
                 <Input
-                  styleclass="manage-movie-half"
-                  placeholder="Email"
+                  styleclass="authentication"
+                  placeholder="&#x1F4E7;  Email"
                   name="email"
                   type="text"
                   border
                 />
-
-                <Input
-                  styleclass="manage-movie-half"
-                  type="text"
-                  placeholder="Password"
-                  name="password"
-                  border
-                />
               </div>
 
-              {/* <input
+              <Input
+                styleclass="authentication"
+                type="text"
+                placeholder="&#x1F512; Password"
+                name="password"
+                border
+              />
+            </div>
+
+            {/* <input
                 className="form-submit-button flex"
                 type="submit"
                 value="Submit"
               /> */}
 
-              <input
-                className="form-submit-button flex"
-                type="submit"
-                value="Submit"
-              />
-            </div>
+            <input
+              className="form-submit-button login-submit"
+              type="submit"
+              value="Sign in"
+            />
           </Form>
         </div>
       )}

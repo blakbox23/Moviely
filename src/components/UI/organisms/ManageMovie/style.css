@@ -1,6 +1,7 @@
 .manage-movie-container {
     width: 66rem;
     margin: auto;
+
 }
 
 .manage-movie-half-container {
@@ -30,7 +31,7 @@
     border: 1px solid #2596BE;
     margin-bottom: 2rem;
 }
-.form-submit-button {
+/* .form-submit-button {
     width: 26.5rem;
     height: 4rem;
     background-color: #2596BE;
@@ -42,4 +43,4 @@
     border: none;
     cursor: pointer;
 
-}
+} */
