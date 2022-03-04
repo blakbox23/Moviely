@@ -14,6 +14,8 @@ import PendingUsersPage from './components/pages/PendingUsersPage'
 import { Loginform } from './components/pages/Login'
 import { isLoggedIn } from './store/Actions/UserActions'
 import { RootState } from './store/Reducers/rootReducers'
+import PendingCommentsPage from './components/pages/PendingCommentsPage'
+import WatchedMovies from './components/pages/WatchedMoviesPage'
 
 function App() {
   const dispatch = useDispatch()
@@ -48,8 +50,23 @@ function App() {
     },
     {
       path: '/add-movie',
-      name: 'Details',
+      name: 'NewMovie',
       component: <NewMovie />,
+    },
+    {
+      path: '/pending-comments',
+      name: 'PendingComments',
+      component: <PendingCommentsPage />,
+    },
+    {
+      path: '/pending-users',
+      name: 'PendingUsers',
+      component: <PendingUsersPage />,
+    },
+    {
+      path: '/watched-movies',
+      name: 'WatchedMovies',
+      component: <WatchedMovies />,
     },
   ]
 

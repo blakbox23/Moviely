@@ -89,11 +89,13 @@ const Nav = () => {
         ) : (
           <NavLink to="watched-movies">
             <div>
-              <Text
-                text={'List of my watched movies'}
-                type="navlink"
-                font={fonts.NAVFONT}
-              />
+              {userNavLinks.map(({ id, text, path }) => (
+                <NavLink to={path}>
+                  <div key={id}>
+                    <Text text={text} type="navlink" font={fonts.NAVFONT} />
+                  </div>
+                </NavLink>
+              ))}
             </div>
           </NavLink>
         )}
