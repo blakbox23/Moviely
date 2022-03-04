@@ -1,5 +1,5 @@
 .watched-movie-item {
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.5);
     width: 54.5rem;
     border-radius: 20px;
     margin: auto;
