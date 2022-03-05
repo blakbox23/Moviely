@@ -120,7 +120,6 @@ export const MovieItem: React.FC<MovieItemProps> = ({
           },
         }}
       >
-        {/* <Modal.Header closeButton> */}
         <h2
           style={{
             color: '#87ceeb',
@@ -161,7 +160,6 @@ export const MovieItem: React.FC<MovieItemProps> = ({
             />
           </div>
         </div>
-        {/* </Modal.Footer> */}
       </Modal>
     </>
   )

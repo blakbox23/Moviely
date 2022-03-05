@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './style.css'
 import edit from '../../../../assets/edit 1.png'
 import remove from '../../../../assets/remove 1.png'
@@ -16,8 +16,15 @@ import { RatingComponent } from '../../molecules/RatingComponent/RatingComponent
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../../store/Reducers/rootReducers'
 import { fetchRating } from '../../../../store/Actions/RatingsActions'
+import { deleteMovie } from '../../../../store/Actions/MoviesAction'
+import Button from '../../atoms/Button/Button'
+import { colors } from '../../../../constants/colors'
+import Modal from 'react-modal'
+import { useNavigate } from 'react-router-dom'
 
 let movie: IMovie
+
+Modal.setAppElement('#root')
 
 export interface Iuser {
   admin: boolean
@@ -33,6 +40,18 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
   const dispatch = useDispatch()
 
   const nuser = useSelector((state: RootState) => state.user.user)
+
+  const navigate = useNavigate()
+
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const handleClose = () => setModalIsOpen(false)
+  const handleShow = () => setModalIsOpen(true)
+
+  const handleDelete = () => {
+    dispatch(deleteMovie(movie.id))
+    handleClose()
+    navigate('/')
+  }
 
   let role
   let userEmail: any
@@ -98,91 +117,160 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
   // console.log(currentMovieRating())
 
   return (
-    <div className="movie-profile" style={{ fontFamily: fonts.FORMFONT }}>
-      <div className="centerer flex">
-        <div className="movie-profile-container flex">
-          <div className=" movie-profile-pic">
-            <img src={movie.imageUrl} alt="where" />
-          </div>
-          <div className=" movie-profile-details">
-            <div className="movie-profile-title flex">
-              <p className="movie-profile-title-name">{movie.title}</p>
-              {role === 'ADMIN' ? (
-                <div className="movie-profile-icons">
-                  <img src={edit} alt="edit" />
-                  <img src={remove} alt="remove" />
+    <>
+      <div className="movie-profile" style={{ fontFamily: fonts.FORMFONT }}>
+        <div className="centerer flex">
+          <div className="movie-profile-container flex">
+            <div className=" movie-profile-pic">
+              <img src={movie.imageUrl} alt="where" />
+            </div>
+            <div className=" movie-profile-details">
+              <div className="movie-profile-title flex">
+                <p className="movie-profile-title-name">{movie.title}</p>
+                {role === 'ADMIN' ? (
+                  <div className="movie-profile-icons">
+                    <img src={edit} alt="edit" />
+                    <img
+                      onClick={handleShow}
+                      style={{ cursor: 'pointer' }}
+                      src={remove}
+                      alt="remove"
+                    />
+                  </div>
+                ) : (
+                  <div className="movie-rating ">
+                    <RatingComponent
+                      movieId={movie.id}
+                      user={user}
+                      currentGrade={currentMovieGrade()}
+                      currentRatingId={currentMovieRating()}
+                    />
+                  </div>
+                )}
+              </div>
+
+              <div className="flex movie-profile-details-body">
+                <div className="movie-profile-list flex">
+                  <div className="flex movie-profile-listitem">
+                    <img src={Vector} alt="" />
+                    <p> {movie.runtime}</p>
+                  </div>
+                  <div className="flex movie-profile-listitem">
+                    <img src={Vector1} alt="" />
+                    <p> {movie.country}</p>
+                  </div>
+                  <div className="flex movie-profile-listitem">
+                    <img src={Vector2} alt="" />
+                    <p> {movie.genre}</p>
+                  </div>
+                  <div className="flex movie-profile-listitem">
+                    <img src={Vector3} alt="" />
+                    <p> {movie.year}</p>
+                  </div>
+                  <div className="flex movie-profile-listitem">
+                    <img src={Vector4} alt="" />
+                    <p> {averageGrade()}</p>
+                  </div>
                 </div>
-              ) : (
-                <div className="movie-rating ">
-                  <RatingComponent
-                    movieId={movie.id}
-                    user={user}
-                    currentGrade={currentMovieGrade()}
-                    currentRatingId={currentMovieRating()}
-                  />
+                <div className="movie-profile-description">
+                  <p>{movie.description}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {role !== 'ADMIN' && (
+          <div className="flex add-watchlist-prompt">
+            <p>
+              This movies is not in your watched list. Would you like to add it?
+            </p>
+            <button className="add-watchlist-button">
+              Add to my watch list
+            </button>
+          </div>
+        )}
+
+        <div className="flex movie-comments">
+          <div>
+            <PageHeader text="Comments" />
+          </div>
+          <div className="movie-comments-container">
+            <div className="movie-comment">
+              {role !== 'ADMIN' && (
+                <div className="comment-item-text flex">
+                  <CommentItem textbox={true} email="@dummyemail" />
                 </div>
               )}
             </div>
-
-            <div className="flex movie-profile-details-body">
-              <div className="movie-profile-list flex">
-                <div className="flex movie-profile-listitem">
-                  <img src={Vector} alt="" />
-                  <p> {movie.runtime}</p>
-                </div>
-                <div className="flex movie-profile-listitem">
-                  <img src={Vector1} alt="" />
-                  <p> {movie.country}</p>
-                </div>
-                <div className="flex movie-profile-listitem">
-                  <img src={Vector2} alt="" />
-                  <p> {movie.genre}</p>
-                </div>
-                <div className="flex movie-profile-listitem">
-                  <img src={Vector3} alt="" />
-                  <p> {movie.year}</p>
-                </div>
-                <div className="flex movie-profile-listitem">
-                  <img src={Vector4} alt="" />
-                  <p> {averageGrade()}</p>
-                </div>
+            {movie.comments?.map((comment) => (
+              <div className="movie-comment" key={comment.id}>
+                <CommentItem email={comment.email} comment={comment.content} />
               </div>
-              <div className="movie-profile-description">
-                <p>{movie.description}</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
 
-      {role !== 'ADMIN' && (
-        <div className="flex add-watchlist-prompt">
-          <p>
-            This movies is not in your watched list. Would you like to add it?
-          </p>
-          <button className="add-watchlist-button">Add to my watch list</button>
-        </div>
-      )}
-
-      <div className="flex movie-comments">
-        <div>
-          <PageHeader text="Comments" />
-        </div>
-        <div className="movie-comments-container">
-          <div className="movie-comment">
-            {role !== 'ADMIN' && (
-              <div className="comment-item-text flex">
-                <CommentItem textbox={true} email="@dummyemail" />
-              </div>
-            )}
+      <Modal
+        isOpen={modalIsOpen}
+        style={{
+          content: {
+            width: '250px',
+            height: '200px',
+            borderRadius: '20px',
+            top: '35%',
+            left: '40%',
+            right: 'auto',
+            bottom: 'auto',
+            textAlign: 'center',
+          },
+          overlay: {
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+          },
+        }}
+      >
+        <h2
+          style={{
+            color: '#87ceeb',
+            marginBottom: '2rem',
+          }}
+        >
+          Delete Movie
+        </h2>
+        {/* </Modal.Header> */}
+        <p
+          style={{
+            color: 'purple',
+            fontSize: '1.2rem',
+          }}
+        >
+          Are you sure you want to delete this movie?
+        </p>
+        {/* <Modal.Footer> */}
+        <div
+          className="flex"
+          style={{
+            marginTop: '2rem',
+            justifyContent: 'space-evenly',
+          }}
+        >
+          <div onClick={handleClose}>
+            <Button
+              buttontext="Cancel"
+              placement={'movie-card-button'}
+              color={colors.PRIMARYBTN}
+            />
           </div>
-          {movie.comments?.map((comment) => (
-            <div className="movie-comment" key={comment.id}>
-              <CommentItem email={comment.email} comment={comment.content} />
-            </div>
-          ))}
+          <div onClick={handleDelete}>
+            <Button
+              buttontext="Delete"
+              placement={'movie-card-button'}
+              color={colors.SECONDARYBTN}
+            />
+          </div>
         </div>
-      </div>
-    </div>
+      </Modal>
+    </>
   )
 }
