@@ -27,6 +27,7 @@ const moviesReducer = (state = initialState, action: MoviesActions) => {
         ...state,
         pending: false,
         movies: action.payload.movies,
+        searched: false,
         error: null
       };
 
