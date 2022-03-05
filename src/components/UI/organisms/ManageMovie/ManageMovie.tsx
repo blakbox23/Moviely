@@ -11,7 +11,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { createMovie } from '../../../../store/Actions/MoviesAction'
 import { RootState } from '../../../../store/Reducers/rootReducers'
 
-interface ManageMovieProps {}
+interface ManageMovieProps {
+  headerText: string
+  title: string
+  genre: string
+  year: string
+  runtime: number | string
+  imageUrl: string
+  country: string
+  trailerUrl: string
+  description: string
+}
 
 interface MyFormValues {
   title: string
@@ -24,18 +34,28 @@ interface MyFormValues {
   description: string
 }
 
-export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
+export const ManageMovie: React.FC<ManageMovieProps> = ({
+  headerText,
+  title,
+  genre,
+  year,
+  runtime,
+  imageUrl,
+  country,
+  trailerUrl,
+  description,
+}) => {
   const dispatch = useDispatch()
 
   const initialValues: MyFormValues = {
-    title: '',
-    genre: '',
-    year: '',
-    runtime: '',
-    imageUrl: '',
-    country: '',
-    trailerUrl: '',
-    description: '',
+    title: title,
+    genre: genre,
+    year: year,
+    runtime: runtime,
+    imageUrl: imageUrl,
+    country: country,
+    trailerUrl: trailerUrl,
+    description: description,
   }
   return (
     <Formik
@@ -48,7 +68,7 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({}) => {
     >
       {(formik) => (
         <div className="manage-movie" style={{ fontFamily: fonts.FORMFONT }}>
-          <PageHeader text="New Movie" />
+          <PageHeader text={headerText} />
 
           <Form>
             <div className="manage-movie-container">
