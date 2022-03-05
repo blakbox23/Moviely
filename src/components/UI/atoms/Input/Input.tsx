@@ -6,12 +6,13 @@ export const Input: React.FC<any> = ({ ...props }) => {
   const [field, meta] = useField(props)
   return (
     <div>
+      <ErrorMessage component="div" name={field.name} className="error" />
+
       <input
         className={`input ${props.styleclass} ${props.border ? 'border' : ''} `}
         {...field}
         {...props}
       />
-      <ErrorMessage component="div" name={field.name} className="error" />
     </div>
   )
 }

@@ -5,7 +5,17 @@ import './style.css'
 function NewMovie() {
   return (
     <div className="outer-page-container">
-      <ManageMovie />
+      <ManageMovie
+        headerText={'New Movie'}
+        title={''}
+        genre={''}
+        year={''}
+        runtime={''}
+        imageUrl={''}
+        country={''}
+        trailerUrl={''}
+        description={''}
+      />
     </div>
   )
 }

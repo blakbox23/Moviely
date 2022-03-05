@@ -38,6 +38,14 @@ const userReducer = (state = initialState, action: UserActions) => {
         user: action.payload,
         error: null
       };
+
+        case userTypes.LOG_OUT: 
+        return {
+        ...state,
+        pending: false,
+        user: null,
+        error: null
+      };
             
       default:
             return {

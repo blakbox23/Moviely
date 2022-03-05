@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Text from '../../atoms/Text/Text'
 import './style.css'
 import { fonts } from '../../../../constants/fonts'
@@ -6,7 +6,9 @@ import usericon from '../../../../assets/user 1.png'
 import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../../../../store/Reducers/rootReducers'
-import { isLoggedIn } from '../../../../store/Actions/UserActions'
+import { isLoggedIn, logOut } from '../../../../store/Actions/UserActions'
+import Modal from 'react-modal'
+import { useNavigate } from 'react-router-dom'
 
 const Nav = () => {
   const dispatch = useDispatch()
@@ -51,6 +53,20 @@ const Nav = () => {
     },
   ]
 
+  const navigate = useNavigate()
+
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const handleClose = () => setModalIsOpen(false)
+  const handleShow = () => setModalIsOpen(true)
+
+  const handleLogout = () => {
+    // dispatch(logOut())
+    localStorage.removeItem('user')
+    dispatch(isLoggedIn())
+    navigate('/')
+    handleClose()
+  }
+
   return (
     <div className="nav-bar flex">
       <div>
@@ -73,15 +89,67 @@ const Nav = () => {
         ) : (
           <NavLink to="watched-movies">
             <div>
-              <Text
-                text={'List of my watched movies'}
-                type="navlink"
-                font={fonts.NAVFONT}
-              />
+              {userNavLinks.map(({ id, text, path }) => (
+                <NavLink to={path}>
+                  <div key={id}>
+                    <Text text={text} type="navlink" font={fonts.NAVFONT} />
+                  </div>
+                </NavLink>
+              ))}
             </div>
           </NavLink>
         )}
-        <img src={usericon} alt="profile" />
+        <div onClick={handleShow} style={{ cursor: 'pointer' }}>
+          <img src={usericon} alt="profile" />
+        </div>
+
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={handleClose}
+          shouldCloseOnOverlayClick={true}
+          style={{
+            content: {
+              width: '175px',
+              borderRadius: '20px',
+              position: 'absolute',
+              top: '80px',
+              right: '0',
+              marginLeft: 'auto',
+              textAlign: 'center',
+              height: '90px',
+              padding: '10px 0',
+              overflow: 'hidden',
+            },
+            overlay: {
+              backgroundColor: 'rgba(255, 255, 255, 0)',
+            },
+          }}
+        >
+          <div className="logoutmod">
+            <div
+              style={{
+                color: 'purple',
+                fontSize: '20px',
+                cursor: 'pointer',
+              }}
+            >
+              Profile
+            </div>
+
+            <hr className="trik" />
+
+            <div
+              onClick={handleLogout}
+              style={{
+                color: 'purple',
+                fontSize: '20px',
+                cursor: 'pointer',
+              }}
+            >
+              Log out
+            </div>
+          </div>
+        </Modal>
       </div>
     </div>
   )
