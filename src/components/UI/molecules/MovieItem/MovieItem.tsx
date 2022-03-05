@@ -111,8 +111,8 @@ export const MovieItem: React.FC<MovieItemProps> = ({
         isOpen={modalIsOpen}
         style={{
           content: {
-            width: '250px',
-            height: '200px',
+            width: '300px',
+            height: '250px',
             borderRadius: '20px',
             top: '35%',
             left: '40%',
@@ -125,44 +125,43 @@ export const MovieItem: React.FC<MovieItemProps> = ({
           },
         }}
       >
-        <h2
-          style={{
-            color: '#87ceeb',
-            marginBottom: '2rem',
-          }}
-        >
-          Delete Movie
-        </h2>
-        {/* </Modal.Header> */}
-        <p
-          style={{
-            color: 'purple',
-            fontSize: '1.2rem',
-          }}
-        >
-          Are you sure you want to delete this movie?
-        </p>
-        {/* <Modal.Footer> */}
-        <div
-          className="flex"
-          style={{
-            marginTop: '2rem',
-            justifyContent: 'space-evenly',
-          }}
-        >
-          <div onClick={handleClose}>
-            <Button
-              buttontext="Cancel"
-              placement={'movie-card-button'}
-              color={colors.PRIMARYBTN}
-            />
-          </div>
-          <div onClick={handleDelete}>
-            <Button
-              buttontext="Delete"
-              placement={'movie-card-button'}
-              color={colors.SECONDARYBTN}
-            />
+        <div className="flex deleteModal border">
+          <h2
+            style={{
+              color: '#87ceeb',
+            }}
+          >
+            Delete Movie
+          </h2>
+          <p
+            style={{
+              color: 'purple',
+              fontSize: '1.2rem',
+            }}
+          >
+            Are you sure you want to delete this movie?
+          </p>
+          {/* <Modal.Footer> */}
+          <div
+            className="flex"
+            style={{
+              justifyContent: 'space-evenly',
+            }}
+          >
+            <div onClick={handleClose}>
+              <Button
+                buttontext="Cancel"
+                placement={'modal'}
+                color={colors.MODALPRIMARY}
+              />
+            </div>
+            <div onClick={handleDelete}>
+              <Button
+                buttontext="Delete"
+                placement={'modal'}
+                color={colors.MODALSECONDARY}
+              />
+            </div>
           </div>
         </div>
       </Modal>
