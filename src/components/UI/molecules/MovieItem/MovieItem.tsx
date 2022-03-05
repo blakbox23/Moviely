@@ -29,6 +29,8 @@ export const MovieItem: React.FC<MovieItemProps> = ({
 }) => {
   const page = `/movies/${id}`
 
+  const editPage = `/edit-movie/${id}`
+
   const dispatch = useDispatch()
 
   const user = useSelector((state: RootState) => state.user.user)
@@ -86,11 +88,14 @@ export const MovieItem: React.FC<MovieItemProps> = ({
 
         {role === 'ADMIN' && (
           <div className="buttons flex">
-            <Button
-              buttontext="Edit"
-              placement={'movie-card-button'}
-              color={colors.PRIMARYBTN}
-            />
+            <NavLink to={editPage}>
+              <Button
+                buttontext="Edit"
+                placement={'movie-card-button'}
+                color={colors.PRIMARYBTN}
+              />
+            </NavLink>
+
             <div onClick={handleShow}>
               <Button
                 buttontext="Delete"

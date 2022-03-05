@@ -20,7 +20,7 @@ import { deleteMovie } from '../../../../store/Actions/MoviesAction'
 import Button from '../../atoms/Button/Button'
 import { colors } from '../../../../constants/colors'
 import Modal from 'react-modal'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 let movie: IMovie
 
@@ -42,6 +42,8 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
   const nuser = useSelector((state: RootState) => state.user.user)
 
   const navigate = useNavigate()
+
+  const editPage = `/edit-movie/${movie.id}`
 
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const handleClose = () => setModalIsOpen(false)
@@ -129,7 +131,10 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
                 <p className="movie-profile-title-name">{movie.title}</p>
                 {role === 'ADMIN' ? (
                   <div className="movie-profile-icons">
-                    <img src={edit} alt="edit" />
+                    <NavLink to={editPage}>
+                      <img src={edit} alt="edit" />
+                    </NavLink>
+
                     <img
                       onClick={handleShow}
                       style={{ cursor: 'pointer' }}
