@@ -19,7 +19,8 @@ const moviesReducer = (state = initialState, action: MoviesActions) => {
         return {
             ...state,
             movie: undefined,
-            pending: true
+            pending: true,
+            searched: false,
         };
 
         case movieTypes.FETCH_MOVIES_SUCCESS: 
@@ -27,7 +28,6 @@ const moviesReducer = (state = initialState, action: MoviesActions) => {
         ...state,
         pending: false,
         movies: action.payload.movies,
-        searched: false,
         error: null
       };
 
