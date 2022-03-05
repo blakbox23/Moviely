@@ -9,6 +9,7 @@ import { fetchMovies } from '../../../../store/Actions/MoviesAction'
 
 function Homebody() {
   const dispatch = useDispatch()
+
   const { searched } = useSelector((state: RootState) => state.movies)
 
   useEffect(() => {
