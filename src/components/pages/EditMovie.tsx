@@ -33,6 +33,7 @@ function EditMovie() {
     movieDescription
 
   if (movie) {
+    movieId = movie.id
     movieTitle = movie.title
     movieGenre = movie.genre
     movieGenre = movie.genre
@@ -48,6 +49,7 @@ function EditMovie() {
     <div className="outer-page-container">
       <ManageMovie
         headerText={'Edit Movie'}
+        id={movieId}
         title={movieTitle}
         genre={movieGenre}
         year={movieYear}
