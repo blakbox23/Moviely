@@ -88,7 +88,6 @@ const moviesReducer = (state = initialState, action: MoviesActions) => {
             pending: true
         };
         
-
         case movieTypes.CREATE_MOVIE_SUCCESS: 
         return {
         ...state,
@@ -98,6 +97,30 @@ const moviesReducer = (state = initialState, action: MoviesActions) => {
       };
 
       case movieTypes.CREATE_MOVIE_FAILURE:
+        return {
+          ...state,
+          pending: false,
+          error: action.payload.error
+        };
+
+        case movieTypes.EDIT_MOVIE:
+        return {
+            ...state,
+            pending: true
+        };
+        
+        case movieTypes.EDIT_MOVIE_SUCCESS: 
+        const newMovies = state.movies.filter((movie) => movie.id !== action.payload.movie.id)
+         console.log('newMovies')   
+         console.log(newMovies) 
+        return {
+        ...state,
+        pending: false,
+        movies: [...newMovies, action.payload.movie],
+        error: null
+      };
+
+      case movieTypes.EDIT_MOVIE_FAILURE:
         return {
           ...state,
           pending: false,
