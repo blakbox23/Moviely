@@ -39,8 +39,6 @@ export const MovieItem: React.FC<MovieItemProps> = ({
   if (user) {
     role = user.role
   }
-  console.log('user item')
-  console.log(role)
 
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const handleClose = () => setModalIsOpen(false)

@@ -7,6 +7,7 @@ function NewMovie() {
     <div className="outer-page-container">
       <ManageMovie
         headerText={'New Movie'}
+        id={''}
         title={''}
         genre={''}
         year={''}
