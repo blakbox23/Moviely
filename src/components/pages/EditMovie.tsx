@@ -5,7 +5,6 @@ import { fetchMovies } from '../../store/Actions/MoviesAction'
 import { RootState } from '../../store/Reducers/rootReducers'
 import { ManageMovie } from '../UI/organisms/ManageMovie/ManageMovie'
 import './style.css'
-// import { useLocation } from 'react-router-dom'
 
 function EditMovie() {
   const dispatch = useDispatch()
@@ -33,6 +32,7 @@ function EditMovie() {
     movieDescription
 
   if (movie) {
+    movieId = movie.id
     movieTitle = movie.title
     movieGenre = movie.genre
     movieGenre = movie.genre
@@ -48,6 +48,7 @@ function EditMovie() {
     <div className="outer-page-container">
       <ManageMovie
         headerText={'Edit Movie'}
+        id={movieId}
         title={movieTitle}
         genre={movieGenre}
         year={movieYear}

@@ -8,11 +8,13 @@ import { Textarea } from '../../atoms/Textarea/Textarea'
 import { Formik, Form } from 'formik'
 import { validate } from '../../../../Validation/ManageMoviesValidation'
 import { useDispatch, useSelector } from 'react-redux'
-import { createMovie } from '../../../../store/Actions/MoviesAction'
+import { createMovie, editMovie } from '../../../../store/Actions/MoviesAction'
 import { RootState } from '../../../../store/Reducers/rootReducers'
+import { useNavigate } from 'react-router-dom'
 
 interface ManageMovieProps {
   headerText: string
+  id: string
   title: string
   genre: string
   year: string
@@ -24,6 +26,7 @@ interface ManageMovieProps {
 }
 
 interface MyFormValues {
+  id: string | null
   title: string
   genre: string
   year: string
@@ -36,6 +39,7 @@ interface MyFormValues {
 
 export const ManageMovie: React.FC<ManageMovieProps> = ({
   headerText,
+  id,
   title,
   genre,
   year,
@@ -47,7 +51,10 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({
 }) => {
   const dispatch = useDispatch()
 
+  const navigate = useNavigate()
+
   const initialValues: MyFormValues = {
+    id: id,
     title: title,
     genre: genre,
     year: year,
@@ -57,13 +64,20 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({
     trailerUrl: trailerUrl,
     description: description,
   }
+
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validate}
       onSubmit={(values: MyFormValues, { resetForm }) => {
-        dispatch(createMovie(values))
-        resetForm({ values: initialValues })
+        {
+          headerText === 'New Movie'
+            ? dispatch(createMovie(values))
+            : dispatch(editMovie(values))
+        }
+
+        // resetForm({ values: initialValues })
+        navigate(-1)
       }}
     >
       {(formik) => (
@@ -73,13 +87,23 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({
           <Form>
             <div className="manage-movie-container">
               <div className="manage-movie-half-container">
-                <Input
-                  styleclass="manage-movie-half"
-                  placeholder="my title"
-                  name="title"
-                  type="text"
-                  border
-                />
+                {headerText === 'Edit Movie' ? (
+                  <Input
+                    styleclass="manage-movie-half disabled"
+                    placeholder="My title"
+                    name="title"
+                    type="text"
+                    border
+                  />
+                ) : (
+                  <Input
+                    styleclass="manage-movie-half"
+                    placeholder="My title"
+                    name="title"
+                    type="text"
+                    border
+                  />
+                )}
                 <Dropdown styleclass="add-form" name="genre" />
                 <Input
                   styleclass="manage-movie-half"

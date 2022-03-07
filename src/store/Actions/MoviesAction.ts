@@ -25,6 +25,11 @@ import {
     DeleteMovieFailure,
     DeleteMovieSuccessPayload,
     DeleteMovieFailurePayload,
+    EditMovie,
+    EditMovieSuccessPayload,
+    EditMovieSuccess,
+    EditMovieFailure,
+    EditMovieFailurePayload,
     
 
   } from "../types/types";
@@ -102,6 +107,21 @@ import {
     type: movieTypes.DELETE_MOVIE_FAILURE,
     payload
   }); 
+
+  export const editMovie = (payload: object): EditMovie => {
+    return {
+      type: movieTypes.EDIT_MOVIE,
+      payload
+    };
+  };
+  export const editMovieSuccess = (payload: EditMovieSuccessPayload): EditMovieSuccess => ({
+    type: movieTypes.EDIT_MOVIE_SUCCESS,
+    payload
+  });
+  export const editMovieFailure = (payload: EditMovieFailurePayload): EditMovieFailure => ({
+    type: movieTypes.EDIT_MOVIE_FAILURE,
+    payload
+  });
 
 
   

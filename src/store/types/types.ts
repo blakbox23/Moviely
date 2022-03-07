@@ -136,6 +136,12 @@ export interface LoginFailurePayload {
 export interface isLoggedInTypePayload {
   user : IUser | null;
 }
+export interface EditMovieSuccessPayload {
+  movie: IMovie;
+}
+export interface EditMovieFailurePayload {
+  error: string;
+}
 
 
 export interface Fetchmovies {
@@ -152,6 +158,10 @@ export interface FetchMovieByID {
 }
 export interface CreateMovie {
   type: typeof movieTypes.CREATE_MOVIE;
+  payload: object
+}
+export interface EditMovie {
+  type: typeof movieTypes.EDIT_MOVIE;
   payload: object
 }
 export interface UpdateRating {
@@ -253,6 +263,14 @@ export interface DeleteMovieFailure {
   type: typeof movieTypes.DELETE_MOVIE_FAILURE;
   payload: DeleteMovieFailurePayload
 }
+export interface EditMovieSuccess {
+  type: typeof movieTypes.EDIT_MOVIE_SUCCESS;
+  payload: EditMovieSuccessPayload
+}
+export interface EditMovieFailure {
+  type: typeof movieTypes.EDIT_MOVIE_FAILURE;
+  payload: CreateMovieFailurePayload
+}
 
 
 
@@ -272,6 +290,9 @@ export type MoviesActions =
   | DeleteMovie
   | DeleteMovieSuccess
   | DeleteMovieFailure
+  | EditMovie
+  | EditMovieSuccess
+  | EditMovieFailure
 
 
   export type RatingActions =

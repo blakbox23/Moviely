@@ -20,6 +20,11 @@
     margin-top: 1rem;
 }
 
+.disabled {
+  pointer-events: none;
+  background-color: antiquewhite;
+}
+
 .manage-movie-full {
     width: 65rem;
     height: 4rem;

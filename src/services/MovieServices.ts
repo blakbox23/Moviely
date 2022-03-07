@@ -1,5 +1,5 @@
 import ApiService from "./ApiServices";
-import { IfilteredMovie } from "../store/types/types";
+import { IfilteredMovie, IMovie } from "../store/types/types";
 
 const ENDPOINTS = {
     MOVIES: '/movies/',
@@ -22,6 +22,10 @@ const ENDPOINTS = {
 
     createMovie = (values: object) => {
         return this.apiClient.post(ENDPOINTS.MOVIES, values);
+      }
+
+    editMovie = (values: IMovie) => {
+        return this.apiClient.put(ENDPOINTS.MOVIES + values.id, values);
       }
 
     searchedMovies = (values: IfilteredMovie) => {
