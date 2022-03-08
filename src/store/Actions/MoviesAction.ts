@@ -30,6 +30,13 @@ import {
     EditMovieSuccess,
     EditMovieFailure,
     EditMovieFailurePayload,
+    AddComment,
+    IcommentObject,
+    Icomment,
+    AddCommentSuccess,
+    AddCommentFailure,
+    AddCommentFailurePayload,
+    AddCommentSuccessPayload,
     
 
   } from "../types/types";
@@ -122,6 +129,25 @@ import {
     type: movieTypes.EDIT_MOVIE_FAILURE,
     payload
   });
+
+  export const addComment = (payload: IcommentObject): AddComment => {
+    return {
+      type: movieTypes.ADD_COMMENT,
+      payload
+    };
+  };
+  export const addCommentSuccess = (payload: AddCommentSuccessPayload): AddCommentSuccess => {
+    return {
+      type: movieTypes.ADD_COMMENT_SUCCESS,
+      payload
+    };
+  };
+  export const addCommentFailure = (payload: AddCommentFailurePayload): AddCommentFailure => {
+    return {
+      type: movieTypes.ADD_COMMENT_FAILURE,
+      payload
+    };
+  };
 
 
   

@@ -13,7 +13,7 @@ export interface IMovie {
     country: string;
     description: string;
     comments: Icomment[];
-    ratings: Irating[];
+    ratings: Irating[] | undefined;
     movieTrailer: string;
   } 
 
@@ -26,7 +26,6 @@ export interface IMovie {
   export interface Icomment { 
     id: string;
     email: string;
-    movieId: string;
     content: string;
     approved: boolean;
   }
@@ -51,7 +50,7 @@ export interface MoviesState {
   searchedMovies: IMovie[];
   searched: boolean,
   movie_id: string | null,
-  
+  movie_comment: string | null, 
 }
 
 export interface IUser {
@@ -71,6 +70,13 @@ export interface UserState {
   pending: boolean;
   error: string | null;
   user: IUser | null;
+}
+
+export interface IcommentObject {
+  email: string | undefined;
+  content: string;
+  movieId: string;
+  approved: boolean;
 }
 
 export interface RatingsState {
@@ -142,6 +148,12 @@ export interface EditMovieSuccessPayload {
 export interface EditMovieFailurePayload {
   error: string;
 }
+export interface AddCommentFailurePayload {
+  error: string;
+}
+export interface AddCommentSuccessPayload {
+  movie_comment: Icomment;
+}
 
 
 export interface Fetchmovies {
@@ -187,6 +199,10 @@ export interface isLoggedInType {
 export interface logOutType {
   type: typeof userTypes.LOG_OUT;
   payload: null
+}
+export interface AddComment {
+  type: typeof movieTypes.ADD_COMMENT;
+  payload: IcommentObject
 }
 
 
@@ -271,6 +287,14 @@ export interface EditMovieFailure {
   type: typeof movieTypes.EDIT_MOVIE_FAILURE;
   payload: CreateMovieFailurePayload
 }
+export interface AddCommentSuccess {
+  type: typeof movieTypes.ADD_COMMENT_SUCCESS;
+  payload: AddCommentSuccessPayload;
+}
+export interface AddCommentFailure {
+  type: typeof movieTypes.ADD_COMMENT_FAILURE;
+  payload: AddCommentFailurePayload
+}
 
 
 
@@ -293,6 +317,9 @@ export type MoviesActions =
   | EditMovie
   | EditMovieSuccess
   | EditMovieFailure
+  | AddComment
+  | AddCommentSuccess
+  | AddCommentFailure
 
 
   export type RatingActions =
