@@ -9,6 +9,7 @@ const initialState: MoviesState = {
     searchedMovies: [],
     searched: false,
     movie_id: null,
+    movie_comment: null,
   };
 
 
@@ -143,6 +144,37 @@ const moviesReducer = (state = initialState, action: MoviesActions) => {
       };
 
       case movieTypes.DELETE_MOVIE_FAILURE:
+        return {
+          ...state,
+          pending: false,
+          error: action.payload.error
+        };
+
+
+        case movieTypes.ADD_COMMENT:
+          
+        return {
+            ...state,
+            pending: true,
+           
+        };
+
+        case movieTypes.ADD_COMMENT_SUCCESS: 
+        
+        return {
+        ...state,
+        pending: false,
+        // movie: {
+        //   ...state.movie,
+        //   comments: [
+        //     ...state.movie!.comments,
+        //     action.payload.movie_comment
+        //   ]
+        // },
+        error: null
+      };
+
+      case movieTypes.ADD_COMMENT_FAILURE:
         return {
           ...state,
           pending: false,
