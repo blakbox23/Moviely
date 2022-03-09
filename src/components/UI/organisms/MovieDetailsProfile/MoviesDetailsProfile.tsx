@@ -16,11 +16,15 @@ import { RatingComponent } from '../../molecules/RatingComponent/RatingComponent
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../../store/Reducers/rootReducers'
 import { fetchRating } from '../../../../store/Actions/RatingsActions'
-import { deleteMovie } from '../../../../store/Actions/MoviesAction'
+import {
+  deleteMovie,
+  fetchcomments,
+} from '../../../../store/Actions/MoviesAction'
 import Button from '../../atoms/Button/Button'
 import { colors } from '../../../../constants/colors'
 import Modal from 'react-modal'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { Formik, Form } from 'formik'
 
 let movie: IMovie
 
@@ -39,7 +43,22 @@ const user = {
 export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    dispatch(fetchcomments(movie.id))
+  }, [dispatch])
+
   const nuser = useSelector((state: RootState) => state.user.user)
+
+  const comments = useSelector(
+    (state: RootState) => state.movies.movie_comments,
+  )
+
+  const approvedComments = comments.filter(
+    (comment) => comment.approved === true,
+  )
+
+  console.log('comments')
+  console.log(comments)
 
   const navigate = useNavigate()
 
@@ -61,9 +80,13 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
     role = nuser.role
     userEmail = nuser.email
   }
-  // console.log('nuser')
-  // console.log(role)
-  // console.log(userEmail)
+
+  const commentObject = {
+    email: userEmail,
+    movieId: movie.id,
+    content: 'Just edited',
+    approved: false,
+  }
 
   let fetchRatingObject = {
     email: userEmail,
@@ -114,9 +137,6 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
       return ratings ? ratings.id : 'no ratings'
     }
   }
-
-  // console.log('currentMovieRating()')
-  // console.log(currentMovieRating())
 
   return (
     <>
@@ -204,11 +224,15 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
             <div className="movie-comment">
               {role !== 'ADMIN' && (
                 <div className="comment-item-text flex">
-                  <CommentItem textbox={true} email="@dummyemail" />
+                  <CommentItem
+                    textbox={true}
+                    email={userEmail}
+                    movieId={movie.id}
+                  />
                 </div>
               )}
             </div>
-            {movie.comments?.map((comment) => (
+            {approvedComments.map((comment) => (
               <div className="movie-comment" key={comment.id}>
                 <CommentItem email={comment.email} comment={comment.content} />
               </div>
