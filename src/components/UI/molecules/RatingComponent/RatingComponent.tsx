@@ -45,8 +45,8 @@ export const RatingComponent: React.FC<RatingComponent> = ({
 
   let starRating = currentGrade * 20
 
-  console.log('starRating')
-  console.log(starRating)
+  // console.log('starRating')
+  // console.log(starRating)
 
   const [rating, setRating] = useState(starRating) // initial rating value
 
