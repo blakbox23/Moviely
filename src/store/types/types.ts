@@ -50,7 +50,8 @@ export interface MoviesState {
   searchedMovies: IMovie[];
   searched: boolean,
   movie_id: string | null,
-  movie_comment: string | null, 
+  movie_comment: Icomment | null, 
+  movie_comments: Icomment[], 
 }
 
 export interface IUser {
@@ -92,6 +93,12 @@ export interface FetchmoviesSuccessPayload {
   movies: IMovie[]; 
 }
 export interface FetchmoviesFailurePayload {
+  error: string;
+}
+export interface FetchcommentsSuccessPayload {
+  movie_comments: Icomment[]; 
+}
+export interface FetchcommentsFailurePayload {
   error: string;
 }
 
@@ -154,10 +161,17 @@ export interface AddCommentFailurePayload {
 export interface AddCommentSuccessPayload {
   movie_comment: Icomment;
 }
+export interface FetchcommentsPayload {
+  values: string;
+}
 
 
 export interface Fetchmovies {
   type: typeof movieTypes.FETCH_MOVIES;
+}
+export interface Fetchcomments {
+  type: typeof movieTypes.FETCH_COMMENTS;
+  payload: string
 }
 export interface FetchFilteredMovies {
   type: typeof movieTypes.FETCH_FILTERED_MOVIES;
@@ -214,6 +228,14 @@ export type FetchmoviesSuccess = {
 export type FetchmoviesFailure = {
   type: typeof movieTypes.FETCH_MOVIES_FAILURE;
   payload: FetchmoviesFailurePayload;
+};
+export type FetchcommentsSuccess = {
+  type: typeof movieTypes.FETCH_COMMENTS_SUCCESS;
+  payload: FetchcommentsSuccessPayload;
+};
+export type FetchcommentsFailure = {
+  type: typeof movieTypes.FETCH_COMMENTS_FAILURE;
+  payload: FetchcommentsFailurePayload;
 };
 
 export type FetchFilteredMoviesSuccess = {
@@ -320,6 +342,9 @@ export type MoviesActions =
   | AddComment
   | AddCommentSuccess
   | AddCommentFailure
+  | Fetchcomments
+  | FetchcommentsSuccess
+  | FetchcommentsFailure
 
 
   export type RatingActions =

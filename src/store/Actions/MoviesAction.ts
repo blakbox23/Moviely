@@ -37,6 +37,12 @@ import {
     AddCommentFailure,
     AddCommentFailurePayload,
     AddCommentSuccessPayload,
+    Fetchcomments,
+    FetchcommentsSuccessPayload,
+    FetchcommentsSuccess,
+    FetchcommentsFailurePayload,
+    FetchcommentsFailure,
+    FetchcommentsPayload,
     
 
   } from "../types/types";
@@ -52,6 +58,19 @@ import {
   });
   export const fetchmoviesFailure = (payload: FetchmoviesFailurePayload): FetchmoviesFailure => ({
     type: movieTypes.FETCH_MOVIES_FAILURE,
+    payload
+  }); 
+
+  export const fetchcomments = (payload: string): Fetchcomments => ({ 
+    type: movieTypes.FETCH_COMMENTS,
+    payload
+  });
+  export const fetchcommentsSuccess = (payload: FetchcommentsSuccessPayload): FetchcommentsSuccess => ({
+    type: movieTypes.FETCH_COMMENTS_SUCCESS,
+    payload
+  });
+  export const fetchcommentsFailure = (payload: FetchcommentsFailurePayload): FetchcommentsFailure => ({
+    type: movieTypes.FETCH_COMMENTS_FAILURE,
     payload
   }); 
 
