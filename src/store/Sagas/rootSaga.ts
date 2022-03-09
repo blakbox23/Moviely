@@ -10,7 +10,8 @@ import LoginSaga from "./UserSagas/LoginSaga";
 import EditMovieSaga from "./MovieSagas/EditMovieSaga";
 import AddCommentSaga from "./MovieSagas/AddCommentSaga";
 import commentsSaga from "./MovieSagas/FetchCommentsSaga";
+import AllCommentsSaga from "./CommentSaga/GetAllCommentsSaga";
 
 export default function* rootSaga() {
-  yield all([fork(moviesSaga), fork(movieSaga), fork(CreateMovieSaga), fork(FilteredMoviesSaga), fork(UpdateRatingSaga), fork(FetchRatingSaga), fork(DeleteMovieSaga), fork(LoginSaga), fork(EditMovieSaga), fork(AddCommentSaga), fork(commentsSaga)]);
+  yield all([fork(moviesSaga), fork(movieSaga), fork(CreateMovieSaga), fork(FilteredMoviesSaga), fork(UpdateRatingSaga), fork(FetchRatingSaga), fork(DeleteMovieSaga), fork(LoginSaga), fork(EditMovieSaga), fork(AddCommentSaga), fork(commentsSaga), fork(AllCommentsSaga)]);
 }
