@@ -11,6 +11,12 @@ const ENDPOINTS = {
     getMovies = (values: string) => {
         return this.apiClient.get(ENDPOINTS.MOVIES);  
     }
+    getComments = (values: string) => {
+        console.log('values')
+        console.log(values)
+        console.log(ENDPOINTS.MOVIES+values+'/comments')
+        return this.apiClient.get(ENDPOINTS.MOVIES+values+'/comments');  
+    }
 
     getMoviesByTitle = (values: string) => {
         return this.apiClient.get(ENDPOINTS.MOVIES+'?title=' + values);  
