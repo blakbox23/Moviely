@@ -1,4 +1,5 @@
 import { IfetchRatingObject } from "../../components/UI/molecules/RatingComponent/RatingComponent";
+import { commentsTypes } from "../ActionTypes/Commentstypes";
 import { movieTypes } from "../ActionTypes/Movietypes";
 import { ratingTypes } from "../ActionTypes/RatingTypes";
 import { userTypes } from "../ActionTypes/Usertypes";
@@ -27,6 +28,7 @@ export interface IMovie {
     id: string;
     email: string;
     content: string;
+    movieId: string;
     approved: boolean;
   }
 
@@ -52,6 +54,13 @@ export interface MoviesState {
   movie_id: string | null,
   movie_comment: Icomment | null, 
   movie_comments: Icomment[], 
+}
+
+export interface CommentsState {
+  pending: boolean;
+  error: string | null;
+  comments: Icomment[];
+  approvedComments: Icomment[];
 }
 
 export interface IUser {
@@ -88,7 +97,12 @@ export interface RatingsState {
 
 }
 
-
+export interface GetAllCommentsSuccessPayload {
+  comments: Icomment[]; 
+}
+export interface GetAllCommentsFailurePayload {
+  error: string;
+}
 export interface FetchmoviesSuccessPayload {
   movies: IMovie[]; 
 }
@@ -169,6 +183,9 @@ export interface FetchcommentsPayload {
 export interface Fetchmovies {
   type: typeof movieTypes.FETCH_MOVIES;
 }
+export interface GetAllComments {
+  type: typeof commentsTypes.GET_ALL_COMMENTS;
+}
 export interface Fetchcomments {
   type: typeof movieTypes.FETCH_COMMENTS;
   payload: string
@@ -220,6 +237,14 @@ export interface AddComment {
 }
 
 
+export type GetAllCommentsSuccess = {
+  type: typeof commentsTypes.GET_ALL_COMMENTS_SUCCESS;
+  payload: GetAllCommentsSuccessPayload;
+};
+export type GetAllCommentsFailure = {
+  type: typeof commentsTypes.GET_ALL_COMMENTS_FAILURE;
+  payload: GetAllCommentsFailurePayload;
+};
 
 export type FetchmoviesSuccess = {
   type: typeof movieTypes.FETCH_MOVIES_SUCCESS;
@@ -362,5 +387,12 @@ export type MoviesActions =
   | LoginFailureType
   | isLoggedInType
   | logOutType
+
+
+  export type CommentsActions =
+  | GetAllCommentsSuccess
+  | GetAllComments
+  | GetAllCommentsFailure
+
 
 
