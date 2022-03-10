@@ -8,21 +8,15 @@ import {notify, success} from '../../../components/UI/organisms/Toasts/Toast'
 function* workAddComment(action:any): any {
     try {
         console.log('add comment action.payload');
-        
-        console.log(action.payload);
-        
+                
     const response = yield call(movieService.addComment, action.payload);
-
-    console.log('response')
-    console.log(response.data)
-
 
     yield put(
         addCommentSuccess({
           movie_comment : response.data
         })
       )
-      success('Comment added successfully')
+      success('Comment sent for approval!')
     }
     
     catch (e: any) {
