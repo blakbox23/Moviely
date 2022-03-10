@@ -128,49 +128,21 @@
       "email": "joana.cripps@maildrop.cc",
       "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
       "content": "Too much action! :(",
-      "approved": false
-    },
-    {
-      "id": "b1",
-      "email": "joana.cripps@maildrop.cc",
-      "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
-      "content": "Just edited",
-      "approved": false
-    },
-    {
-      "email": "joana.cripps@maildrop.cc",
-      "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
-      "content": "Just edited",
-      "approved": false,
-      "id": "176x6kg"
+      "approved": true
     },
     {
       "email": "m.gillings@maildrop.cc",
       "movieId": "lzXsNkD",
-      "content": "A fucking new comment",
+      "content": "Joker comment 1",
       "approved": true,
-      "id": "l7Jmc5R"
-    },
-    {
-      "email": "m.gillings@maildrop.cc",
-      "movieId": "lzXsNkD",
-      "content": "I can",
-      "approved": true,
-      "id": "mQe-f0R"
+      "id": "eoaYjmY"
     },
     {
       "email": "m.gillings@maildrop.cc",
       "movieId": "MavDo5c",
-      "content": "dfv",
+      "content": "BAt1",
       "approved": true,
-      "id": "6v1MhOd"
-    },
-    {
-      "email": "m.gillings@maildrop.cc",
-      "movieId": "lzXsNkD",
-      "content": "A Joker false comment",
-      "approved": false,
-      "id": "sUXMGrn"
+      "id": "BPVe4GE"
     }
   ],
   "ratings": [
