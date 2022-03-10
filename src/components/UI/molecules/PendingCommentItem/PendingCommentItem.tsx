@@ -3,8 +3,12 @@ import Button from '../../atoms/Button/Button'
 import Text from '../../atoms/Text/Text'
 import './style.css'
 import comment from '../../../../assets/comment.png'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../../store/Reducers/rootReducers'
+import {
+  approveComments,
+  getAllComments,
+} from '../../../../store/Actions/CommentsActions'
 
 interface PendingCommentItemProps {
   id: string
@@ -21,12 +25,16 @@ export const PendingCommentItem: React.FC<PendingCommentItemProps> = ({
   movieName,
   approved,
 }) => {
-  const { pending, movies, error } = useSelector(
-    (state: RootState) => state.movies,
-  )
+  const dispatch = useDispatch()
+  // const { pending, movies, error } = useSelector(
+  //   (state: RootState) => state.movies,
+  // )
 
-  console.log('movies')
-  console.log(movies)
+  const handleApprove = () => {
+    console.log('approved')
+    dispatch(approveComments(id))
+  }
+
   return (
     <div>
       <div className="pending-comment-item flex">
@@ -39,7 +47,7 @@ export const PendingCommentItem: React.FC<PendingCommentItemProps> = ({
           <p>{content}</p>
         </div>
         <div className="pending-comments-buttons flex">
-          <div>
+          <div onClick={handleApprove}>
             <Button
               placement="watched-movies"
               buttontext="Approve"

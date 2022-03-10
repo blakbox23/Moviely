@@ -20,9 +20,6 @@ export const PendingCommentsList: React.FC<PendingCommentsListProps> = ({}) => {
   )
   const { movies } = useSelector((state: RootState) => state.movies)
 
-  console.log('movies')
-  console.log(movies)
-
   return (
     <div className="pending-comments-list">
       <PageHeader text="Pending comments" />
