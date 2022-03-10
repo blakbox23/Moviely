@@ -13,6 +13,9 @@ const ENDPOINTS = {
     approveComments = (values: string) => {
         return this.apiClient.patch(ENDPOINTS.COMMENTS+values, {approved: true});  
     }
+    deleteComment = (id: any) => {
+        return this.apiClient.delete(ENDPOINTS.COMMENTS + id, id);
+      }
     
 }
 
