@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../../store/Reducers/rootReducers'
 import {
   approveComments,
+  deleteComment,
   getAllComments,
 } from '../../../../store/Actions/CommentsActions'
 
@@ -26,13 +27,14 @@ export const PendingCommentItem: React.FC<PendingCommentItemProps> = ({
   approved,
 }) => {
   const dispatch = useDispatch()
-  // const { pending, movies, error } = useSelector(
-  //   (state: RootState) => state.movies,
-  // )
 
   const handleApprove = () => {
     console.log('approved')
     dispatch(approveComments(id))
+  }
+  const handleReject = () => {
+    console.log('deny')
+    dispatch(deleteComment(id))
   }
 
   return (
@@ -55,11 +57,13 @@ export const PendingCommentItem: React.FC<PendingCommentItemProps> = ({
             />
           </div>
           <div>
-            <Button
-              placement="watched-movies"
-              buttontext="Deny"
-              color="#2596BE80"
-            />
+            <div onClick={handleReject}>
+              <Button
+                placement="watched-movies"
+                buttontext="Deny"
+                color="#2596BE80"
+              />
+            </div>
           </div>
         </div>
       </div>
