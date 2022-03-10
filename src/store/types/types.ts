@@ -62,6 +62,7 @@ export interface CommentsState {
   comments: Icomment[];
   pendingComments: Icomment[];
   comment: Icomment | null;
+  dltcomment: string | null
 }
 
 export interface IUser {
@@ -152,7 +153,13 @@ export interface FetchRatingSuccessPayload {
 export interface DeleteMovieSuccessPayload {
   movie_id: string;
 }
+export interface DeleteCommentSuccessPayload {
+  dltcomment: string;
+}
 export interface DeleteMovieFailurePayload {
+  error: string;
+}
+export interface DeleteCommentFailurePayload {
   error: string;
 }
 export interface LoginSuccessPayload {
@@ -224,6 +231,10 @@ export interface FetchRating {
 }
 export interface DeleteMovie {
   type: typeof movieTypes.DELETE_MOVIE;
+  payload: string
+}
+export interface DeleteComment {
+  type: typeof commentsTypes.DELETE_COMMENT;
   payload: string
 }
 export interface Logintype {
@@ -333,9 +344,17 @@ export interface DeleteMovieSuccess {
   type: typeof movieTypes.DELETE_MOVIE_SUCCESS;
   payload: DeleteMovieSuccessPayload
 }
+export interface DeleteCommentSuccess {
+  type: typeof commentsTypes.DELETE_COMMENT_SUCCESS;
+  payload: DeleteCommentSuccessPayload
+}
 export interface DeleteMovieFailure {
   type: typeof movieTypes.DELETE_MOVIE_FAILURE;
   payload: DeleteMovieFailurePayload
+}
+export interface DeleteCommentFailure {
+  type: typeof commentsTypes.DELETE_COMMENT_FAILURE;
+  payload: DeleteCommentFailurePayload
 }
 export interface EditMovieSuccess {
   type: typeof movieTypes.EDIT_MOVIE_SUCCESS;
@@ -415,6 +434,9 @@ export type MoviesActions =
   | ApproveComments
   | ApproveCommentsSuccess
   | ApproveCommentsFailure
+  | DeleteComment
+  | DeleteCommentSuccess
+  | DeleteCommentFailure
 
 
 
