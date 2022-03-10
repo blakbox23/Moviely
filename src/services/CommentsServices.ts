@@ -10,6 +10,9 @@ const ENDPOINTS = {
     getComments = (values: string) => {
         return this.apiClient.get(ENDPOINTS.COMMENTS);  
     }
+    approveComments = (values: string) => {
+        return this.apiClient.patch(ENDPOINTS.COMMENTS+values, {approved: true});  
+    }
     
 }
 
