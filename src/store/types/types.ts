@@ -60,7 +60,8 @@ export interface CommentsState {
   pending: boolean;
   error: string | null;
   comments: Icomment[];
-  approvedComments: Icomment[];
+  pendingComments: Icomment[];
+  comment: Icomment | null;
 }
 
 export interface IUser {
@@ -172,8 +173,14 @@ export interface EditMovieFailurePayload {
 export interface AddCommentFailurePayload {
   error: string;
 }
+export interface ApproveCommentsFailurePayload {
+  error: string;
+}
 export interface AddCommentSuccessPayload {
   movie_comment: Icomment;
+}
+export interface ApproveCommentsSuccessPayload {
+  comment: Icomment;
 }
 export interface FetchcommentsPayload {
   values: string;
@@ -234,6 +241,10 @@ export interface logOutType {
 export interface AddComment {
   type: typeof movieTypes.ADD_COMMENT;
   payload: IcommentObject
+}
+export interface ApproveComments {
+  type: typeof commentsTypes.APPROVE_COMMENTS;
+  payload: string
 }
 
 
@@ -338,9 +349,17 @@ export interface AddCommentSuccess {
   type: typeof movieTypes.ADD_COMMENT_SUCCESS;
   payload: AddCommentSuccessPayload;
 }
+export interface ApproveCommentsSuccess {
+  type: typeof commentsTypes.APPROVE_COMMENTS_SUCCESS;
+  payload: ApproveCommentsSuccessPayload;
+}
 export interface AddCommentFailure {
   type: typeof movieTypes.ADD_COMMENT_FAILURE;
   payload: AddCommentFailurePayload
+}
+export interface ApproveCommentsFailure {
+  type: typeof commentsTypes.APPROVE_COMMENTS_FAILURE;
+  payload: ApproveCommentsFailurePayload
 }
 
 
@@ -393,6 +412,9 @@ export type MoviesActions =
   | GetAllCommentsSuccess
   | GetAllComments
   | GetAllCommentsFailure
+  | ApproveComments
+  | ApproveCommentsSuccess
+  | ApproveCommentsFailure
 
 
 
