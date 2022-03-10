@@ -7,6 +7,7 @@ const initialState: CommentsState = {
     comments: [],
     pendingComments: [],
     comment: null,
+    dltcomment: null,
   };
 
 
@@ -56,6 +57,29 @@ const commentsReducer = (state = initialState, action: CommentsActions) => {
         pending: false,
         error: action.payload.error
       };
+
+      
+      case commentsTypes.DELETE_COMMENT:
+        return {
+            ...state,
+            pending: true,
+            dltcomment: action.payload
+        };
+
+        case commentsTypes.DELETE_COMMENT_SUCCESS: 
+        return {
+        ...state,
+        pending: false,
+        comments: state.comments.filter((comment) => comment.id !== state.dltcomment),
+        error: null
+      };
+
+      case commentsTypes.DELETE_COMMENT_FAILURE:
+        return {
+          ...state,
+          pending: false,
+          error: action.payload.error
+        };
 
             
       default:
