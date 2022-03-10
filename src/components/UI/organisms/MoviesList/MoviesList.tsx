@@ -3,6 +3,7 @@ import { MovieItem } from '../../molecules/MovieItem/MovieItem'
 import './style.css'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../../store/Reducers/rootReducers'
+import { IMovie } from '../../../../store/types/types'
 
 export const MoviesList = () => {
   const { pending, movies, error } = useSelector(

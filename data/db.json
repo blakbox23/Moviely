@@ -49,14 +49,14 @@
           "id": "b2f910ee-f162-4169-b050-19db76d0d594",
           "email": "m.gillings@maildrop.cc",
           "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
-          "content": "This movie is great! :)",
+          "content": "Terminator ya lini",
           "approved": true
         },
         {
           "id": "b6538887-2310-4c97-9422-5fe37e0e5e5a",
           "email": "joana.cripps@maildrop.cc",
           "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
-          "content": "Too much action! :(",
+          "content": "Too much SEMI EDIT:(",
           "approved": false
         }
       ],
@@ -79,7 +79,7 @@
     {
       "id": "lzXsNkD",
       "title": "Joker",
-      "genre": "comedy",
+      "genre": "action",
       "year": "2012",
       "runtime": "106",
       "imageUrl": "https://source.unsplash.com/NX1Z62_2w04",
@@ -96,7 +96,23 @@
       "imageUrl": "https://source.unsplash.com/meqVd5zwylI",
       "country": "USA",
       "trailerUrl": "cs",
-      "description": "Batman is a superhero who appears in American comic books published by DC Comics. The character was created by artist Bob Kane and writer Bill Finger, and debuted in the 27th issue of the comic book "
+      "description": "Batman is a superhero who appears in American comic books published by DC Comics. The character was created by artist Bob Kane and writer Bill Finger, and debuted in the 27th issue of the comic book ",
+      "comments": [
+        {
+          "id": "b2f910ee",
+          "email": "m.gillings@maildrop.cc",
+          "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
+          "content": "This movie is great! :) EDITED",
+          "approved": true
+        },
+        {
+          "id": "b6538887",
+          "email": "joana.cripps@maildrop.cc",
+          "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
+          "content": "Too much action! :( EDITED",
+          "approved": false
+        }
+      ]
     }
   ],
   "comments": [
@@ -112,7 +128,21 @@
       "email": "joana.cripps@maildrop.cc",
       "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
       "content": "Too much action! :(",
-      "approved": false
+      "approved": true
+    },
+    {
+      "email": "m.gillings@maildrop.cc",
+      "movieId": "lzXsNkD",
+      "content": "Joker comment 1",
+      "approved": true,
+      "id": "eoaYjmY"
+    },
+    {
+      "email": "m.gillings@maildrop.cc",
+      "movieId": "MavDo5c",
+      "content": "BAt1",
+      "approved": true,
+      "id": "BPVe4GE"
     }
   ],
   "ratings": [

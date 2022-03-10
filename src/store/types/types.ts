@@ -1,4 +1,5 @@
 import { IfetchRatingObject } from "../../components/UI/molecules/RatingComponent/RatingComponent";
+import { commentsTypes } from "../ActionTypes/Commentstypes";
 import { movieTypes } from "../ActionTypes/Movietypes";
 import { ratingTypes } from "../ActionTypes/RatingTypes";
 import { userTypes } from "../ActionTypes/Usertypes";
@@ -13,7 +14,7 @@ export interface IMovie {
     country: string;
     description: string;
     comments: Icomment[];
-    ratings: Irating[];
+    ratings: Irating[] | undefined;
     movieTrailer: string;
   } 
 
@@ -26,8 +27,8 @@ export interface IMovie {
   export interface Icomment { 
     id: string;
     email: string;
-    movieId: string;
     content: string;
+    movieId: string;
     approved: boolean;
   }
 
@@ -51,7 +52,17 @@ export interface MoviesState {
   searchedMovies: IMovie[];
   searched: boolean,
   movie_id: string | null,
-  
+  movie_comment: Icomment | null, 
+  movie_comments: Icomment[], 
+}
+
+export interface CommentsState {
+  pending: boolean;
+  error: string | null;
+  comments: Icomment[];
+  pendingComments: Icomment[];
+  comment: Icomment | null;
+  dltcomment: string | null
 }
 
 export interface IUser {
@@ -73,6 +84,13 @@ export interface UserState {
   user: IUser | null;
 }
 
+export interface IcommentObject {
+  email: string | undefined;
+  content: string;
+  movieId: string;
+  approved: boolean;
+}
+
 export interface RatingsState {
   pending: boolean;
   error: string | null;
@@ -81,11 +99,22 @@ export interface RatingsState {
 
 }
 
-
+export interface GetAllCommentsSuccessPayload {
+  comments: Icomment[]; 
+}
+export interface GetAllCommentsFailurePayload {
+  error: string;
+}
 export interface FetchmoviesSuccessPayload {
   movies: IMovie[]; 
 }
 export interface FetchmoviesFailurePayload {
+  error: string;
+}
+export interface FetchcommentsSuccessPayload {
+  movie_comments: Icomment[]; 
+}
+export interface FetchcommentsFailurePayload {
   error: string;
 }
 
@@ -124,7 +153,13 @@ export interface FetchRatingSuccessPayload {
 export interface DeleteMovieSuccessPayload {
   movie_id: string;
 }
+export interface DeleteCommentSuccessPayload {
+  dltcomment: string;
+}
 export interface DeleteMovieFailurePayload {
+  error: string;
+}
+export interface DeleteCommentFailurePayload {
   error: string;
 }
 export interface LoginSuccessPayload {
@@ -142,10 +177,32 @@ export interface EditMovieSuccessPayload {
 export interface EditMovieFailurePayload {
   error: string;
 }
+export interface AddCommentFailurePayload {
+  error: string;
+}
+export interface ApproveCommentsFailurePayload {
+  error: string;
+}
+export interface AddCommentSuccessPayload {
+  movie_comment: Icomment;
+}
+export interface ApproveCommentsSuccessPayload {
+  comment: Icomment;
+}
+export interface FetchcommentsPayload {
+  values: string;
+}
 
 
 export interface Fetchmovies {
   type: typeof movieTypes.FETCH_MOVIES;
+}
+export interface GetAllComments {
+  type: typeof commentsTypes.GET_ALL_COMMENTS;
+}
+export interface Fetchcomments {
+  type: typeof movieTypes.FETCH_COMMENTS;
+  payload: string
 }
 export interface FetchFilteredMovies {
   type: typeof movieTypes.FETCH_FILTERED_MOVIES;
@@ -176,6 +233,10 @@ export interface DeleteMovie {
   type: typeof movieTypes.DELETE_MOVIE;
   payload: string
 }
+export interface DeleteComment {
+  type: typeof commentsTypes.DELETE_COMMENT;
+  payload: string
+}
 export interface Logintype {
   type: typeof userTypes.LOGIN;
   payload: object
@@ -188,8 +249,24 @@ export interface logOutType {
   type: typeof userTypes.LOG_OUT;
   payload: null
 }
+export interface AddComment {
+  type: typeof movieTypes.ADD_COMMENT;
+  payload: IcommentObject
+}
+export interface ApproveComments {
+  type: typeof commentsTypes.APPROVE_COMMENTS;
+  payload: string
+}
 
 
+export type GetAllCommentsSuccess = {
+  type: typeof commentsTypes.GET_ALL_COMMENTS_SUCCESS;
+  payload: GetAllCommentsSuccessPayload;
+};
+export type GetAllCommentsFailure = {
+  type: typeof commentsTypes.GET_ALL_COMMENTS_FAILURE;
+  payload: GetAllCommentsFailurePayload;
+};
 
 export type FetchmoviesSuccess = {
   type: typeof movieTypes.FETCH_MOVIES_SUCCESS;
@@ -198,6 +275,14 @@ export type FetchmoviesSuccess = {
 export type FetchmoviesFailure = {
   type: typeof movieTypes.FETCH_MOVIES_FAILURE;
   payload: FetchmoviesFailurePayload;
+};
+export type FetchcommentsSuccess = {
+  type: typeof movieTypes.FETCH_COMMENTS_SUCCESS;
+  payload: FetchcommentsSuccessPayload;
+};
+export type FetchcommentsFailure = {
+  type: typeof movieTypes.FETCH_COMMENTS_FAILURE;
+  payload: FetchcommentsFailurePayload;
 };
 
 export type FetchFilteredMoviesSuccess = {
@@ -259,9 +344,17 @@ export interface DeleteMovieSuccess {
   type: typeof movieTypes.DELETE_MOVIE_SUCCESS;
   payload: DeleteMovieSuccessPayload
 }
+export interface DeleteCommentSuccess {
+  type: typeof commentsTypes.DELETE_COMMENT_SUCCESS;
+  payload: DeleteCommentSuccessPayload
+}
 export interface DeleteMovieFailure {
   type: typeof movieTypes.DELETE_MOVIE_FAILURE;
   payload: DeleteMovieFailurePayload
+}
+export interface DeleteCommentFailure {
+  type: typeof commentsTypes.DELETE_COMMENT_FAILURE;
+  payload: DeleteCommentFailurePayload
 }
 export interface EditMovieSuccess {
   type: typeof movieTypes.EDIT_MOVIE_SUCCESS;
@@ -270,6 +363,22 @@ export interface EditMovieSuccess {
 export interface EditMovieFailure {
   type: typeof movieTypes.EDIT_MOVIE_FAILURE;
   payload: CreateMovieFailurePayload
+}
+export interface AddCommentSuccess {
+  type: typeof movieTypes.ADD_COMMENT_SUCCESS;
+  payload: AddCommentSuccessPayload;
+}
+export interface ApproveCommentsSuccess {
+  type: typeof commentsTypes.APPROVE_COMMENTS_SUCCESS;
+  payload: ApproveCommentsSuccessPayload;
+}
+export interface AddCommentFailure {
+  type: typeof movieTypes.ADD_COMMENT_FAILURE;
+  payload: AddCommentFailurePayload
+}
+export interface ApproveCommentsFailure {
+  type: typeof commentsTypes.APPROVE_COMMENTS_FAILURE;
+  payload: ApproveCommentsFailurePayload
 }
 
 
@@ -293,6 +402,12 @@ export type MoviesActions =
   | EditMovie
   | EditMovieSuccess
   | EditMovieFailure
+  | AddComment
+  | AddCommentSuccess
+  | AddCommentFailure
+  | Fetchcomments
+  | FetchcommentsSuccess
+  | FetchcommentsFailure
 
 
   export type RatingActions =
@@ -310,5 +425,18 @@ export type MoviesActions =
   | LoginFailureType
   | isLoggedInType
   | logOutType
+
+
+  export type CommentsActions =
+  | GetAllCommentsSuccess
+  | GetAllComments
+  | GetAllCommentsFailure
+  | ApproveComments
+  | ApproveCommentsSuccess
+  | ApproveCommentsFailure
+  | DeleteComment
+  | DeleteCommentSuccess
+  | DeleteCommentFailure
+
 
 

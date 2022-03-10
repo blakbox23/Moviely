@@ -1,29 +1,55 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Button from '../../atoms/Button/Button'
 import Text from '../../atoms/Text/Text'
 import './style.css'
 import comment from '../../../../assets/comment.png'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../../../store/Reducers/rootReducers'
+import {
+  approveComments,
+  deleteComment,
+  getAllComments,
+} from '../../../../store/Actions/CommentsActions'
 
-interface PendingCommentItemProps {}
+interface PendingCommentItemProps {
+  id: string
+  email: string
+  content: string
+  movieName: string
+  approved: boolean
+}
 
-export const PendingCommentItem: React.FC<PendingCommentItemProps> = ({}) => {
+export const PendingCommentItem: React.FC<PendingCommentItemProps> = ({
+  id,
+  email,
+  content,
+  movieName,
+  approved,
+}) => {
+  const dispatch = useDispatch()
+
+  const handleApprove = () => {
+    console.log('approved')
+    dispatch(approveComments(id))
+  }
+  const handleReject = () => {
+    console.log('deny')
+    dispatch(deleteComment(id))
+  }
+
   return (
     <div>
       <div className="pending-comment-item flex">
         <div className="comment-details flex">
-          <div>Userasdsdse</div>
-          <div>Brave</div>
+          <div>{email}</div>
+          <div>{movieName}</div>
         </div>
         <div className="pending-comment-textcontainer">
           <img src={comment} alt="" />
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. At odit
-            debitis eligendi. Quidem voluptates quos ea qui magni consequatur
-            illo quibusdam aliquam nihil! Cum, sed!
-          </p>
+          <p>{content}</p>
         </div>
         <div className="pending-comments-buttons flex">
-          <div>
+          <div onClick={handleApprove}>
             <Button
               placement="watched-movies"
               buttontext="Approve"
@@ -31,41 +57,13 @@ export const PendingCommentItem: React.FC<PendingCommentItemProps> = ({}) => {
             />
           </div>
           <div>
-            <Button
-              placement="watched-movies"
-              buttontext="Deny"
-              color="#2596BE80"
-            />
-          </div>
-        </div>
-      </div>
-      <div className="pending-comment-item flex">
-        <div className="comment-details flex">
-          <div>Userasdsdse</div>
-          <div>Brave</div>
-        </div>
-        <div className="pending-comment-textcontainer">
-          <img src={comment} alt="" />
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. At odit
-            debitis eligendi. Quidem voluptates quos ea qui magni consequatur
-            illo quibusdam aliquam nihil! Cum, sed!
-          </p>
-        </div>
-        <div className="pending-comments-buttons flex">
-          <div>
-            <Button
-              placement="watched-movies"
-              buttontext="Approve"
-              color="#F4242480"
-            />
-          </div>
-          <div>
-            <Button
-              placement="watched-movies"
-              buttontext="Deny"
-              color="#2596BE80"
-            />
+            <div onClick={handleReject}>
+              <Button
+                placement="watched-movies"
+                buttontext="Deny"
+                color="#2596BE80"
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,3 @@
+{
+    "/movies/:id/comments/:id": "/comments/:id"
+}

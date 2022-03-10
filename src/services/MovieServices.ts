@@ -11,6 +11,12 @@ const ENDPOINTS = {
     getMovies = (values: string) => {
         return this.apiClient.get(ENDPOINTS.MOVIES);  
     }
+    getComments = (values: string) => {
+        console.log('values')
+        console.log(values)
+        console.log(ENDPOINTS.MOVIES+values+'/comments')
+        return this.apiClient.get(ENDPOINTS.MOVIES+values+'/comments');  
+    }
 
     getMoviesByTitle = (values: string) => {
         return this.apiClient.get(ENDPOINTS.MOVIES+'?title=' + values);  
@@ -53,6 +59,10 @@ const ENDPOINTS = {
 
       removeMovie = (id: any) => {
         return this.apiClient.delete(ENDPOINTS.MOVIES + id, id);
+      }
+
+      addComment = (values: any) => {
+        return this.apiClient.post(ENDPOINTS.MOVIES + values.movieId + '/comments', values);
       }
 }
 
