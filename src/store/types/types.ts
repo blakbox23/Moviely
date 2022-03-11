@@ -191,6 +191,9 @@ export interface ApproveCommentsSuccessPayload {
 }
 export interface FetchcommentsPayload {
   values: string;
+} 
+export interface DeleteUserFailurePayload {
+  error: string
 }
 
 
@@ -255,6 +258,10 @@ export interface AddComment {
 }
 export interface ApproveComments {
   type: typeof commentsTypes.APPROVE_COMMENTS;
+  payload: string
+}
+export interface DeleteUser {
+  type: typeof userTypes.DELETE_USER;
   payload: string
 }
 
@@ -348,6 +355,14 @@ export interface DeleteCommentSuccess {
   type: typeof commentsTypes.DELETE_COMMENT_SUCCESS;
   payload: DeleteCommentSuccessPayload
 }
+export interface DeleteUserFailure {
+  type: typeof userTypes.DELETE_USER_FAILURE;
+  payload: DeleteUserFailurePayload
+}
+export interface DeleteUserSuccess {
+  type: typeof userTypes.DELETE_USER_SUCCESS;
+  payload: string
+}
 export interface DeleteMovieFailure {
   type: typeof movieTypes.DELETE_MOVIE_FAILURE;
   payload: DeleteMovieFailurePayload
@@ -425,6 +440,9 @@ export type MoviesActions =
   | LoginFailureType
   | isLoggedInType
   | logOutType
+  | DeleteUser
+  | DeleteUserFailure
+  | DeleteUserSuccess
 
 
   export type CommentsActions =

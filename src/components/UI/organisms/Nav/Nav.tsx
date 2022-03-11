@@ -15,6 +15,8 @@ const Nav = () => {
 
   const user = useSelector((state: RootState) => state.user.user)
 
+  const userPage = `/users/${user!.id}`
+
   useEffect(() => {
     dispatch(isLoggedIn())
   }, [dispatch])
@@ -126,15 +128,17 @@ const Nav = () => {
           }}
         >
           <div className="logoutmod">
-            <div
-              style={{
-                color: 'purple',
-                fontSize: '20px',
-                cursor: 'pointer',
-              }}
-            >
-              Profile
-            </div>
+            <NavLink to={userPage}>
+              <div
+                style={{
+                  color: 'purple',
+                  fontSize: '20px',
+                  cursor: 'pointer',
+                }}
+              >
+                Profile
+              </div>
+            </NavLink>
 
             <hr className="trik" />
 

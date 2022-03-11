@@ -6,7 +6,11 @@ import {
   LoginFailurePayload, 
   LoginSuccessPayload, 
   isLoggedInType,
-  logOutType
+  logOutType,
+  DeleteUser,
+  DeleteUserSuccess,
+  DeleteUserFailure,
+  DeleteUserFailurePayload,
 } from "../types/types";
 
 console.log('localStorage.getItem(user)');
@@ -18,12 +22,11 @@ localStorage.getItem('user') ? console.log(JSON.parse(`${localStorage.getItem('u
 
 
 
-  export const Login = (payload: object): Logintype => {
-    return {
+  export const Login = (payload: object): Logintype => ({
       type: userTypes.LOGIN,
       payload
-    };
-  };
+    })
+ 
   export const LoginSuccess = (payload: LoginSuccessPayload): LoginSuccessType => ({
     type: userTypes.LOGIN_SUCCESS,
     payload
@@ -42,3 +45,16 @@ localStorage.getItem('user') ? console.log(JSON.parse(`${localStorage.getItem('u
       type: userTypes.LOG_OUT,
       payload: null,
   });
+
+  export const deleteUser = (payload: string): DeleteUser=> ({
+  type: userTypes.DELETE_USER,
+  payload
+})
+export const deleteUserSuccess = (payload: string): DeleteUserSuccess => ({
+  type: userTypes.DELETE_USER_SUCCESS,
+  payload
+})
+export const deleteUserFailure = (payload: DeleteUserFailurePayload): DeleteUserFailure => ({
+  type: userTypes.DELETE_USER_FAILURE,
+  payload
+})
