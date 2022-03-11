@@ -1,17 +1,6 @@
 {
   "users": [
     {
-      "id": "d5318277-a19a-4f85-9016-cb3419f86858",
-      "firstName": "Jake",
-      "lastName": "Smith",
-      "role": "ADMINISTRATOR",
-      "email": "jake.smith@maildrop.cc",
-      "password": "ne",
-      "sex": "MALE",
-      "approved": true,
-      "watchedMovies": "undefined"
-    },
-    {
       "email": "joana.cripps@maildrop.cc",
       "password": "$2a$10$qpqhcZqLSQMAVGhOAwLDFOo9CiZdqnaz.tLgr72S0gWnK87b8QzBO",
       "id": "af087c55-8bac-44bc-af57-9323314ad0c3",
@@ -32,6 +21,17 @@
       "sex": "OTHER",
       "approved": true,
       "watchedMovies": "undefined"
+    },
+    {
+      "email": "test@pass2.com",
+      "password": "$2a$10$OvsQZ4EcD3/CwLHeBcvHnuZ2AQjmckAMVOvScik5zCtr8zlcDhf3S",
+      "firstName": "Mike",
+      "lastName": "Gillings",
+      "role": "USER",
+      "sex": "OTHER",
+      "approved": true,
+      "watchedMovies": "undefined",
+      "id": "L-XLz9n"
     }
   ],
   "movies": [
@@ -143,6 +143,27 @@
       "content": "BAt1",
       "approved": true,
       "id": "BPVe4GE"
+    },
+    {
+      "email": "m.gillings@maildrop.cc",
+      "movieId": "lzXsNkD",
+      "content": "A new Joker comment 2",
+      "approved": true,
+      "id": "IfvBCmW"
+    },
+    {
+      "email": "m.gillings@maildrop.cc",
+      "movieId": "lzXsNkD",
+      "content": "Last one joker",
+      "approved": false,
+      "id": "_oFT-AI"
+    },
+    {
+      "email": "m.gillings@maildrop.cc",
+      "movieId": "MavDo5c",
+      "content": "Batman 2022?",
+      "approved": false,
+      "id": "XgBPEo8"
     }
   ],
   "ratings": [
