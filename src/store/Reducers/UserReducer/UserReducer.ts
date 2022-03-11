@@ -46,6 +46,27 @@ const userReducer = (state = initialState, action: UserActions) => {
         user: null,
         error: null
       };
+
+      case userTypes.DELETE_USER:
+        return {
+            ...state,
+            pending: true,
+        };
+
+        case userTypes.DELETE_USER_SUCCESS: 
+        return {
+        ...state,
+        pending: false,
+        user: null,
+        error: null
+      };
+
+      case userTypes.DELETE_USER_FAILURE:
+        return {
+          ...state,
+          pending: false,
+          error: action.payload.error
+        };
             
       default:
             return {
