@@ -17,6 +17,7 @@ import { RootState } from './store/Reducers/rootReducers'
 import PendingCommentsPage from './components/pages/PendingCommentsPage'
 import WatchedMovies from './components/pages/WatchedMoviesPage'
 import EditMovie from './components/pages/EditMovie'
+import ProfilePage from './components/pages/ProfilePage'
 
 function App() {
   const dispatch = useDispatch()
@@ -73,6 +74,11 @@ function App() {
       path: '/edit-movie/:id',
       name: 'EditMovie',
       component: <EditMovie />,
+    },
+    {
+      path: '/users/:id',
+      name: 'Profile',
+      component: <ProfilePage />,
     },
   ]
 

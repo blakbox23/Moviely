@@ -22,3 +22,18 @@
     align-items: center;
     margin-top: 1rem;
 }
+
+.gender-drop.user-drop{
+    width: 532px;
+    padding: 1rem;
+    font-size: 1.1rem;
+    background-color: #fff;
+    border-radius: 20px;
+    appearance: none;
+    background-Image: url('../../../../assets/drop.png');
+    background-position: 90% 50%;
+    border: 1px solid #2596BE;
+    background-repeat: no-repeat;
+    padding-left: 1rem;
+    margin-top: 1rem;
+}
