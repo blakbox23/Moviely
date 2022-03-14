@@ -14,6 +14,7 @@ import AllCommentsSaga from "./CommentSaga/GetAllCommentsSaga";
 import ApproveCommentsSaga from "./CommentSaga/ApproveCommentsSaga";
 import DeleteCommentSaga from "./CommentSaga/DeleteCommentSaga";
 import DeleteUserSaga from "./UserSagas/DeleteUserSaga";
+import UpdateUserSaga from "./UserSagas/UpdateUserSaga";
 
 export default function* rootSaga() {
   yield all([fork(moviesSaga), 
@@ -31,6 +32,7 @@ export default function* rootSaga() {
     fork(ApproveCommentsSaga), 
     fork(DeleteCommentSaga),
     fork(DeleteUserSaga),
+    fork(UpdateUserSaga)
   
   ]);
 }
