@@ -489,6 +489,9 @@ export type MoviesActions =
   | UpdateUser
   | UpdateUserSuccess
   | UpdateUserFailure
+  | CreateUser
+  | CreateUserSuccess
+  | CreateUserFailure
 
 
   export type CommentsActions =
