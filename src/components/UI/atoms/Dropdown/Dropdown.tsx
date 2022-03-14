@@ -27,7 +27,7 @@ export const Dropdown: React.FC<any> = ({ ...props }) => {
             {...props}
             {...field}
           >
-            <option value="">Gender</option>
+            <option value="">&#x26A5; Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Other</option>

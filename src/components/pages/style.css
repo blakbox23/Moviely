@@ -21,7 +21,7 @@
 }
 
 .login-submit {
-    margin-top: 5rem;
+    margin-top: 2rem;
 }
 
 .popcorn {
@@ -40,5 +40,28 @@
     border-radius: 20px 20px 0 0;
     position: relative;
     right: 1rem;
-    
+}
+
+.signup {
+    background-color: #fff;
+    width: 58%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.input-row {
+    justify-content: space-around;
+}
+
+.bottom-prompt {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    margin-top: -0.5rem;
 }

@@ -18,6 +18,7 @@ import PendingCommentsPage from './components/pages/PendingCommentsPage'
 import WatchedMovies from './components/pages/WatchedMoviesPage'
 import EditMovie from './components/pages/EditMovie'
 import ProfilePage from './components/pages/ProfilePage'
+import { Signupform } from './components/pages/Signup'
 
 function App() {
   const dispatch = useDispatch()
@@ -96,6 +97,7 @@ function App() {
       ) : (
         <Routes>
           <Route path="/" element={<Loginform />} />
+          <Route path="/sign-up" element={<Signupform />} />
           ))
         </Routes>
       )}

@@ -37,3 +37,19 @@
     padding-left: 1rem;
     margin-top: 1rem;
 }
+
+.gender-drop.signup-drop{
+    width: 25rem;
+    height: 4rem;
+    font-size: 1.25rem;
+    background-color: #fff;
+    border-radius: 20px;
+    appearance: none;
+    background-Image: url('../../../../assets/drop.png');
+    background-position: 90% 50%;
+    border: 1px solid #2596BE;
+    background-repeat: no-repeat;
+    padding-left: 1rem;
+    color: grey;
+
+}
