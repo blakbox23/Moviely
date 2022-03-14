@@ -19,6 +19,12 @@ class UserService extends ApiService {
     updateUser = (values: any) => {
         return this.apiClient.patch(ENDPOINTS.USERS+values.id, values)
     }
+    getUsersByEmail = (values: string) => {
+        return this.apiClient.get(ENDPOINTS.USERS+'?email=' + values);  
+    }
+    createUser = (values: any) => {
+        return this.apiClient.post(ENDPOINTS.USERS, values);  
+    }
 
 }
 export const userService: any = new UserService(); 
