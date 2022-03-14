@@ -18,6 +18,11 @@ import {
   UpdateUserFailure,
   UpdateUserSuccessPayload,
   updateUserObject,
+  CreateUser,
+  CreateUserSuccess,
+  CreateUserFailure,
+  CreateUserSuccessPayload,
+  CreateUserFailurePayload,
 } from "../types/types";
 
 console.log('localStorage.getItem(user)');
@@ -78,5 +83,20 @@ export const updateUserSuccess = (payload: UpdateUserSuccessPayload): UpdateUser
 
 export const updateUserFailure = (payload: UpdateUserFailurePayload): UpdateUserFailure => ({
   type: userTypes.UPDATE_USER_FAILURE,
+  payload
+})
+
+export const createUser = (payload: any): CreateUser => ({
+  type: userTypes.CREATE_USER,
+  payload
+})
+
+export const createUserSuccess = (payload: CreateUserSuccessPayload): CreateUserSuccess => ({
+  type: userTypes.CREATE_USER_SUCCESS,
+  payload
+})
+
+export const createUserFailure = (payload: CreateUserFailurePayload): CreateUserFailure => ({
+  type: userTypes.CREATE_USER_FAILURE,
   payload
 })

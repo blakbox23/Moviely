@@ -197,6 +197,9 @@ export interface ApproveCommentsSuccessPayload {
 export interface UpdateUserSuccessPayload {
   user: IUser;
 }
+export interface CreateUserSuccessPayload {
+  user: IUser;
+}
 export interface FetchcommentsPayload {
   values: string;
 } 
@@ -204,6 +207,9 @@ export interface DeleteUserFailurePayload {
   error: string
 }
 export interface UpdateUserFailurePayload {
+  error: string
+}
+export interface CreateUserFailurePayload {
   error: string
 }
 
@@ -279,7 +285,20 @@ export interface UpdateUser {
   type: typeof userTypes.UPDATE_USER;
   payload: object
 }
+export interface CreateUser {
+  type: typeof userTypes.CREATE_USER;
+  payload: object
+}
 
+
+export type CreateUserSuccess = {
+  type: typeof userTypes.CREATE_USER_SUCCESS;
+  payload: CreateUserSuccessPayload;
+};
+export type CreateUserFailure = {
+  type: typeof userTypes.CREATE_USER_FAILURE;
+  payload: CreateUserFailurePayload;
+};
 
 export type GetAllCommentsSuccess = {
   type: typeof commentsTypes.GET_ALL_COMMENTS_SUCCESS;
