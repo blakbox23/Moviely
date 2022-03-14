@@ -31,9 +31,9 @@ function UserProfile() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  useEffect(() => {
-    dispatch(isLoggedIn())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(isLoggedIn())
+  // }, [dispatch])
 
   const user = useSelector((state: RootState) => state.user.user)
 
@@ -48,6 +48,9 @@ function UserProfile() {
     lastName: user!.lastName,
     gender: user!.sex,
   }
+
+  console.log('initialValues.firstName')
+  console.log(user?.firstName)
 
   return (
     <div className="user-profile flex">
