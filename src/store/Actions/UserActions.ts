@@ -11,6 +11,13 @@ import {
   DeleteUserSuccess,
   DeleteUserFailure,
   DeleteUserFailurePayload,
+  IUser,
+  UpdateUser,
+  UpdateUserSuccess,
+  UpdateUserFailurePayload,
+  UpdateUserFailure,
+  UpdateUserSuccessPayload,
+  updateUserObject,
 } from "../types/types";
 
 console.log('localStorage.getItem(user)');
@@ -18,7 +25,7 @@ console.log('localStorage.getItem(user)');
 
 
 
-localStorage.getItem('user') ? console.log(JSON.parse(`${localStorage.getItem('user')}`).user) : console.log('null')
+// localStorage.getItem('user') ? console.log(JSON.parse(`${localStorage.getItem('user')}`).user) : console.log('null')
 
 
 
@@ -56,5 +63,20 @@ export const deleteUserSuccess = (payload: string): DeleteUserSuccess => ({
 })
 export const deleteUserFailure = (payload: DeleteUserFailurePayload): DeleteUserFailure => ({
   type: userTypes.DELETE_USER_FAILURE,
+  payload
+})
+
+export const updateUser = (payload: any): UpdateUser => ({
+  type: userTypes.UPDATE_USER,
+  payload
+})
+
+export const updateUserSuccess = (payload: UpdateUserSuccessPayload): UpdateUserSuccess => ({
+  type: userTypes.UPDATE_USER_SUCCESS,
+  payload
+})
+
+export const updateUserFailure = (payload: UpdateUserFailurePayload): UpdateUserFailure => ({
+  type: userTypes.UPDATE_USER_FAILURE,
   payload
 })

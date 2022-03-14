@@ -75,7 +75,12 @@ export interface IUser {
   approved: string;
   watchedMovies: [];
   password: string;
- 
+} 
+export interface updateUserObject {
+  id: string;
+  firstName: string;
+  lastName: string;
+  sex: string;
 } 
 
 export interface UserState {
@@ -189,10 +194,16 @@ export interface AddCommentSuccessPayload {
 export interface ApproveCommentsSuccessPayload {
   comment: Icomment;
 }
+export interface UpdateUserSuccessPayload {
+  user: IUser;
+}
 export interface FetchcommentsPayload {
   values: string;
 } 
 export interface DeleteUserFailurePayload {
+  error: string
+}
+export interface UpdateUserFailurePayload {
   error: string
 }
 
@@ -264,6 +275,10 @@ export interface DeleteUser {
   type: typeof userTypes.DELETE_USER;
   payload: string
 }
+export interface UpdateUser {
+  type: typeof userTypes.UPDATE_USER;
+  payload: object
+}
 
 
 export type GetAllCommentsSuccess = {
@@ -273,6 +288,15 @@ export type GetAllCommentsSuccess = {
 export type GetAllCommentsFailure = {
   type: typeof commentsTypes.GET_ALL_COMMENTS_FAILURE;
   payload: GetAllCommentsFailurePayload;
+};
+
+export type UpdateUserSuccess = {
+  type: typeof userTypes.UPDATE_USER_SUCCESS;
+  payload: UpdateUserSuccessPayload;
+};
+export type UpdateUserFailure = {
+  type: typeof userTypes.UPDATE_USER_FAILURE;
+  payload: UpdateUserFailurePayload;
 };
 
 export type FetchmoviesSuccess = {
@@ -443,6 +467,9 @@ export type MoviesActions =
   | DeleteUser
   | DeleteUserFailure
   | DeleteUserSuccess
+  | UpdateUser
+  | UpdateUserSuccess
+  | UpdateUserFailure
 
 
   export type CommentsActions =
