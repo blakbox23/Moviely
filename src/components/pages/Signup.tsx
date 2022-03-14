@@ -9,27 +9,39 @@ import { useDispatch, useSelector } from 'react-redux'
 import { PageHeader } from '../UI/molecules/PageHeader/PageHeader'
 import { Input } from '../UI/atoms/Input/Input'
 // import { createMovie } from '../../../../store/Actions/MoviesAction'
-import { Login } from '../../store/Actions/UserActions'
-import { NavLink } from 'react-router-dom'
+import { createUser, Login } from '../../store/Actions/UserActions'
+import { Navigate, NavLink, useNavigate } from 'react-router-dom'
 import { Dropdown } from '../UI/atoms/Dropdown/Dropdown'
+import { RootState } from '../../store/Reducers/rootReducers'
 
 interface SignupProps {}
 
 interface MyFormValues {
   email: string
   password: string
-  FirstName: string
-  LastName: string
+  firstName: string
+  lastName: string
+  role: string
+  gender: string
+  approved: boolean
+  watchedMovies: [] | null
 }
 
 export const Signupform: React.FC<SignupProps> = ({}) => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const error = useSelector((state: RootState) => state.user.error)
 
   const initialValues: MyFormValues = {
     email: '',
     password: '',
-    FirstName: '',
-    LastName: '',
+    firstName: '',
+    lastName: '',
+    role: 'USER',
+    gender: '',
+    approved: true,
+    watchedMovies: null,
   }
 
   const padi = '&#xF002;'
@@ -38,9 +50,13 @@ export const Signupform: React.FC<SignupProps> = ({}) => {
       initialValues={initialValues}
       validationSchema={validate}
       onSubmit={(values: MyFormValues, { resetForm }) => {
-        // dispatch(Login(values))
+        dispatch(createUser(values))
         console.log('signupvalues')
         console.log(values)
+        if (error !== null) {
+          error && navigate('/')
+        }
+
         resetForm({ values: initialValues })
       }}
     >
@@ -70,7 +86,7 @@ export const Signupform: React.FC<SignupProps> = ({}) => {
               <Input
                 styleclass="authentication"
                 placeholder="&#x1F464;   First Name"
-                name="FirstName"
+                name="firstName"
                 type="text"
                 border
               />
@@ -79,7 +95,7 @@ export const Signupform: React.FC<SignupProps> = ({}) => {
                 styleclass="authentication"
                 type="text"
                 placeholder="&#x1F464; Last Name"
-                name="LastName"
+                name="lastName"
                 border
               />
             </div>
