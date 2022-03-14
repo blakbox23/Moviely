@@ -40,11 +40,11 @@ const Nav = () => {
       text: 'Pending comments',
       path: '/pending-comments',
     },
-    {
-      id: '3',
-      text: 'Pending users',
-      path: 'pending-users',
-    },
+    // {
+    //   id: '3',
+    //   text: 'Pending users',
+    //   path: 'pending-users',
+    // },
   ]
 
   const userNavLinks = [

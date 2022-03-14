@@ -67,6 +67,51 @@ const userReducer = (state = initialState, action: UserActions) => {
           pending: false,
           error: action.payload.error
         };
+
+        case userTypes.UPDATE_USER:
+          return {
+            ...state,
+            pending: true,
+            error: null
+          }
+
+          case userTypes.UPDATE_USER_SUCCESS: 
+          return {
+          ...state,
+          pending: false,
+          user: action.payload.user,
+          error: null
+        };
+
+        case userTypes.UPDATE_USER_FAILURE:
+          return {
+            ...state,
+            pending: false,
+            error: action.payload.error
+          };
+
+          
+        case userTypes.CREATE_USER:
+          return {
+            ...state,
+            pending: true,
+            error: null
+          }
+
+          case userTypes.CREATE_USER_SUCCESS: 
+          return {
+          ...state,
+          pending: false,
+          user: action.payload.user,
+          error: null
+        };
+
+        case userTypes.CREATE_USER_FAILURE:
+          return {
+            ...state,
+            pending: false,
+            error: action.payload.error
+          };
             
       default:
             return {

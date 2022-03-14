@@ -10,6 +10,7 @@ import { PageHeader } from '../UI/molecules/PageHeader/PageHeader'
 import { Input } from '../UI/atoms/Input/Input'
 // import { createMovie } from '../../../../store/Actions/MoviesAction'
 import { Login } from '../../store/Actions/UserActions'
+import { NavLink } from 'react-router-dom'
 
 interface LoginProps {}
 
@@ -64,10 +65,10 @@ export const Loginform: React.FC<LoginProps> = ({}) => {
             </div>
 
             {/* <input
-                className="form-submit-button flex"
-                type="submit"
-                value="Submit"
-              /> */}
+              className="form-submit-button flex"
+              type="submit"
+              value="Submit"
+            /> */}
 
             <input
               className="form-submit-button login-submit"
@@ -75,6 +76,9 @@ export const Loginform: React.FC<LoginProps> = ({}) => {
               value="Sign in"
             />
           </Form>
+          <div className="bottom-prompt">
+            <NavLink to="/sign-up">Create account </NavLink>
+          </div>
         </div>
       )}
     </Formik>

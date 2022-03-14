@@ -13,12 +13,17 @@ import { Input } from '../../atoms/Input/Input'
 import { Dropdown } from '../../atoms/Dropdown/Dropdown'
 import { Form, Formik } from 'formik'
 import { validate } from '../../../../Validation/UserProfileValidation'
-import { deleteUser, logOut } from '../../../../store/Actions/UserActions'
+import {
+  deleteUser,
+  isLoggedIn,
+  logOut,
+  updateUser,
+} from '../../../../store/Actions/UserActions'
 import { Navigate, useNavigate } from 'react-router-dom'
 
 interface MyFormValues {
-  firstname: string
-  secondname: string
+  firstName: string
+  lastName: string
   gender: string
 }
 
@@ -26,9 +31,11 @@ function UserProfile() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  //   useEffect(() => {
-  //     dispatch(fetchMovies())
-  //   }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(isLoggedIn())
+  // }, [dispatch])
+
+  const user = useSelector((state: RootState) => state.user.user)
 
   const handleDelete = () => {
     dispatch(deleteUser(user!.id))
@@ -36,13 +43,14 @@ function UserProfile() {
     navigate('/')
   }
 
-  const user = useSelector((state: RootState) => state.user.user)
-
   const initialValues: MyFormValues = {
-    firstname: user!.firstName,
-    secondname: user!.lastName,
+    firstName: user!.firstName,
+    lastName: user!.lastName,
     gender: user!.sex,
   }
+
+  console.log('initialValues.firstName')
+  console.log(user?.firstName)
 
   return (
     <div className="user-profile flex">
@@ -77,10 +85,10 @@ function UserProfile() {
       {/* <hr /> */}
       <Formik
         initialValues={initialValues}
-        validationSchema={validate}
+        // validationSchema={validate}
         onSubmit={(values: MyFormValues, { resetForm }) => {
           {
-            console.log('submited')
+            dispatch(updateUser({ ...values, id: user!.id }))
           }
         }}
       >
@@ -93,14 +101,14 @@ function UserProfile() {
                   styleclass="user-input"
                   type="text"
                   placeholder="First name"
-                  name="firstname"
+                  name="firstName"
                   border
                 />
                 <Input
                   styleclass="user-input"
                   type="text"
                   placeholder="Second name"
-                  name="secondname"
+                  name="lastName"
                   border
                 />
                 <Dropdown styleclass="user-drop" name={'gender'} />
