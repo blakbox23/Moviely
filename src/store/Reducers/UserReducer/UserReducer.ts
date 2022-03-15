@@ -5,6 +5,7 @@ const initialState: UserState = {
     pending: false,
     error: null,
     user: null,
+    watchedMovies: null
   };
 
 const userReducer = (state = initialState, action: UserActions) => {
@@ -21,6 +22,7 @@ const userReducer = (state = initialState, action: UserActions) => {
         ...state,
         pending: false,
         user: action.payload.user,
+        watchedMovies: action.payload.user.watchedMovies,
         error: null
       };
 
@@ -107,6 +109,28 @@ const userReducer = (state = initialState, action: UserActions) => {
         };
 
         case userTypes.CREATE_USER_FAILURE:
+          return {
+            ...state,
+            pending: false,
+            error: action.payload.error
+          };
+          
+        case userTypes.GET_WATCHED_MOVIES:
+          return {
+            ...state,
+            pending: true,
+            error: null
+          }
+
+          case userTypes.GET_WATCHED_MOVIES_SUCCESS: 
+          return {
+          ...state,
+          pending: false,
+          watchedMovies: action.payload.watchedMovies,
+          error: null
+        };
+
+        case userTypes.GET_WATCHED_MOVIES_FAILURE:
           return {
             ...state,
             pending: false,
