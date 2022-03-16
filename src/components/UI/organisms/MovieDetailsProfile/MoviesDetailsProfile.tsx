@@ -7,6 +7,7 @@ import Vector1 from '../../../../assets/Vector(1).png'
 import Vector2 from '../../../../assets/Vector(2).png'
 import Vector3 from '../../../../assets/Vector(3).png'
 import Vector4 from '../../../../assets/Vector(4).png'
+import seen from '../../../../assets/seen1.png'
 import { CommentItem } from '../../molecules/CommentItem/CommentItem'
 import { PageHeader } from '../../molecules/PageHeader/PageHeader'
 import { IMovie, Irating } from '../../../../store/types/types'
@@ -25,6 +26,10 @@ import { colors } from '../../../../constants/colors'
 import Modal from 'react-modal'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { Formik, Form } from 'formik'
+import {
+  addWatchedMovie,
+  getWatchedMovies,
+} from '../../../../store/Actions/UserActions'
 
 let movie: IMovie
 
@@ -47,6 +52,10 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
     dispatch(fetchcomments(movie.id))
   }, [dispatch])
 
+  useEffect(() => {
+    dispatch(getWatchedMovies(nuser!.id))
+  }, [dispatch])
+
   const nuser = useSelector((state: RootState) => state.user.user)
 
   const comments = useSelector(
@@ -57,8 +66,18 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
     (comment) => comment.approved === true,
   )
 
-  console.log('comments')
-  console.log(comments)
+  const watchedMovies = useSelector(
+    (state: RootState) => state.user.watchedMovies,
+  )
+
+  console.log('watchedMovies')
+  console.log(watchedMovies)
+
+  let watched = watchedMovies.filter(
+    (watchedMovie) => watchedMovie.title === movie.title,
+  )
+  console.log('watched')
+  console.log(watched)
 
   const navigate = useNavigate()
 
@@ -72,6 +91,17 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
     dispatch(deleteMovie(movie.id))
     handleClose()
     navigate('/')
+  }
+
+  const handleAddWatchedList = () => {
+    const watchedListParams = {
+      userId: nuser?.id,
+      title: movie.title,
+      imageUrl: movie.imageUrl,
+      genre: movie.genre,
+      year: movie.year,
+    }
+    dispatch(addWatchedMovie(watchedListParams))
   }
 
   let role
@@ -205,14 +235,26 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
           </div>
         </div>
 
-        {role !== 'ADMIN' && (
+        {role !== 'ADMIN' && !watched.length ? (
           <div className="flex add-watchlist-prompt">
             <p>
               This movies is not in your watched list. Would you like to add it?
             </p>
-            <button className="add-watchlist-button">
+            <button
+              className="add-watchlist-button"
+              onClick={handleAddWatchedList}
+            >
               Add to my watch list
             </button>
+          </div>
+        ) : (
+          <div className="watched">
+            <img src={seen} alt="" />
+            <p>This movie is in your watched list</p>
+            <p>
+              Leave a comment to share your insights about it and help other
+              viewers!
+            </p>
           </div>
         )}
 

@@ -23,6 +23,21 @@ import {
   CreateUserFailure,
   CreateUserSuccessPayload,
   CreateUserFailurePayload,
+  GetWatchedMovies,
+  GetWatchedMoviesSuccessPayload,
+  GetWatchedMoviesSuccess,
+  GetWatchedMoviesFailurePayload,
+  GetWatchedMoviesFailure,
+  AddWatchedMovie,
+  AddWatchedMovieSuccessPayload,
+  AddWatchedMovieSuccess,
+  AddWatchedMovieFailurePayload,
+  AddWatchedMovieFailure,
+  DeleteWatchedMovie,
+  DeleteWatchedMovieSuccessPayload,
+  DeleteWatchedMovieSuccess,
+  DeleteWatchedMovieFailurePayload,
+  DeleteWatchedMovieFailure,
 } from "../types/types";
 
 console.log('localStorage.getItem(user)');
@@ -98,5 +113,52 @@ export const createUserSuccess = (payload: CreateUserSuccessPayload): CreateUser
 
 export const createUserFailure = (payload: CreateUserFailurePayload): CreateUserFailure => ({
   type: userTypes.CREATE_USER_FAILURE,
+  payload
+})
+
+
+export const getWatchedMovies = (payload: string): GetWatchedMovies => ({
+  type: userTypes.GET_WATCHED_MOVIES,
+  payload
+})
+
+export const getWatchedMoviesSuccess = (payload: GetWatchedMoviesSuccessPayload): GetWatchedMoviesSuccess => ({
+  type: userTypes.GET_WATCHED_MOVIES_SUCCESS,
+  payload
+})
+
+export const getWatchedMoviesFailure = (payload: GetWatchedMoviesFailurePayload): GetWatchedMoviesFailure => ({
+  type: userTypes.GET_WATCHED_MOVIES_FAILURE,
+  payload
+})
+
+
+export const addWatchedMovie = (payload: object): AddWatchedMovie => ({
+  type: userTypes.ADD_WATCHED_MOVIE,
+  payload
+})
+
+export const addWatchedMovieSuccess = (payload: AddWatchedMovieSuccessPayload): AddWatchedMovieSuccess => ({
+  type: userTypes.ADD_WATCHED_MOVIE_SUCCESS,
+  payload
+})
+
+export const addWatchedMovieFailure = (payload: AddWatchedMovieFailurePayload): AddWatchedMovieFailure => ({
+  type: userTypes.ADD_WATCHED_MOVIE_FAILURE,
+  payload
+})
+
+
+export const deleteWatchedMovie = (payload: string): DeleteWatchedMovie => ({
+  type: userTypes.DELETE_WATCHED_MOVIE,
+  payload
+})
+export const deleteWatchedMovieSuccess = (payload: DeleteWatchedMovieSuccessPayload): DeleteWatchedMovieSuccess => ({
+  type: userTypes.DELETE_WATCHED_MOVIE_SUCCESS,
+  payload
+})
+
+export const deleteWatchedMovieFailure = (payload: DeleteWatchedMovieFailurePayload): DeleteWatchedMovieFailure => ({
+  type: userTypes.DELETE_WATCHED_MOVIE_FAILURE,
   payload
 })

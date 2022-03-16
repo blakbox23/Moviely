@@ -38,6 +38,15 @@ export interface IMovie {
     year?: string;
     grade?: number;
   }
+
+  export interface IwatchedMovie { 
+    title: string;
+    genre: string;
+    year: string;
+    imageUrl: string;
+    listId: string;
+    id: string;
+  }
   export interface Iratingobject { 
     email: string;
     movieId: string;
@@ -87,6 +96,8 @@ export interface UserState {
   pending: boolean;
   error: string | null;
   user: IUser | null;
+  watchedMovies: IwatchedMovie[];
+  watchedMovie: any;
 }
 
 export interface IcommentObject {
@@ -200,6 +211,12 @@ export interface UpdateUserSuccessPayload {
 export interface CreateUserSuccessPayload {
   user: IUser;
 }
+export interface GetWatchedMoviesSuccessPayload {
+  watchedMovies: IwatchedMovie[];
+}
+export interface GetWatchedMoviesFailurePayload {
+  error: string
+}
 export interface FetchcommentsPayload {
   values: string;
 } 
@@ -210,6 +227,18 @@ export interface UpdateUserFailurePayload {
   error: string
 }
 export interface CreateUserFailurePayload {
+  error: string
+}
+export interface AddWatchedMovieSuccessPayload {
+  watchedMovie: IwatchedMovie
+}
+export interface AddWatchedMovieFailurePayload {
+  error: string
+}
+export interface DeleteWatchedMovieSuccessPayload {
+  watchedMovie: object
+}
+export interface DeleteWatchedMovieFailurePayload {
   error: string
 }
 
@@ -289,12 +318,48 @@ export interface CreateUser {
   type: typeof userTypes.CREATE_USER;
   payload: object
 }
+export interface GetWatchedMovies {
+  type: typeof userTypes.GET_WATCHED_MOVIES;
+  payload: string
+}
+export interface AddWatchedMovie {
+  type: typeof userTypes.ADD_WATCHED_MOVIE;
+  payload: object
+}
+export interface DeleteWatchedMovie {
+  type: typeof userTypes.DELETE_WATCHED_MOVIE;
+  payload: string
+}
 
-
+export type DeleteWatchedMovieSuccess = {
+  type: typeof userTypes.DELETE_WATCHED_MOVIE_SUCCESS;
+  payload: DeleteWatchedMovieSuccessPayload;
+};
+export type DeleteWatchedMovieFailure = {
+  type: typeof userTypes.DELETE_WATCHED_MOVIE_FAILURE;
+  payload: DeleteWatchedMovieFailurePayload;
+};
+export type AddWatchedMovieSuccess = {
+  type: typeof userTypes.ADD_WATCHED_MOVIE_SUCCESS;
+  payload: AddWatchedMovieSuccessPayload;
+};
+export type AddWatchedMovieFailure = {
+  type: typeof userTypes.ADD_WATCHED_MOVIE_FAILURE;
+  payload: AddWatchedMovieFailurePayload;
+};
+export type GetWatchedMoviesSuccess = {
+  type: typeof userTypes.GET_WATCHED_MOVIES_SUCCESS;
+  payload: GetWatchedMoviesSuccessPayload;
+};
+export type GetWatchedMoviesFailure = {
+  type: typeof userTypes.GET_WATCHED_MOVIES_FAILURE;
+  payload: GetWatchedMoviesFailurePayload;
+};
 export type CreateUserSuccess = {
   type: typeof userTypes.CREATE_USER_SUCCESS;
   payload: CreateUserSuccessPayload;
 };
+
 export type CreateUserFailure = {
   type: typeof userTypes.CREATE_USER_FAILURE;
   payload: CreateUserFailurePayload;
@@ -492,6 +557,15 @@ export type MoviesActions =
   | CreateUser
   | CreateUserSuccess
   | CreateUserFailure
+  | GetWatchedMovies
+  | GetWatchedMoviesSuccess
+  | GetWatchedMoviesFailure
+  | AddWatchedMovie
+  | AddWatchedMovieSuccess
+  | AddWatchedMovieFailure
+  | DeleteWatchedMovie
+  | DeleteWatchedMovieSuccess
+  | DeleteWatchedMovieFailure
 
 
   export type CommentsActions =

@@ -12,9 +12,6 @@ const ENDPOINTS = {
         return this.apiClient.get(ENDPOINTS.MOVIES);  
     }
     getComments = (values: string) => {
-        console.log('values')
-        console.log(values)
-        console.log(ENDPOINTS.MOVIES+values+'/comments')
         return this.apiClient.get(ENDPOINTS.MOVIES+values+'/comments');  
     }
 

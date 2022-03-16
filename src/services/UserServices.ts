@@ -3,7 +3,10 @@ import ApiService from "./ApiServices";
 
 const ENDPOINTS = {
     LOGIN: '/login',
-    USERS: '/users/'
+    USERS: '/users/',
+    LISTS: '/lists/',
+    WATCHEDMOVIES: 'watchedMovies/'
+    
 }
  
 class UserService extends ApiService {
@@ -24,6 +27,16 @@ class UserService extends ApiService {
     }
     createUser = (values: any) => {
         return this.apiClient.post(ENDPOINTS.USERS, values);  
+    }
+    fetchWatchedMovies = (id: string) => {
+        return this.apiClient.get(ENDPOINTS.LISTS+id+'/watchedMovies');  
+    }
+    addWatchedMovie = (values: any) => {
+        this.apiClient.post(ENDPOINTS.LISTS, {id: values.userId});
+        return this.apiClient.post(ENDPOINTS.LISTS+values.userId+'/watchedMovies', values);  
+    }
+    deleteWatchedMovie = (id: any) => {
+        return this.apiClient.delete(ENDPOINTS.WATCHEDMOVIES+id, id);  
     }
 
 }
