@@ -158,13 +158,14 @@ export interface UpdateRatingFailurePayload {
   error: string;
 }
 export interface UpdateRatingSuccessPayload {
-  movieRating: Irating;
+  currentGrade: Irating;
 }
 export interface FetchRatingFailurePayload {
   error: string;
 }
 export interface FetchRatingSuccessPayload {
-  currentGrade: number;
+  currentGrade: number,
+  movieRating: number
 }
 export interface DeleteMovieSuccessPayload {
   movie_id: string;

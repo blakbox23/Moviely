@@ -22,7 +22,7 @@ const initialState: RatingsState = {
           return {
             ...state,
             pending: false,
-            movieRating: action.payload.movieRating,
+            currentGrade: action.payload.currentGrade,
             error: null
           };
 
@@ -44,6 +44,7 @@ const initialState: RatingsState = {
           ...state,
           pending: false,
           currentGrade: action.payload.currentGrade,
+          movieRating: action.payload.movieRating,
           error: null
         };
 
