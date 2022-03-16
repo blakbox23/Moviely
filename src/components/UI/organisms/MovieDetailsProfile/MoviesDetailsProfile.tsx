@@ -35,15 +35,15 @@ let movie: IMovie
 
 Modal.setAppElement('#root')
 
-export interface Iuser {
-  admin: boolean
-  email: string
-}
+// export interface Iuser {
+//   admin: boolean
+//   email: string
+// }
 
-const user = {
-  admin: false,
-  email: 'dev@try.com',
-}
+// const user = {
+//   admin: false,
+//   email: 'dev@try.com',
+// }
 
 export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
   const dispatch = useDispatch()
@@ -124,49 +124,10 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
     email: userEmail,
     movieId: movie.id,
   }
-  // console.log('fetchRatingObject')
-  // console.log(fetchRatingObject)
 
-  const { pending, currentGrade, error } = useSelector(
+  const { pending, currentGrade, error, movieRating } = useSelector(
     (state: RootState) => state.ratings,
   )
-
-  const averageGrade = () => {
-    let averagegrade = 0
-    let totalGrade = 0
-
-    if (movie.ratings === undefined) {
-      return 0
-    } else {
-      for (let i = 0; i < movie.ratings.length; i++) {
-        totalGrade += movie.ratings[i].grade
-      }
-      averagegrade = totalGrade / movie.ratings.length
-      return averagegrade
-    }
-  }
-  const currentMovieGrade = () => {
-    if (movie.ratings === undefined) {
-      return 0
-    } else {
-      let userRating = movie.ratings.find(
-        (rating: Irating) => rating.email === userEmail,
-      )
-      return userRating ? userRating.grade : 0
-    }
-  }
-  const currentMovieRating = () => {
-    if (movie.ratings === undefined) {
-      return 'no ratings'
-    } else if (!movie.ratings.some((rating) => rating.email === userEmail)) {
-      return 'no ratings'
-    } else {
-      let ratings = movie.ratings.find(
-        (rating: Irating) => rating.email === userEmail,
-      )
-      return ratings ? ratings.id : 'no ratings'
-    }
-  }
 
   return (
     <>
@@ -196,9 +157,8 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
                   <div className="movie-rating ">
                     <RatingComponent
                       movieId={movie.id}
-                      user={user}
+                      user={nuser}
                       currentGrade={currentGrade}
-                      currentRatingId={currentMovieRating()}
                     />
                   </div>
                 )}
@@ -224,7 +184,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
                   </div>
                   <div className="flex movie-profile-listitem">
                     <img src={Vector4} alt="" />
-                    <p> {averageGrade()}</p>
+                    <p> {movieRating}</p>
                   </div>
                 </div>
                 <div className="movie-profile-description">
