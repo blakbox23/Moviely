@@ -82,8 +82,6 @@ border-radius: 20px;;
     font-size: 1rem;
 }
 
-
-
 .add-watchlist-button {
     margin-left: 1rem;
     background-color: #2596BE;
@@ -92,4 +90,12 @@ border-radius: 20px;;
     border-radius: 20rem;
     border: none;
     font-size: 1rem;
+    cursor: pointer;
+}
+
+.watched {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.1rem;
 }
