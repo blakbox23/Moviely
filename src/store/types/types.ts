@@ -96,7 +96,7 @@ export interface UserState {
   pending: boolean;
   error: string | null;
   user: IUser | null;
-  watchedMovies: IwatchedMovie[] | null;
+  watchedMovies: IwatchedMovie[];
 }
 
 export interface IcommentObject {
@@ -228,6 +228,12 @@ export interface UpdateUserFailurePayload {
 export interface CreateUserFailurePayload {
   error: string
 }
+export interface AddWatchedMovieSuccessPayload {
+  watchedMovie: IwatchedMovie
+}
+export interface AddWatchedMovieFailurePayload {
+  error: string
+}
 
 
 export interface Fetchmovies {
@@ -309,8 +315,20 @@ export interface GetWatchedMovies {
   type: typeof userTypes.GET_WATCHED_MOVIES;
   payload: string
 }
+export interface AddWatchedMovie {
+  type: typeof userTypes.ADD_WATCHED_MOVIE;
+  payload: object
+}
 
 
+export type AddWatchedMovieSuccess = {
+  type: typeof userTypes.ADD_WATCHED_MOVIE_SUCCESS;
+  payload: AddWatchedMovieSuccessPayload;
+};
+export type AddWatchedMovieFailure = {
+  type: typeof userTypes.ADD_WATCHED_MOVIE_FAILURE;
+  payload: AddWatchedMovieFailurePayload;
+};
 export type GetWatchedMoviesSuccess = {
   type: typeof userTypes.GET_WATCHED_MOVIES_SUCCESS;
   payload: GetWatchedMoviesSuccessPayload;
@@ -524,6 +542,9 @@ export type MoviesActions =
   | GetWatchedMovies
   | GetWatchedMoviesSuccess
   | GetWatchedMoviesFailure
+  | AddWatchedMovie
+  | AddWatchedMovieSuccess
+  | AddWatchedMovieFailure
 
 
   export type CommentsActions =

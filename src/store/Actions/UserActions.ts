@@ -28,6 +28,11 @@ import {
   GetWatchedMoviesSuccess,
   GetWatchedMoviesFailurePayload,
   GetWatchedMoviesFailure,
+  AddWatchedMovie,
+  AddWatchedMovieSuccessPayload,
+  AddWatchedMovieSuccess,
+  AddWatchedMovieFailurePayload,
+  AddWatchedMovieFailure,
 } from "../types/types";
 
 console.log('localStorage.getItem(user)');
@@ -119,5 +124,21 @@ export const getWatchedMoviesSuccess = (payload: GetWatchedMoviesSuccessPayload)
 
 export const getWatchedMoviesFailure = (payload: GetWatchedMoviesFailurePayload): GetWatchedMoviesFailure => ({
   type: userTypes.GET_WATCHED_MOVIES_FAILURE,
+  payload
+})
+
+
+export const addWatchedMovie = (payload: object): AddWatchedMovie => ({
+  type: userTypes.ADD_WATCHED_MOVIE,
+  payload
+})
+
+export const addWatchedMovieSuccess = (payload: AddWatchedMovieSuccessPayload): AddWatchedMovieSuccess => ({
+  type: userTypes.ADD_WATCHED_MOVIE_SUCCESS,
+  payload
+})
+
+export const addWatchedMovieFailure = (payload: AddWatchedMovieFailurePayload): AddWatchedMovieFailure => ({
+  type: userTypes.ADD_WATCHED_MOVIE_FAILURE,
   payload
 })

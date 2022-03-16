@@ -107,18 +107,30 @@
     {
       "email": "really@done.com",
       "password": "$2a$10$hiynoKPt8mlxO.qOjfSR6.NEQUIMeXR9T71KEDB2Ee5hZffHMitRe",
-      "firstName": "Pet",
-      "lastName": "Mbut",
+      "firstName": "Peter",
+      "lastName": "Mbuthia",
       "role": "USER",
       "gender": "male",
       "approved": true,
-      "watchedMovies": null,
+      "watchedMovies": [
+        {
+          "id": "lzXsNkD",
+          "title": "Joker",
+          "genre": "comedy",
+          "year": "2012",
+          "runtime": "106",
+          "imageUrl": "https://source.unsplash.com/NX1Z62_2w04",
+          "country": "USA",
+          "trailerUrl": "cs",
+          "description": "Arthur Fleck, a party clown, leads an impoverished life with his ailing mother. However, when society shuns him and brands him as a freak, he decides to embrace the life of crime and chaos."
+        }
+      ],
       "id": "ClIjyCG"
     },
     {
       "email": "really@done.coma",
       "password": "$2a$10$Sc4352dIAz1YkqnG9GpKmeIb/BcYi0tJkrbI5wMrbDzfeWGbBBV2y",
-      "firstName": "asdf",
+      "firstName": "asdfa",
       "lastName": "adsf",
       "role": "USER",
       "gender": "other",
@@ -275,6 +287,13 @@
       "content": "new name pet mbut",
       "approved": true,
       "id": "a6lbrtJ"
+    },
+    {
+      "email": "really@done.com",
+      "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
+      "content": "Terminator comment",
+      "approved": false,
+      "id": "R66Vo6Q"
     }
   ],
   "ratings": [
@@ -295,6 +314,36 @@
       "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
       "grade": 4,
       "id": "2F6pR5x"
+    }
+  ],
+  "lists": [],
+  "watchedMovies": [
+    {
+      "userId": "ClIjyCG",
+      "title": "Joker",
+      "imageUrl": "https://source.unsplash.com/NX1Z62_2w04",
+      "genre": "comedy",
+      "year": "2012",
+      "listId": "ClIjyCG",
+      "id": 1
+    },
+    {
+      "userId": "ClIjyCG",
+      "title": "Batman",
+      "imageUrl": "https://source.unsplash.com/meqVd5zwylI",
+      "genre": "comedy",
+      "year": "2023",
+      "listId": "ClIjyCG",
+      "id": 2
+    },
+    {
+      "userId": "ClIjyCG",
+      "title": "The Terminator",
+      "imageUrl": "https://goombastomp.com/wp-content/uploads/2019/11/The-Terminator-Film-Review.jpeg",
+      "genre": "action",
+      "year": 1984,
+      "listId": "ClIjyCG",
+      "id": 3
     }
   ]
 }
