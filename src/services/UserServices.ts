@@ -29,6 +29,10 @@ class UserService extends ApiService {
     fetchWatchedMovies = (id: string) => {
         return this.apiClient.get(ENDPOINTS.LISTS+id+'/watchedMovies');  
     }
+    addWatchedMovie = (values: any) => {
+        this.apiClient.patch(ENDPOINTS.LISTS, {id: values.userId});
+        return this.apiClient.post(ENDPOINTS.LISTS+values.userId+'/watchedMovies', values);  
+    }
 
 }
 export const userService: any = new UserService(); 

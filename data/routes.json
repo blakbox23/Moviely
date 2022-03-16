@@ -1,3 +1,7 @@
 {
+    
+    "/users/:id/watchedMovies/:id": "/watchedMovies/:id",
+    "/lists/:id/watchedMovies/:id": "/watchedMovies/:id",
     "/movies/:id/comments/:id": "/comments/:id"
+
 }
