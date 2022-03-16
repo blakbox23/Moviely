@@ -13,9 +13,17 @@ class RatingService extends ApiService {
     }
 
     getMovieRating = (movieId: string) => {
-        return this.apiClient.get(ENDPOINTS.MOVIES + movieId + '/ratings')
-        
+        return this.apiClient.get(ENDPOINTS.MOVIES + movieId + '/ratings')    
     } 
+ 
+    updatePostRating = (values: any) => {
+        return this.apiClient.post(ENDPOINTS.MOVIES + values.movieId + '/ratings', values)    
+    } 
+    updatePatchRating = (values: any) => {
+        return this.apiClient.patch(ENDPOINTS.MOVIES + values.movieId+ '/ratings/' +values.ratingId, values)    
+    } 
+
+
 
 }
 export const ratingService: any = new RatingService(); 
