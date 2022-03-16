@@ -38,17 +38,21 @@ export const RatingComponent: React.FC<RatingComponent> = ({
 }) => {
   const dispatch = useDispatch()
 
-  let fetchRatingObject = {
-    email: user.email,
-    movieId: movieId,
-  }
+  // let fetchRatingObject = {
+  //   email: user.email,
+  //   movieId: movieId,
+  // }
 
   let starRating = currentGrade * 20
 
-  // console.log('starRating')
-  // console.log(starRating)
+  console.log('starRating')
+  console.log(starRating)
 
   const [rating, setRating] = useState(starRating) // initial rating value
+
+  React.useEffect(() => {
+    setRating(starRating)
+  }, [starRating])
 
   // Catch Rating value
   const handleRating = (rate: number) => {

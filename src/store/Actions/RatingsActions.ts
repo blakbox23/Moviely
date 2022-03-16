@@ -1,7 +1,7 @@
 import { IfetchRatingObject } from '../../components/UI/molecules/RatingComponent/RatingComponent';
 import { ratingTypes } from '../ActionTypes/RatingTypes'
 
-import { UpdateRating, 
+import { UpdateRating,  
   UpdateRatingFailure, 
   UpdateRatingFailurePayload, 
   UpdateRatingSuccess, 

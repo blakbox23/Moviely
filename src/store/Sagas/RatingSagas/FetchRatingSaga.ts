@@ -8,20 +8,17 @@ import { Irating } from '../../types/types';
 function* workFetchRating(action:any): any {
     try {
       const response = yield call(ratingService.getMovieRating, action.payload.movieId);
-
-      console.log('Rating response fetch')
-      console.log(response.data)
-
-      // let userRating = response.data.find( (rating: Irating) => rating.email === action.payload.email );
+     
+      let userRating
+      // let userRating = response.data.find( (rating: Irating) => rating.email === action.payload.email);
+      response.data.find( (rating: Irating) => rating.email === action.payload.email) ? (userRating = response.data.find( (rating: Irating) => rating.email === action.payload.email).grade):(userRating = 0)
       
-      // console.log('fetchrating from saga')
-      // console.log(userRating.grade)
-
-      success("Successful")
+      console.log('fetchrating from saga')
+      console.log(userRating)
 
     yield put(
         fetchRatingSuccess({
-          currentGrade: 2
+          currentGrade: userRating
         })
       )
     }

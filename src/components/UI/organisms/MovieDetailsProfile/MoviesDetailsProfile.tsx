@@ -49,6 +49,13 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    console.log('fetchRatingObject')
+    console.log(fetchRatingObject)
+
+    dispatch(fetchRating(fetchRatingObject))
+  }, [dispatch])
+
+  useEffect(() => {
     dispatch(fetchcomments(movie.id))
   }, [dispatch])
 
@@ -70,14 +77,9 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
     (state: RootState) => state.user.watchedMovies,
   )
 
-  console.log('watchedMovies')
-  console.log(watchedMovies)
-
   let watched = watchedMovies.filter(
     (watchedMovie) => watchedMovie.title === movie.title,
   )
-  console.log('watched')
-  console.log(watched)
 
   const navigate = useNavigate()
 
@@ -122,14 +124,12 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
     email: userEmail,
     movieId: movie.id,
   }
+  // console.log('fetchRatingObject')
+  // console.log(fetchRatingObject)
 
   const { pending, currentGrade, error } = useSelector(
     (state: RootState) => state.ratings,
   )
-
-  // useEffect(() => {
-  //   dispatch(fetchRating(fetchRatingObject))
-  // }, [dispatch])
 
   const averageGrade = () => {
     let averagegrade = 0
@@ -197,7 +197,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
                     <RatingComponent
                       movieId={movie.id}
                       user={user}
-                      currentGrade={currentMovieGrade()}
+                      currentGrade={currentGrade}
                       currentRatingId={currentMovieRating()}
                     />
                   </div>

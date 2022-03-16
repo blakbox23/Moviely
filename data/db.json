@@ -176,20 +176,6 @@
           "approved": false
         }
       ],
-      "ratings": [
-        {
-          "id": "e4da3888-6903-4fda-811f-0007fb3a4f00",
-          "email": "joana.cripps@maildrop.cc",
-          "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
-          "grade": 3
-        },
-        {
-          "id": "e4da3888-6903-4fda-811f-0007fb3a4f0",
-          "email": "dev@try.com",
-          "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
-          "grade": 5
-        }
-      ],
       "movieTrailer": "https://www.youtube.com/watch?v=k64P4l2Wmeg"
     },
     {
@@ -297,23 +283,24 @@
     }
   ],
   "ratings": [
+  
     {
-      "id": "e4da3888-6903-4fda-811f-0007fb3a4f00",
-      "email": "joana.cripps@maildrop.cc",
+      "email": "really@done.com",
       "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
-      "grade": 3
+      "grade": 4,
+      "id": "2F6pR5x"
+    },
+    {
+      "email": "really@done.coma",
+      "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
+      "grade": 4,
+      "id": "1"
     },
     {
       "email": "dev@rate.com",
       "movieId": "lzXsNkD",
-      "grade": 2,
-      "id": "WPAFN6W"
-    },
-    {
-      "email": "dev@try.com",
-      "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
-      "grade": 4,
-      "id": "2F6pR5x"
+      "grade": 5,
+      "id": "c-sxwVu"
     }
   ],
   "lists": [
@@ -321,5 +308,24 @@
       "id": "ClIjyCG"
     }
   ],
-  "watchedMovies": []
+  "watchedMovies": [
+    {
+      "userId": "ClIjyCG",
+      "title": "The Terminator",
+      "imageUrl": "https://goombastomp.com/wp-content/uploads/2019/11/The-Terminator-Film-Review.jpeg",
+      "genre": "action",
+      "year": 1984,
+      "listId": "ClIjyCG",
+      "id": 1
+    },
+    {
+      "userId": "ClIjyCG",
+      "title": "Joker",
+      "imageUrl": "https://source.unsplash.com/NX1Z62_2w04",
+      "genre": "comedy",
+      "year": "2012",
+      "listId": "ClIjyCG",
+      "id": 2
+    }
+  ]
 }
