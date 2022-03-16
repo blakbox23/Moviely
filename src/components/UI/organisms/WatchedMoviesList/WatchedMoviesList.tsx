@@ -12,9 +12,6 @@ export const WatchedMoviesList: React.FC<WatchedMoviesListProps> = ({}) => {
   const dispatch = useDispatch()
   const user = useSelector((state: RootState) => state.user.user)
 
-  console.log('userId')
-  console.log(user!.id)
-
   useEffect(() => {
     dispatch(getWatchedMovies(user!.id))
   }, [dispatch])
@@ -22,9 +19,6 @@ export const WatchedMoviesList: React.FC<WatchedMoviesListProps> = ({}) => {
   const watchedMovies = useSelector(
     (state: RootState) => state.user.watchedMovies,
   )
-
-  console.log('watchedMovies')
-  console.log(watchedMovies)
 
   return (
     <div className="watched-movies-list">

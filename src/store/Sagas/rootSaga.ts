@@ -18,6 +18,7 @@ import UpdateUserSaga from "./UserSagas/UpdateUserSaga";
 import CreateUserSaga from "./UserSagas/CreateUserSaga";
 import getWatchedMoviesSaga from "./UserSagas/GetWatchedMoviesSaga";
 import AddWatchedMovieSaga from "./UserSagas/AddWatchedMovieSaga";
+import DeleteWatchedMovieSaga from "./UserSagas/DeleteWatchedMovieSaga";
 
 export default function* rootSaga() {
   yield all([fork(moviesSaga), 
@@ -38,7 +39,8 @@ export default function* rootSaga() {
     fork(UpdateUserSaga),
     fork(CreateUserSaga),
     fork(getWatchedMoviesSaga),
-    fork(AddWatchedMovieSaga)
+    fork(AddWatchedMovieSaga),
+    fork(DeleteWatchedMovieSaga)
   
   ]);
 }

@@ -5,6 +5,8 @@ const ENDPOINTS = {
     LOGIN: '/login',
     USERS: '/users/',
     LISTS: '/lists/',
+    WATCHEDMOVIES: 'watchedMovies/'
+    
 }
  
 class UserService extends ApiService {
@@ -30,8 +32,11 @@ class UserService extends ApiService {
         return this.apiClient.get(ENDPOINTS.LISTS+id+'/watchedMovies');  
     }
     addWatchedMovie = (values: any) => {
-        this.apiClient.patch(ENDPOINTS.LISTS, {id: values.userId});
+        this.apiClient.post(ENDPOINTS.LISTS, {id: values.userId});
         return this.apiClient.post(ENDPOINTS.LISTS+values.userId+'/watchedMovies', values);  
+    }
+    deleteWatchedMovie = (id: any) => {
+        return this.apiClient.delete(ENDPOINTS.WATCHEDMOVIES+id, id);  
     }
 
 }

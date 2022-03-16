@@ -5,7 +5,8 @@ const initialState: UserState = {
     pending: false,
     error: null,
     user: null,
-    watchedMovies: []
+    watchedMovies: [],
+    watchedMovie: null
   };
 
 const userReducer = (state = initialState, action: UserActions) => {
@@ -153,6 +154,30 @@ const userReducer = (state = initialState, action: UserActions) => {
         };
 
         case userTypes.ADD_WATCHED_MOVIE_FAILURE:
+          return {
+            ...state,
+            pending: false,
+            error: action.payload.error
+          };
+
+
+        case userTypes.DELETE_WATCHED_MOVIE:
+          return {
+            ...state,
+            pending: true,
+            error: null,
+            watchedMovie: action.payload
+          }
+
+          case userTypes.DELETE_WATCHED_MOVIE_SUCCESS: 
+          return {
+          ...state,
+          pending: false,
+          watchedMovies: state.watchedMovies.filter((watchedMovie) => watchedMovie.id !== state.watchedMovie),
+          error: null
+        };
+
+        case userTypes.DELETE_WATCHED_MOVIE_FAILURE:
           return {
             ...state,
             pending: false,

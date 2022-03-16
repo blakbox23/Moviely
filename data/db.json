@@ -316,34 +316,10 @@
       "id": "2F6pR5x"
     }
   ],
-  "lists": [],
-  "watchedMovies": [
+  "lists": [
     {
-      "userId": "ClIjyCG",
-      "title": "Joker",
-      "imageUrl": "https://source.unsplash.com/NX1Z62_2w04",
-      "genre": "comedy",
-      "year": "2012",
-      "listId": "ClIjyCG",
-      "id": 1
-    },
-    {
-      "userId": "ClIjyCG",
-      "title": "Batman",
-      "imageUrl": "https://source.unsplash.com/meqVd5zwylI",
-      "genre": "comedy",
-      "year": "2023",
-      "listId": "ClIjyCG",
-      "id": 2
-    },
-    {
-      "userId": "ClIjyCG",
-      "title": "The Terminator",
-      "imageUrl": "https://goombastomp.com/wp-content/uploads/2019/11/The-Terminator-Film-Review.jpeg",
-      "genre": "action",
-      "year": 1984,
-      "listId": "ClIjyCG",
-      "id": 3
+      "id": "ClIjyCG"
     }
-  ]
+  ],
+  "watchedMovies": []
 }

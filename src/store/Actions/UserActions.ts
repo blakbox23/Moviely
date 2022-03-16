@@ -33,6 +33,11 @@ import {
   AddWatchedMovieSuccess,
   AddWatchedMovieFailurePayload,
   AddWatchedMovieFailure,
+  DeleteWatchedMovie,
+  DeleteWatchedMovieSuccessPayload,
+  DeleteWatchedMovieSuccess,
+  DeleteWatchedMovieFailurePayload,
+  DeleteWatchedMovieFailure,
 } from "../types/types";
 
 console.log('localStorage.getItem(user)');
@@ -140,5 +145,20 @@ export const addWatchedMovieSuccess = (payload: AddWatchedMovieSuccessPayload): 
 
 export const addWatchedMovieFailure = (payload: AddWatchedMovieFailurePayload): AddWatchedMovieFailure => ({
   type: userTypes.ADD_WATCHED_MOVIE_FAILURE,
+  payload
+})
+
+
+export const deleteWatchedMovie = (payload: string): DeleteWatchedMovie => ({
+  type: userTypes.DELETE_WATCHED_MOVIE,
+  payload
+})
+export const deleteWatchedMovieSuccess = (payload: DeleteWatchedMovieSuccessPayload): DeleteWatchedMovieSuccess => ({
+  type: userTypes.DELETE_WATCHED_MOVIE_SUCCESS,
+  payload
+})
+
+export const deleteWatchedMovieFailure = (payload: DeleteWatchedMovieFailurePayload): DeleteWatchedMovieFailure => ({
+  type: userTypes.DELETE_WATCHED_MOVIE_FAILURE,
   payload
 })

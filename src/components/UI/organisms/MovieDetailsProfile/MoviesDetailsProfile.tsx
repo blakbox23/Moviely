@@ -251,7 +251,10 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
           <div className="watched">
             <img src={seen} alt="" />
             <p>This movie is in your watched list</p>
-            <p>Leave a comment to share your insights</p>
+            <p>
+              Leave a comment to share your insights about it and help other
+              viewers!
+            </p>
           </div>
         )}
 
