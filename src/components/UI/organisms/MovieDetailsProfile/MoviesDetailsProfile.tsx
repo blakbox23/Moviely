@@ -10,7 +10,7 @@ import Vector4 from '../../../../assets/Vector(4).png'
 import seen from '../../../../assets/seen1.png'
 import { CommentItem } from '../../molecules/CommentItem/CommentItem'
 import { PageHeader } from '../../molecules/PageHeader/PageHeader'
-import { IMovie, Irating } from '../../../../store/types/types'
+import { IMovie, Irating, IwatchedMovie } from '../../../../store/types/types'
 import star from '../../../../assets/star.png'
 import { fonts } from '../../../../constants/fonts'
 import { RatingComponent } from '../../molecules/RatingComponent/RatingComponent'
@@ -35,23 +35,11 @@ let movie: IMovie
 
 Modal.setAppElement('#root')
 
-// export interface Iuser {
-//   admin: boolean
-//   email: string
-// }
-
-// const user = {
-//   admin: false,
-//   email: 'dev@try.com',
-// }
-
 export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
   const dispatch = useDispatch()
+  const nuser = useSelector((state: RootState) => state.user.user)
 
   useEffect(() => {
-    console.log('fetchRatingObject')
-    console.log(fetchRatingObject)
-
     dispatch(fetchRating(fetchRatingObject))
   }, [dispatch])
 
@@ -62,8 +50,6 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
   useEffect(() => {
     dispatch(getWatchedMovies(nuser!.id))
   }, [dispatch])
-
-  const nuser = useSelector((state: RootState) => state.user.user)
 
   const comments = useSelector(
     (state: RootState) => state.movies.movie_comments,
@@ -77,7 +63,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
     (state: RootState) => state.user.watchedMovies,
   )
 
-  let watched = watchedMovies.filter(
+  let watched: IwatchedMovie[] = watchedMovies.filter(
     (watchedMovie) => watchedMovie.title === movie.title,
   )
 
@@ -207,7 +193,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
               Add to my watch list
             </button>
           </div>
-        ) : (
+        ) : role !== 'ADMIN' && watched.length ? (
           <div className="watched">
             <img src={seen} alt="" />
             <p>This movie is in your watched list</p>
@@ -216,6 +202,8 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
               viewers!
             </p>
           </div>
+        ) : (
+          <p>admin</p>
         )}
 
         <div className="flex movie-comments">

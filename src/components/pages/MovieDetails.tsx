@@ -16,15 +16,6 @@ function MovieDetails({}) {
     dispatch(fetchMovieById(id))
   }, [dispatch])
 
-  let gradefetchingobject = {
-    email: 'dev@try.com',
-    movieId: 'cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec',
-  }
-
-  // useEffect(() => {
-  //   dispatch(fetchRating(gradefetchingobject))
-  // }, [dispatch])
-
   const { pending, movie, error } = useSelector(
     (state: RootState) => state.movies,
   )

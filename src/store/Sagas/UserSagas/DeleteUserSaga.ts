@@ -11,7 +11,7 @@ function* workDeleteUser(action:any): any {
     yield put(
         deleteUserSuccess(action.payload)
       )
-      success('User deleted successfully')
+      success('Account deleted successfully')
     }
     
     catch (e: any) {
