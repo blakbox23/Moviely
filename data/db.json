@@ -39,16 +39,6 @@
       "id": "n0e_Pld"
     },
     {
-      "email": "p@g.com",
-      "password": "$2a$10$ybD1YyvoECEM6S4VRN7t0e499kh4S2VTY37fZWAlGowEd3qLOCSBm",
-      "FirstName": "Peter",
-      "LastName": "Mbuthia",
-      "role": "USER",
-      "gender": "male",
-      "approved": true,
-      "id": "k-DDHaf"
-    },
-    {
       "email": "peter@g.com",
       "password": "$2a$10$JKDG26MvYBa00qMbdxrPtOzcgN0f0Uoj.RpRjsGPSzPoYCHi8PoWy",
       "FirstName": "Peter",
@@ -59,41 +49,6 @@
       "id": "cl4xsMB"
     },
     {
-      "email": "test@g.com",
-      "password": "$2a$10$8k0rQcX6SV3DVFTtJSF0HO79hq6./hYVrIRZf/1kHA8D9UMH5VabK",
-      "FirstName": "Peter",
-      "LastName": "M",
-      "role": "USER",
-      "gender": "female",
-      "approved": true,
-      "watchedMovies": null,
-      "id": "vKSz0nE"
-    },
-    {
-      "email": "m@p.com",
-      "password": "$2a$10$hshfkpmGtHYpuDpuj52Hx.xENUyyEdOy.4W9SMOUKcSvCtyAsJbbe",
-      "FirstName": "Peter",
-      "LastName": "Mbuthia",
-      "role": "USER",
-      "gender": "",
-      "approved": true,
-      "watchedMovies": null,
-      "id": "e1g1mwt"
-    },
-    {
-      "email": "done@g.com",
-      "password": "$2a$10$DMLfTzMrK9RLCsfUaZa0Ne3yndZ1H.ylHKjNlQiqBgtoqT/UbTl7K",
-      "firstName": "",
-      "lastName": "",
-      "role": "USER",
-      "gender": "male",
-      "approved": true,
-      "watchedMovies": null,
-      "FirstName": "Peter",
-      "LastName": "Mbuthia",
-      "id": "APnic7R"
-    },
-    {
       "email": "really@done.com",
       "password": "$2a$10$hiynoKPt8mlxO.qOjfSR6.NEQUIMeXR9T71KEDB2Ee5hZffHMitRe",
       "firstName": "Peter",
@@ -101,19 +56,7 @@
       "role": "USER",
       "gender": "male",
       "approved": true,
-      "watchedMovies": [
-        {
-          "id": "lzXsNkD",
-          "title": "Joker",
-          "genre": "comedy",
-          "year": "2012",
-          "runtime": "106",
-          "imageUrl": "https://source.unsplash.com/NX1Z62_2w04",
-          "country": "USA",
-          "trailerUrl": "cs",
-          "description": "Arthur Fleck, a party clown, leads an impoverished life with his ailing mother. However, when society shuns him and brands him as a freak, he decides to embrace the life of crime and chaos."
-        }
-      ],
+      "watchedMovies": null,
       "id": "ClIjyCG"
     },
     {
@@ -126,28 +69,6 @@
       "approved": true,
       "watchedMovies": null,
       "id": "0eBcumD"
-    },
-    {
-      "email": "really@done.coman",
-      "password": "$2a$10$DRgFsAbuDpN9eVbpts6bd.eWGlGh/NSuXjrOicqoX9qz8DXRgXBRm",
-      "firstName": "adsf",
-      "lastName": "asdf",
-      "role": "USER",
-      "gender": "other",
-      "approved": true,
-      "watchedMovies": null,
-      "id": "TS5LPdk"
-    },
-    {
-      "email": "black@g.com",
-      "password": "$2a$10$29dLYmOxQMJ2VUB3K6NgTODiegzdHfeIzjpm9ico45qXhqVB.c436",
-      "firstName": "Pastor",
-      "lastName": "Pass",
-      "role": "USER",
-      "gender": "other",
-      "approved": true,
-      "watchedMovies": null,
-      "id": "hXYtufF"
     }
   ],
   "movies": [
@@ -347,6 +268,9 @@
     },
     {
       "id": "0eBcumD"
+    },
+    {
+      "id": "n0e_Pld"
     }
   ],
   "watchedMovies": [
@@ -385,6 +309,15 @@
       "year": 1984,
       "listId": "ClIjyCG",
       "id": 5
+    },
+    {
+      "userId": "n0e_Pld",
+      "title": "Joker",
+      "imageUrl": "https://source.unsplash.com/NX1Z62_2w04",
+      "genre": "action",
+      "year": "2012",
+      "listId": "n0e_Pld",
+      "id": 6
     }
   ]
 }

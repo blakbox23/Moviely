@@ -3,6 +3,7 @@ import {notify, success} from '../../../components/UI/organisms/Toasts/Toast'
 import { createUserFailure, createUserSuccess } from '../../Actions/UserActions';
 import { userService } from '../../../services/UserServices';
 import { userTypes } from '../../ActionTypes/Usertypes';
+import { toast } from 'react-toastify';
 
 
 function* workCreateUser(action:any): any {
@@ -20,9 +21,8 @@ function* workCreateUser(action:any): any {
           user: response.data
         })
       )
-      success('User created successfully')
-      
-      success('Ready to Log in!')
+      success('User created successfully')  
+      toast('Ready to Sign in!', { delay: 2500 })
     } else {
          yield put(
             createUserFailure({ 
