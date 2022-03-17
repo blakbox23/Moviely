@@ -123,7 +123,7 @@ export const MovieItem: React.FC<MovieItemProps> = ({
           },
         }}
       >
-        <div className="flex deleteModal border">
+        <div className="flex deleteModal">
           <h2
             style={{
               color: '#87ceeb',

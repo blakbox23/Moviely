@@ -8,20 +8,32 @@ import { Irating } from '../../types/types';
 function* workFetchRating(action:any): any {
     try {
       const response = yield call(ratingService.getMovieRating, action.payload.movieId);
+      let averageRating
+      let gradesArray = response.data.map((rating: any)=> rating.grade)
+console.log('gradesArray');
 
-      console.log('Rating response fetch')
-      console.log(response.data)
-
-      // let userRating = response.data.find( (rating: Irating) => rating.email === action.payload.email );
+      console.log(gradesArray);
       
-      // console.log('fetchrating from saga')
-      // console.log(userRating.grade)
-
-      success("Successful")
+      if(!gradesArray.length){
+        averageRating = 0;
+      }else{
+         averageRating = gradesArray.reduce((a: number, b:number) => a + b) / gradesArray.length;
+      }
+      console.log('averageRating');
+      console.log(Math.floor(averageRating));
+      let averageMovieRating = Math.floor(averageRating)
+     
+      let userRating
+      // let userRating = response.data.find( (rating: Irating) => rating.email === action.payload.email);
+      response.data.find( (rating: Irating) => rating.email === action.payload.email) ? (userRating = response.data.find( (rating: Irating) => rating.email === action.payload.email).grade):(userRating = 0)
+      
+      // console.log('fetchrating IDfrom saga')
+      // console.log(userRating.id)
 
     yield put(
         fetchRatingSuccess({
-          currentGrade: 2
+          currentGrade: userRating,
+          movieRating: averageMovieRating
         })
       )
     }

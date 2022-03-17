@@ -70,17 +70,6 @@
       "id": "vKSz0nE"
     },
     {
-      "email": "preto@g.com",
-      "password": "$2a$10$IjTJ2fiFIoxHAMyQZFq24OAkIqHSg3D.AJFQCuzNjal2my3eGv9vK",
-      "FirstName": "Peter",
-      "LastName": "Mbuthia",
-      "role": "USER",
-      "gender": "male",
-      "approved": true,
-      "watchedMovies": null,
-      "id": "sWSrSf3"
-    },
-    {
       "email": "m@p.com",
       "password": "$2a$10$hshfkpmGtHYpuDpuj52Hx.xENUyyEdOy.4W9SMOUKcSvCtyAsJbbe",
       "FirstName": "Peter",
@@ -148,6 +137,17 @@
       "approved": true,
       "watchedMovies": null,
       "id": "TS5LPdk"
+    },
+    {
+      "email": "black@g.com",
+      "password": "$2a$10$29dLYmOxQMJ2VUB3K6NgTODiegzdHfeIzjpm9ico45qXhqVB.c436",
+      "firstName": "Pastor",
+      "lastName": "Pass",
+      "role": "USER",
+      "gender": "other",
+      "approved": true,
+      "watchedMovies": null,
+      "id": "hXYtufF"
     }
   ],
   "movies": [
@@ -176,26 +176,12 @@
           "approved": false
         }
       ],
-      "ratings": [
-        {
-          "id": "e4da3888-6903-4fda-811f-0007fb3a4f00",
-          "email": "joana.cripps@maildrop.cc",
-          "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
-          "grade": 3
-        },
-        {
-          "id": "e4da3888-6903-4fda-811f-0007fb3a4f0",
-          "email": "dev@try.com",
-          "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
-          "grade": 5
-        }
-      ],
       "movieTrailer": "https://www.youtube.com/watch?v=k64P4l2Wmeg"
     },
     {
       "id": "lzXsNkD",
       "title": "Joker",
-      "genre": "comedy",
+      "genre": "action",
       "year": "2012",
       "runtime": "106",
       "imageUrl": "https://source.unsplash.com/NX1Z62_2w04",
@@ -298,28 +284,107 @@
   ],
   "ratings": [
     {
-      "id": "e4da3888-6903-4fda-811f-0007fb3a4f00",
-      "email": "joana.cripps@maildrop.cc",
+      "email": "really@done.com",
       "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
-      "grade": 3
+      "grade": 3,
+      "id": "2F6pR5x",
+      "ratingId": "2F6pR5x"
+    },
+    {
+      "0": "1",
+      "1": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
+      "email": "really@done.coma",
+      "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
+      "grade": 5,
+      "id": "1",
+      "ratingId": "1"
     },
     {
       "email": "dev@rate.com",
       "movieId": "lzXsNkD",
-      "grade": 2,
-      "id": "WPAFN6W"
+      "grade": 5,
+      "id": "c-sxwVu"
     },
     {
-      "email": "dev@try.com",
+      "email": "really@done.coma",
       "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
+      "grade": 3,
+      "id": "nLSlPZI"
+    },
+    {
+      "0": "PmGJnU6",
+      "1": "lzXsNkD",
+      "email": "really@done.coma",
+      "movieId": "lzXsNkD",
+      "grade": 5,
+      "id": "PmGJnU6",
+      "ratingId": "PmGJnU6"
+    },
+    {
+      "email": "really@done.com",
+      "grade": 1,
+      "movieId": "lzXsNkD",
+      "id": "mKQHk4g"
+    },
+    {
+      "email": "really@done.coma",
+      "movieId": "MavDo5c",
       "grade": 4,
-      "id": "2F6pR5x"
+      "id": "K-v_SrS",
+      "ratingId": "K-v_SrS"
+    },
+    {
+      "email": "really@done.com",
+      "movieId": "MavDo5c",
+      "grade": 3,
+      "id": "E1Fr-5X",
+      "ratingId": "E1Fr-5X"
     }
   ],
   "lists": [
     {
       "id": "ClIjyCG"
+    },
+    {
+      "id": "0eBcumD"
     }
   ],
-  "watchedMovies": []
+  "watchedMovies": [
+    {
+      "userId": "ClIjyCG",
+      "title": "Joker",
+      "imageUrl": "https://source.unsplash.com/NX1Z62_2w04",
+      "genre": "comedy",
+      "year": "2012",
+      "listId": "ClIjyCG",
+      "id": 2
+    },
+    {
+      "userId": "0eBcumD",
+      "title": "Joker",
+      "imageUrl": "https://source.unsplash.com/NX1Z62_2w04",
+      "genre": "comedy",
+      "year": "2012",
+      "listId": "0eBcumD",
+      "id": 3
+    },
+    {
+      "userId": "0eBcumD",
+      "title": "The Terminator",
+      "imageUrl": "https://goombastomp.com/wp-content/uploads/2019/11/The-Terminator-Film-Review.jpeg",
+      "genre": "action",
+      "year": 1984,
+      "listId": "0eBcumD",
+      "id": 4
+    },
+    {
+      "userId": "ClIjyCG",
+      "title": "The Terminator",
+      "imageUrl": "https://goombastomp.com/wp-content/uploads/2019/11/The-Terminator-Film-Review.jpeg",
+      "genre": "action",
+      "year": 1984,
+      "listId": "ClIjyCG",
+      "id": 5
+    }
+  ]
 }

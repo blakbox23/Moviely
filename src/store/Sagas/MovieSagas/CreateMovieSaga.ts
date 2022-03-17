@@ -10,7 +10,7 @@ function* workCreateMovie(action:any): any {
       const responseByTitle = yield call(movieService.getMoviesByTitle, action.payload.title);
 
       console.log('responseByTitle')
-      console.log(responseByTitle.data)
+      console.log(responseByTitle.data) 
 
    if(responseByTitle.data.length===0){
     const response = yield call(movieService.createMovie, action.payload);

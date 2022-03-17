@@ -6,15 +6,14 @@ import {
   updateRating,
 } from '../../../../store/Actions/RatingsActions'
 import { RootState } from '../../../../store/Reducers/rootReducers'
-import { Irating } from '../../../../store/types/types'
-import { Iuser } from '../../organisms/MovieDetailsProfile/MoviesDetailsProfile'
+import { Irating, IUser } from '../../../../store/types/types'
+// import { Iuser } from '../../organisms/MovieDetailsProfile/MoviesDetailsProfile'
 import './style.css'
 
 interface RatingComponent {
   movieId: string
-  user: Iuser
-  currentGrade: number
-  currentRatingId: string
+  user: any
+  currentGrade: number | null
 }
 
 export interface IratingObject {
@@ -34,21 +33,19 @@ export const RatingComponent: React.FC<RatingComponent> = ({
   movieId,
   user,
   currentGrade,
-  currentRatingId,
 }) => {
   const dispatch = useDispatch()
 
-  let fetchRatingObject = {
-    email: user.email,
-    movieId: movieId,
-  }
+  let starRating = currentGrade! * 20
 
-  let starRating = currentGrade * 20
-
-  // console.log('starRating')
-  // console.log(starRating)
+  console.log('starRating')
+  console.log(starRating)
 
   const [rating, setRating] = useState(starRating) // initial rating value
+
+  useEffect(() => {
+    setRating(starRating)
+  }, [starRating])
 
   // Catch Rating value
   const handleRating = (rate: number) => {
@@ -58,11 +55,12 @@ export const RatingComponent: React.FC<RatingComponent> = ({
 
     let newRating = [
       {
-        id: currentRatingId,
         email: user.email,
         movieId: movieId,
-        path: '/ratings',
-        value: grade,
+        grade: grade,
+        // id: currentRatingId,
+        // path: '/ratings',
+        // value: grade,
       },
     ]
 

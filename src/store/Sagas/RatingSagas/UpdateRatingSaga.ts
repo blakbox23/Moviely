@@ -3,21 +3,39 @@ import { updateRatingSuccess, updateRatingFailure} from '../../Actions/RatingsAc
 import { ratingService } from '../../../services/RatingServices'
 import { ratingTypes } from '../../ActionTypes/RatingTypes'
 import {notify, success} from '../../../components/UI/organisms/Toasts/Toast'
+import { Irating } from '../../types/types';
 
 function* workUpdateRating(action:any): any {
     try {
-      const response = yield call(ratingService.editMovieRating, action.payload);
+      const checkingresponse = yield call(ratingService.getMovieRating, action.payload[0].movieId);
+      let checkingId
+      checkingresponse.data.find( (rating: any) => rating.email === action.payload[0].email) ? (checkingId = checkingresponse.data.find( (rating: any) => rating.email === action.payload[0].email).id):(checkingId = null)
 
-      console.log('Rating response')
-      console.log(response.data.grade)
-      
-      success("Successful")
+      if(checkingId === null){
+        const ratingPostResponse = yield call(ratingService.updatePostRating, action.payload[0]);
+        console.log('ratingPostResponse');
+        console.log(ratingPostResponse.data);
+        
+        yield put(
+          updateRatingSuccess({
+            currentGrade: ratingPostResponse.data.grade
+            })
+          )
+          success('Rating updated successfully!')
+        } else {
+          const ratingPatchResponse = yield call(ratingService.updatePatchRating, {ratingId: checkingId, grade: action.payload[0].grade, movieId: action.payload[0].movieId});
 
-    yield put(
-        updateRatingSuccess({
-          movieRating: response.data
-        })
-      )
+          console.log('ratingPatchResponse');
+          console.log(ratingPatchResponse.data);
+
+             yield put(
+              updateRatingSuccess({ 
+              currentGrade: ratingPatchResponse.data.grade
+            })
+          ); 
+          // notify('Movie with given title already exists')
+          success('Rating updated successfully!')
+        }
     }
     catch (e: any) {
 
@@ -36,3 +54,4 @@ function* UpdateRatingSaga() {
 }
 
 export default UpdateRatingSaga;
+

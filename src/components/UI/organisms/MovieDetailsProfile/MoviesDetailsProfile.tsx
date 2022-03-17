@@ -10,7 +10,7 @@ import Vector4 from '../../../../assets/Vector(4).png'
 import seen from '../../../../assets/seen1.png'
 import { CommentItem } from '../../molecules/CommentItem/CommentItem'
 import { PageHeader } from '../../molecules/PageHeader/PageHeader'
-import { IMovie, Irating } from '../../../../store/types/types'
+import { IMovie, Irating, IwatchedMovie } from '../../../../store/types/types'
 import star from '../../../../assets/star.png'
 import { fonts } from '../../../../constants/fonts'
 import { RatingComponent } from '../../molecules/RatingComponent/RatingComponent'
@@ -35,18 +35,13 @@ let movie: IMovie
 
 Modal.setAppElement('#root')
 
-export interface Iuser {
-  admin: boolean
-  email: string
-}
-
-const user = {
-  admin: false,
-  email: 'dev@try.com',
-}
-
 export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
   const dispatch = useDispatch()
+  const nuser = useSelector((state: RootState) => state.user.user)
+
+  useEffect(() => {
+    dispatch(fetchRating(fetchRatingObject))
+  }, [dispatch])
 
   useEffect(() => {
     dispatch(fetchcomments(movie.id))
@@ -55,8 +50,6 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
   useEffect(() => {
     dispatch(getWatchedMovies(nuser!.id))
   }, [dispatch])
-
-  const nuser = useSelector((state: RootState) => state.user.user)
 
   const comments = useSelector(
     (state: RootState) => state.movies.movie_comments,
@@ -70,14 +63,9 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
     (state: RootState) => state.user.watchedMovies,
   )
 
-  console.log('watchedMovies')
-  console.log(watchedMovies)
-
-  let watched = watchedMovies.filter(
+  let watched: IwatchedMovie[] = watchedMovies.filter(
     (watchedMovie) => watchedMovie.title === movie.title,
   )
-  console.log('watched')
-  console.log(watched)
 
   const navigate = useNavigate()
 
@@ -123,50 +111,9 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
     movieId: movie.id,
   }
 
-  const { pending, currentGrade, error } = useSelector(
+  const { pending, currentGrade, error, movieRating } = useSelector(
     (state: RootState) => state.ratings,
   )
-
-  // useEffect(() => {
-  //   dispatch(fetchRating(fetchRatingObject))
-  // }, [dispatch])
-
-  const averageGrade = () => {
-    let averagegrade = 0
-    let totalGrade = 0
-
-    if (movie.ratings === undefined) {
-      return 0
-    } else {
-      for (let i = 0; i < movie.ratings.length; i++) {
-        totalGrade += movie.ratings[i].grade
-      }
-      averagegrade = totalGrade / movie.ratings.length
-      return averagegrade
-    }
-  }
-  const currentMovieGrade = () => {
-    if (movie.ratings === undefined) {
-      return 0
-    } else {
-      let userRating = movie.ratings.find(
-        (rating: Irating) => rating.email === userEmail,
-      )
-      return userRating ? userRating.grade : 0
-    }
-  }
-  const currentMovieRating = () => {
-    if (movie.ratings === undefined) {
-      return 'no ratings'
-    } else if (!movie.ratings.some((rating) => rating.email === userEmail)) {
-      return 'no ratings'
-    } else {
-      let ratings = movie.ratings.find(
-        (rating: Irating) => rating.email === userEmail,
-      )
-      return ratings ? ratings.id : 'no ratings'
-    }
-  }
 
   return (
     <>
@@ -196,9 +143,8 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
                   <div className="movie-rating ">
                     <RatingComponent
                       movieId={movie.id}
-                      user={user}
-                      currentGrade={currentMovieGrade()}
-                      currentRatingId={currentMovieRating()}
+                      user={nuser}
+                      currentGrade={currentGrade}
                     />
                   </div>
                 )}
@@ -224,7 +170,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
                   </div>
                   <div className="flex movie-profile-listitem">
                     <img src={Vector4} alt="" />
-                    <p> {averageGrade()}</p>
+                    <p> {movieRating}</p>
                   </div>
                 </div>
                 <div className="movie-profile-description">
@@ -247,7 +193,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
               Add to my watch list
             </button>
           </div>
-        ) : (
+        ) : role !== 'ADMIN' && watched.length ? (
           <div className="watched">
             <img src={seen} alt="" />
             <p>This movie is in your watched list</p>
@@ -256,6 +202,8 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
               viewers!
             </p>
           </div>
+        ) : (
+          <p>admin</p>
         )}
 
         <div className="flex movie-comments">

@@ -70,13 +70,13 @@ export const Signupform: React.FC<SignupProps> = ({}) => {
                 styleclass="authentication"
                 placeholder="&#x1F4E7;  Email"
                 name="email"
-                type="text"
+                type="email"
                 border
               />
 
               <Input
                 styleclass="authentication"
-                type="text"
+                type="password"
                 placeholder="&#x1F512; Password"
                 name="password"
                 border

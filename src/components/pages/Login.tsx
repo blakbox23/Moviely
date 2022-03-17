@@ -57,7 +57,7 @@ export const Loginform: React.FC<LoginProps> = ({}) => {
 
               <Input
                 styleclass="authentication"
-                type="text"
+                type="password"
                 placeholder="&#x1F512; Password"
                 name="password"
                 border
