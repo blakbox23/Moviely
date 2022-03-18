@@ -9,6 +9,11 @@ function* workApproveComment(action:any): any {
     try {
     const response = yield call(commentsService.approveComments, action.payload);
 
+    const movieId = response.data.movieId
+
+    const commentsCount = yield call(commentsService.getCommentsCount, response.data.movieId);
+
+    yield call(commentsService.addCommentsCount, {id: movieId, commentscount: commentsCount.data.commentscount+1});
 
     yield put(
         approveCommentsSuccess({
