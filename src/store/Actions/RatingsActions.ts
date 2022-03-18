@@ -18,7 +18,7 @@ export const updateRating = (payload: object): UpdateRating => ({
     payload
   });
 export const updateRatingSuccess = (payload: UpdateRatingSuccessPayload): UpdateRatingSuccess => ({ 
-    type: ratingTypes.UPDATE_RATING_SUCCESS,
+    type: ratingTypes.UPDATE_RATING_SUCCESS, 
     payload
   });
 export const updateRatingFailure = (payload: UpdateRatingFailurePayload): UpdateRatingFailure => ({ 

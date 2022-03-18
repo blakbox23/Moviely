@@ -33,7 +33,7 @@ function* workCreateUser(action:any): any {
     }}
     
     catch (e: any) {
-      notify("An error occured")
+      notify("Please use a stronger password")
       yield put(
         createUserFailure({ 
           error: e.message

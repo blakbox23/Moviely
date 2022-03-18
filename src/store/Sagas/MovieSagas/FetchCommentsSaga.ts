@@ -7,8 +7,6 @@ import { movieTypes } from '../../ActionTypes/Movietypes'
 function* workFetchComments(action: any): any {
     try {
        const response = yield call(movieService.getComments, action.payload);
-       console.log('fetch movie comments')
-       console.log(response.data)
     yield put(
         fetchcommentsSuccess({
           movie_comments: response.data

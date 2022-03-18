@@ -13,8 +13,6 @@ function* workUpdateRating(action:any): any {
 
       if(checkingId === null){
         const ratingPostResponse = yield call(ratingService.updatePostRating, action.payload[0]);
-        console.log('ratingPostResponse');
-        console.log(ratingPostResponse.data);
         
         yield put(
           updateRatingSuccess({
@@ -25,15 +23,11 @@ function* workUpdateRating(action:any): any {
         } else {
           const ratingPatchResponse = yield call(ratingService.updatePatchRating, {ratingId: checkingId, grade: action.payload[0].grade, movieId: action.payload[0].movieId});
 
-          console.log('ratingPatchResponse');
-          console.log(ratingPatchResponse.data);
-
              yield put(
               updateRatingSuccess({ 
               currentGrade: ratingPatchResponse.data.grade
             })
           ); 
-          // notify('Movie with given title already exists')
           success('Rating updated successfully!')
         }
     }
@@ -47,7 +41,6 @@ function* workUpdateRating(action:any): any {
       ); 
     }
   }
-
 
 function* UpdateRatingSaga() {
     yield all([takeEvery(ratingTypes.UPDATE_RATING, workUpdateRating)])

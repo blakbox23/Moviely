@@ -173,7 +173,7 @@ const userReducer = (state = initialState, action: UserActions) => {
           return {
           ...state,
           pending: false,
-          watchedMovies: state.watchedMovies.filter((watchedMovie) => watchedMovie !== state.watchedMovie),
+          watchedMovies: state.watchedMovies.filter((watchedMovie) => watchedMovie.id !== state.watchedMovie),
           error: null
         };
 
