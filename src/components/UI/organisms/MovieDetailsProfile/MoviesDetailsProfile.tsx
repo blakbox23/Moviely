@@ -205,7 +205,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
             </p>
           </div>
         ) : (
-          <p>admin</p>
+          <p>.</p>
         )}
 
         <div className="flex movie-comments">

@@ -129,20 +129,6 @@
       "averagerating": 4,
       "commentscount": 3,
       "movieId": "MavDo5c"
-    },
-    {
-      "id": "ijPWsk2",
-      "title": "adf",
-      "genre": "action",
-      "year": "dfa",
-      "runtime": "dfa",
-      "imageUrl": "sdf",
-      "country": "adf",
-      "trailerUrl": "adf",
-      "description": "adf",
-      "commentscount": 1,
-      "averagerating": 5,
-      "movieId": "ijPWsk2"
     }
   ],
   "comments": [
@@ -215,13 +201,6 @@
       "content": "New Batman is crazy",
       "approved": true,
       "id": "MpPvm5W"
-    },
-    {
-      "email": "really@done.com",
-      "movieId": "ijPWsk2",
-      "content": "a comment",
-      "approved": true,
-      "id": "N-PyGBR"
     }
   ],
   "ratings": [
@@ -295,12 +274,6 @@
       "movieId": "cb9c8dc9-c3d0-4517-a3a8-498456e3e4ec",
       "grade": 5,
       "id": "k3bbqSq"
-    },
-    {
-      "email": "really@done.com",
-      "movieId": "ijPWsk2",
-      "grade": 5,
-      "id": "KOyUD6Y"
     }
   ],
   "lists": [
