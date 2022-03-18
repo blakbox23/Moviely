@@ -16,6 +16,8 @@ export interface IMovie {
     comments: Icomment[];
     ratings: Irating[] | undefined;
     movieTrailer: string;
+    averagerating: number;
+    commentscount: number;
   } 
 
   export interface Irating {
@@ -39,7 +41,8 @@ export interface IMovie {
     grade?: number;
   }
 
-  export interface IwatchedMovie { 
+  export interface IwatchedMovie {
+    averagerating: number;
     title: string;
     genre: string;
     year: string;
