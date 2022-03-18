@@ -34,6 +34,8 @@ function MovieDetails({}) {
           comments={movie.comments}
           ratings={movie.ratings}
           movieTrailer={movie.movieTrailer}
+          averagerating={movie.averagerating}
+          commentscount={movie.commentscount}
         />
       )}
     </div>

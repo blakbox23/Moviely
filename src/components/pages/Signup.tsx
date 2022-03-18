@@ -4,7 +4,7 @@ import padlock from '../../assets/padlock.png'
 import popcorn from '../../assets/popcorn.png'
 
 import { Formik, Form } from 'formik'
-import { validate } from '../../../src/Validation/LoginFormValidation'
+import { validate } from '../../../src/Validation/SignupFormValidation'
 import { useDispatch, useSelector } from 'react-redux'
 import { PageHeader } from '../UI/molecules/PageHeader/PageHeader'
 import { Input } from '../UI/atoms/Input/Input'

@@ -23,6 +23,8 @@ interface ManageMovieProps {
   country: string
   trailerUrl: string
   description: string
+  commentscount: number
+  averagerating: number
 }
 
 interface MyFormValues {
@@ -35,6 +37,8 @@ interface MyFormValues {
   country: string
   trailerUrl: string
   description: string
+  commentscount: number
+  averagerating: number
 }
 
 export const ManageMovie: React.FC<ManageMovieProps> = ({
@@ -48,6 +52,8 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({
   country,
   trailerUrl,
   description,
+  commentscount,
+  averagerating,
 }) => {
   const dispatch = useDispatch()
 
@@ -63,6 +69,8 @@ export const ManageMovie: React.FC<ManageMovieProps> = ({
     country: country,
     trailerUrl: trailerUrl,
     description: description,
+    commentscount: commentscount,
+    averagerating: averagerating,
   }
 
   return (

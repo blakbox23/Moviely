@@ -16,6 +16,8 @@ function NewMovie() {
         country={''}
         trailerUrl={''}
         description={''}
+        commentscount={0}
+        averagerating={0}
       />
     </div>
   )

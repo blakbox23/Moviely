@@ -21,6 +21,8 @@ export const FilteredMoviesList = () => {
               title={movie.title}
               image={movie.imageUrl}
               description={movie.description}
+              movieRating={movie.averagerating}
+              commentscount={movie.commentscount}
             />
           </div>
         ))

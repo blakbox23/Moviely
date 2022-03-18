@@ -33,6 +33,8 @@ export const MoviesList = () => {
               title={movie.title}
               image={movie.imageUrl}
               description={movie.description}
+              movieRating={movie.averagerating}
+              commentscount={movie.commentscount}
             />
           </div>
         ))}

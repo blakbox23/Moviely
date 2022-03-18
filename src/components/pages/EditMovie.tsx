@@ -29,7 +29,9 @@ function EditMovie() {
     movieImageUrl,
     movieContry,
     movieTrailerUrl,
-    movieDescription
+    movieDescription,
+    commentscount,
+    averagerating
 
   if (movie) {
     movieId = movie.id
@@ -42,6 +44,8 @@ function EditMovie() {
     movieContry = movie.country
     movieTrailerUrl = movie.trailerUrl
     movieDescription = movie.description
+    commentscount = movie.commentscount
+    averagerating = movie.averagerating
   }
 
   return (
@@ -57,6 +61,8 @@ function EditMovie() {
         country={movieContry}
         trailerUrl={movieTrailerUrl}
         description={movieDescription}
+        commentscount={commentscount}
+        averagerating={averagerating}
       />
     </div>
   )

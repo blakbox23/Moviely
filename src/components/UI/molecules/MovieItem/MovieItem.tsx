@@ -19,6 +19,8 @@ interface MovieItemProps {
   image?: string
   title: string
   description: string
+  movieRating: number
+  commentscount: number
 }
 
 export const MovieItem: React.FC<MovieItemProps> = ({
@@ -26,6 +28,8 @@ export const MovieItem: React.FC<MovieItemProps> = ({
   image = images.missingimage,
   title,
   description,
+  movieRating,
+  commentscount,
 }) => {
   const page = `/movies/${id}`
 
@@ -71,9 +75,15 @@ export const MovieItem: React.FC<MovieItemProps> = ({
               </div>
 
               <div className="flex movie-item-icons">
-                <Text text="29" type="small" />
+                <Text
+                  text={commentscount ? commentscount.toString() : '0'}
+                  type="small"
+                />
                 <img src={comment} alt="comment" />
-                <Text text="4.2" type="small" />
+                <Text
+                  text={movieRating ? movieRating.toString() : '0'}
+                  type="small"
+                />
                 <img src={star} alt="votes" />
               </div>
             </div>

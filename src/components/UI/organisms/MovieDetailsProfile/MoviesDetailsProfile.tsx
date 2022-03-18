@@ -62,10 +62,13 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
   const watchedMovies = useSelector(
     (state: RootState) => state.user.watchedMovies,
   )
+  let watched = []
 
-  let watched: IwatchedMovie[] = watchedMovies.filter(
-    (watchedMovie) => watchedMovie.title === movie.title,
-  )
+  if (watchedMovies !== undefined) {
+    watched = watchedMovies.filter(
+      (watchedMovie) => watchedMovie.title === movie.title,
+    )
+  }
 
   const navigate = useNavigate()
 
@@ -88,27 +91,26 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
       imageUrl: movie.imageUrl,
       genre: movie.genre,
       year: movie.year,
+      averagerating: movie.averagerating,
     }
     dispatch(addWatchedMovie(watchedListParams))
   }
 
   let role
   let userEmail: any
+  let userId: any
+
   if (nuser) {
     role = nuser.role
     userEmail = nuser.email
-  }
-
-  const commentObject = {
-    email: userEmail,
-    movieId: movie.id,
-    content: 'Just edited',
-    approved: false,
+    userId = nuser.id
   }
 
   let fetchRatingObject = {
+    userId: userId,
     email: userEmail,
     movieId: movie.id,
+    movieTitle: movie.title,
   }
 
   const { pending, currentGrade, error, movieRating } = useSelector(

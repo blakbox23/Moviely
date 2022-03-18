@@ -27,6 +27,7 @@ export interface IratingObject {
 export interface IfetchRatingObject {
   email: string
   movieId: string
+  movieTitle: string
 }
 
 export const RatingComponent: React.FC<RatingComponent> = ({
