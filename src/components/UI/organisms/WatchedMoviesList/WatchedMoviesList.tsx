@@ -31,7 +31,9 @@ export const WatchedMoviesList: React.FC<WatchedMoviesListProps> = ({}) => {
               genre={watchedMovie.genre}
               title={watchedMovie.title}
               image={watchedMovie.imageUrl}
-              // ratings={watchedMovie.ratings}
+              rating={
+                watchedMovie.averagerating ? watchedMovie.averagerating : 3
+              }
             />
           </div>
         ))}
