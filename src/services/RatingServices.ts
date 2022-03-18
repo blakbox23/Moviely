@@ -4,6 +4,7 @@ import { IfetchRatingObject, IratingObject } from "../components/UI/molecules/Ra
 const ENDPOINTS = {
     RATINGS: '/ratings/',
     MOVIES: '/movies/',
+    WATCHEDMOVIES: 'watchedMovies/'
 }
  
 class RatingService extends ApiService {
@@ -21,6 +22,15 @@ class RatingService extends ApiService {
     } 
     updatePatchRating = (values: any) => {
         return this.apiClient.patch(ENDPOINTS.MOVIES + values.movieId+ '/ratings/' +values.ratingId, values)    
+    } 
+    setMovieRating = (values: any) => {
+        return this.apiClient.patch(ENDPOINTS.MOVIES +values.movieId, values)    
+    } 
+    getWatchedId = (values: any) => {
+        return this.apiClient.get(ENDPOINTS.WATCHEDMOVIES + '?title=' +values.movieTitle )    
+    } 
+    setWatchedMovieRating = (values: any) => {
+        return this.apiClient.patch(ENDPOINTS.WATCHEDMOVIES + values.id, values)    
     } 
 
 

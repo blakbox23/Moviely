@@ -3,6 +3,7 @@ import ApiService from "./ApiServices";
 
 const ENDPOINTS = {
     COMMENTS: '/comments/',
+    MOVIES: '/MOVIES/'
   };
 
   class CommentsService extends ApiService {
@@ -15,6 +16,12 @@ const ENDPOINTS = {
     }
     deleteComment = (id: any) => {
         return this.apiClient.delete(ENDPOINTS.COMMENTS + id, id);
+      }
+    getCommentsCount = (id: any) => {
+        return this.apiClient.get(ENDPOINTS.MOVIES + id);
+      }
+    addCommentsCount = (values: any) => {
+        return this.apiClient.patch(ENDPOINTS.MOVIES + values.id, values);
       }
     
 }
