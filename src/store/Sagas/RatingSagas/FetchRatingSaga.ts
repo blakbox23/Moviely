@@ -10,25 +10,30 @@ function* workFetchRating(action:any): any {
       const response = yield call(ratingService.getMovieRating, action.payload.movieId);
       let averageRating
       let gradesArray = response.data.map((rating: any)=> rating.grade)
-console.log('gradesArray');
-
-      console.log(gradesArray);
       
       if(!gradesArray.length){
         averageRating = 0;
       }else{
          averageRating = gradesArray.reduce((a: number, b:number) => a + b) / gradesArray.length;
       }
-      console.log('averageRating');
-      console.log(Math.floor(averageRating));
-      let averageMovieRating = Math.floor(averageRating)
+      
+      let averageMovieRating = parseFloat(averageRating.toFixed(1))
+      yield call(ratingService.setMovieRating, {
+        averagerating: averageMovieRating,
+        movieId: action.payload.movieId
+      });
      
       let userRating
-      // let userRating = response.data.find( (rating: Irating) => rating.email === action.payload.email);
       response.data.find( (rating: Irating) => rating.email === action.payload.email) ? (userRating = response.data.find( (rating: Irating) => rating.email === action.payload.email).grade):(userRating = 0)
-      
-      // console.log('fetchrating IDfrom saga')
-      // console.log(userRating.id)
+
+    const getWatchedId = yield call(ratingService.getWatchedId, action.payload);
+    
+    let watchedMovieId
+    getWatchedId.data.find( (watched: any) => watched.userId === action.payload.userId) ? (watchedMovieId = getWatchedId.data.find( (watched: any) => watched.userId === action.payload.userId).id):(watchedMovieId=null)
+
+    if(watchedMovieId !== null){
+      yield call(ratingService.setWatchedMovieRating, {id: watchedMovieId, averagerating: averageMovieRating});
+    }
 
     yield put(
         fetchRatingSuccess({
@@ -47,7 +52,6 @@ console.log('gradesArray');
       ); 
     }
   }
-
 
 function* FetchRatingSaga() {
     yield all([takeEvery(ratingTypes.FETCH_RATING, workFetchRating)])
