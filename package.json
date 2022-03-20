@@ -33,9 +33,10 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "server": "node server.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
