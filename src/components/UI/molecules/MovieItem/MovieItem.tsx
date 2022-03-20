@@ -9,10 +9,11 @@ import { colors } from '../../../../constants/colors'
 import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteMovie } from '../../../../store/Actions/MoviesAction'
-import Modal from 'react-modal'
+// import Modal from 'react-modal'
+
 import { RootState } from '../../../../store/Reducers/rootReducers'
 
-Modal.setAppElement('#root')
+// Modal.setAppElement('#root')
 
 interface MovieItemProps {
   id: string
@@ -115,7 +116,7 @@ export const MovieItem: React.FC<MovieItemProps> = ({
         )}
       </div>
 
-      <Modal
+      {/* <Modal
         isOpen={modalIsOpen}
         style={{
           content: {
@@ -149,7 +150,6 @@ export const MovieItem: React.FC<MovieItemProps> = ({
           >
             Are you sure you want to delete this movie?
           </p>
-          {/* <Modal.Footer> */}
           <div
             className="flex"
             style={{
@@ -172,7 +172,7 @@ export const MovieItem: React.FC<MovieItemProps> = ({
             </div>
           </div>
         </div>
-      </Modal>
+      </Modal> */}
     </>
   )
 }

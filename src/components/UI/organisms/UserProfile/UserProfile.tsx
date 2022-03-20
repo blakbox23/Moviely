@@ -17,9 +17,9 @@ import {
   updateUser,
 } from '../../../../store/Actions/UserActions'
 import { Navigate, useNavigate } from 'react-router-dom'
-import Modal from 'react-modal'
+// import Modal from 'react-modal'
 
-Modal.setAppElement('#root')
+// Modal.setAppElement('#root')
 
 interface MyFormValues {
   firstName: string
@@ -131,7 +131,7 @@ function UserProfile() {
         </Formik>
       </div>
 
-      <Modal
+      {/* <Modal
         isOpen={modalIsOpen}
         style={{
           content: {
@@ -165,7 +165,6 @@ function UserProfile() {
           >
             Are you sure you want to delete this account?
           </p>
-          {/* <Modal.Footer> */}
           <div
             className="flex"
             style={{
@@ -188,7 +187,7 @@ function UserProfile() {
             </div>
           </div>
         </div>
-      </Modal>
+      </Modal> */}
     </>
   )
 }
