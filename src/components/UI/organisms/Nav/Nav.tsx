@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../../../../store/Reducers/rootReducers'
 import { isLoggedIn, logOut } from '../../../../store/Actions/UserActions'
-import Modal from 'react-modal'
+// import Modal from 'react-modal'
 import { useNavigate } from 'react-router-dom'
 
 const Nav = () => {
@@ -105,7 +105,7 @@ const Nav = () => {
           <img src={usericon} alt="profile" />
         </div>
 
-        <Modal
+        {/* <Modal
           isOpen={modalIsOpen}
           onRequestClose={handleClose}
           shouldCloseOnOverlayClick={true}
@@ -153,7 +153,7 @@ const Nav = () => {
               Log out
             </div>
           </div>
-        </Modal>
+        </Modal> */}
       </div>
     </div>
   )
