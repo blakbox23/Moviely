@@ -23,7 +23,7 @@ import {
 } from '../../../../store/Actions/MoviesAction'
 import Button from '../../atoms/Button/Button'
 import { colors } from '../../../../constants/colors'
-import Modal from 'react-modal'
+// import Modal from 'react-modal'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { Formik, Form } from 'formik'
 import {
@@ -33,7 +33,7 @@ import {
 
 let movie: IMovie
 
-Modal.setAppElement('#root')
+// Modal.setAppElement('#root')
 
 export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
   const dispatch = useDispatch()
@@ -232,7 +232,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
           </div>
         </div>
       </div>
-
+      {/* 
       <Modal
         isOpen={modalIsOpen}
         style={{
@@ -267,7 +267,6 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
           >
             Are you sure you want to delete this movie?
           </p>
-          {/* <Modal.Footer> */}
           <div
             className="flex"
             style={{
@@ -290,7 +289,7 @@ export const MoviesDetailsProfile: React.FC<typeof movie> = ({ ...movie }) => {
             </div>
           </div>
         </div>
-      </Modal>
+      </Modal> */}
     </>
   )
 }
