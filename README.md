@@ -1,6 +1,7 @@
 # Moviely App
 
-This is a React/TypeScript project that supports User and Admin roles. 
+This is a React/TypeScript project that supports User and Admin roles using JSON server for the backend.
+
 | Admins can                                         | Users can                             |
   ---------------                                    | --------------
 | Filter movies,                                     | Filter movies                         |
