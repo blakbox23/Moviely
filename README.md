@@ -10,8 +10,8 @@ This is a React/TypeScript project that supports User and Admin roles using JSON
 | Delete a movie,                                    | Edit their profile                    |
 | Edit their profile                                 | Delete their profile                  |
 | Delete their profile,                              | Add movies on the watch list          |
-| Approve user comments before they are displayed,   | Remove movies from the watch list     |
-| Reject user comments so they are not displayed.    |                                       |
+| Approve registered user comments   | Remove movies from the watch list     |
+| Reject registered user comments     |                                       |
 
 .
 
