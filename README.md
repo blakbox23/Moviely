@@ -38,7 +38,7 @@ To get a local copy up and running follow these simple example steps.
 
 
 ## Login as Admin.
-To login as an admin use:
+To login as an admin use these logins:
 
 
 email: `test@pass2.com`,
